@@ -1,0 +1,34 @@
+<br><br><br>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Code</th>
+          <th>Telephone</th>
+          <th>Raison sociale</th>
+          <th>Adresse</th>
+          <th>Faxe</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let formateur of formateurs | async">
+          <td>{{formateur.nom}}</td>
+          <td>{{formateur.prenom}}</td>
+          <td>{{formateur.code}}</td>
+          <td>{{formateur.telephone}}</td>
+          <td>{{formateur.raison_socill}}</td>
+          <td>{{formateur.adresse}}</td>
+		  <td>{{formateur.fax}}</td>
+          <td><button (click)="deleteFormateur(formateur.id)" class="btn btn-danger">Supprimer</button>
+             <button (click)="updateFormateur(formateur.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
