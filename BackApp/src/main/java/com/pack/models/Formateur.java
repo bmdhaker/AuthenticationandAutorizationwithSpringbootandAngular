@@ -27,7 +27,6 @@ public class Formateur {
 
 	public Formateur(String nom, String prenom, String code, String telephone, String raison_socill, String adresse,
 			String fax) {
-		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.code = code;
@@ -55,13 +54,6 @@ public class Formateur {
 		this.code = code;
 	}
 
-	public String getTéléphone() {
-		return telephone;
-	}
-
-	public void setTéléphone(String téléphone) {
-		this.telephone = téléphone;
-	}
 
 	public String getRaison_socill() {
 		return raison_socill;

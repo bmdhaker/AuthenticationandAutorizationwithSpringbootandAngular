@@ -47,6 +47,7 @@ public class FormateurController {
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/formateurs/{id}")
 	public void updateFormateur(@RequestBody Formateur formateur, @PathVariable Long id) {
+		System.out.println(formateur.toString());
 		formateurService.updateFormateur(id, formateur);
 	}
 

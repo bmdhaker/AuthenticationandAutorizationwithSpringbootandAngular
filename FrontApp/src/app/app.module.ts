@@ -14,6 +14,13 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormateurListComponent } from './formateur-list/formateur-list.component';
+import { CreateFormateurComponent } from './create-formateur/create-formateur.component';
+import { UpdateFormateurComponent } from './update-formateur/update-formateur.component';
+import { TypetokenListComponent } from './typetoken-list/typetoken-list.component';
+import { CreateTypetokenComponent } from './create-typetoken/create-typetoken.component';
+import { UpdateTypetokenComponent } from './update-typetoken/update-typetoken.component';
+import { TokenListComponent } from './token-list/token-list.component';
+import { CreateTokenComponent } from './create-token/create-token.component';
 
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -28,7 +35,14 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     BoardUserComponent,
     BoardModeratorComponent,
     ProfileComponent,
-    FormateurListComponent
+    FormateurListComponent,
+    CreateFormateurComponent,
+    UpdateFormateurComponent,
+    TypetokenListComponent,
+    CreateTypetokenComponent,
+    UpdateTypetokenComponent,
+    TokenListComponent,
+    CreateTokenComponent,
   ],
   imports: [
     BrowserModule,

@@ -41,6 +41,20 @@
           <a class="dropdown-item"  routerLink="/formateurs">Lister Tous</a>
         </div>
       </li>      
+      <li class="nav-item dropdown active" *ngIf="showModeratorBoard">
+        <a class="nav-link dropdown-toggle "  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion Type token</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item"  routerLink="/typetoken/new">Nouveau Type token</a>
+          <a class="dropdown-item"  routerLink="/typetokens">Lister Tous</a>
+        </div>
+      </li>      
+      <li class="nav-item dropdown active" *ngIf="showModeratorBoard">
+        <a class="nav-link dropdown-toggle "  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion Token</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item"  routerLink="/token/new">Nouveau Token</a>
+          <a class="dropdown-item"  routerLink="/tokens">Lister Tous</a>
+        </div>
+      </li>      
   <!--<li class="nav-item">
         <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
       </li>-->

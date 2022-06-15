@@ -7,9 +7,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.pack.models.Typetoken;
 import com.pack.models.ERole;
 import com.pack.models.Formateur;
 import com.pack.models.Role;
+import com.pack.models.Token;
+import com.pack.repository.TypetokenRepository;
+import com.pack.repository.TokenRepository;
 import com.pack.repository.FormateurRepository;
 import com.pack.repository.RoleRepository;
 
@@ -24,16 +28,45 @@ public class SpringBootSecurityJwtApplication {
 	@Autowired
 	RoleRepository roleRepo;
 	
-	  @Autowired FormateurRepository formateurrepository;
+	  @Autowired 
+	  FormateurRepository formateurrepository;
 	 
+	  @Autowired 
+	  TypetokenRepository typetokenrepository;
 
-	@Bean
+	  @Autowired 
+	  TokenRepository tokenrepository;
+
+	  @Bean
 	public CommandLineRunner demo() {
 		return (args) -> {
 			
 			
-			  Formateur mahdi = new Formateur("Hammoudi","Siwar","2548", "87542136", "aaa","fff", "bbb"); 
-			  formateurrepository.save(mahdi);
+			  Formateur siwar = new Formateur("Hammoudi","Siwar","2548", "87542136", "aaa","fff", "bbb"); 
+			  formateurrepository.save(siwar);
+			  formateurrepository.findAll().forEach(f->{
+				  System.out.println(f.toString());
+			  });
+
+			  Typetoken typetoken5 = new Typetoken("5 dinars",5.7); 
+			  typetokenrepository.save(typetoken5);
+
+			  Typetoken typetoken10 = new Typetoken("10 dinars",11.4); 
+			  typetokenrepository.save(typetoken10);
+
+			  Typetoken typetoken20 = new Typetoken("20 dinars",22.1); 
+			  typetokenrepository.save(typetoken20);
+
+			  typetokenrepository.findAll().forEach(t->{
+				  System.out.println(t.toString());
+			  });
+			  
+			  Token token1 = new Token("C-12458965",typetoken10); 
+			  tokenrepository.save(token1);
+			  tokenrepository.findAll().forEach(t->{
+				  System.out.println(t.toString());
+			  });
+
 			  
 
 			// Create users with BCrypt encoded password (user/user, admin/admin)
