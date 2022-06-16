@@ -16,6 +16,7 @@ export class CreateTokenComponent implements OnInit {
 
   token: Token = new Token();
   typetokens: Observable<Typetoken[]>;
+  
   submitted = false;
 
   constructor(private tokenService: TokenService,private typetokenService: TypetokenService,

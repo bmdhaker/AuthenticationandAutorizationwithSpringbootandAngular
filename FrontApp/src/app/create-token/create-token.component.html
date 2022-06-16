@@ -7,9 +7,10 @@
     </div>
 
     <div class="form-group">
-      <label for="name">Type Token</label>
+      <label for="name">Prix Token</label>
+      <br>
       <select name="typetoken" [(ngModel)]="token.typetoken">
-        <option *ngFor="let typetoken of typetokens" [ngValue]="typetoken">{{typetoken.prix}}</option>
+        <option *ngFor="let typetoken of typetokens | async"   [ngValue]="typetoken">{{typetoken.prix}}</option>
       </select>   
      </div>
 
