@@ -7,10 +7,8 @@
     </div>
 
     <div class="form-group">
-      <label for="name">Type Token</label>
-            <select name="typetoken" [(ngModel)]="token.typetoken">
-        <option *ngFor="let typetoken of typetokens" [ngValue]="typetoken">{{typetoken.nom}}</option>
-      </select>   
+      <label for="name">Prix</label>
+      <input type="text" class="form-control" id="prix" required [(ngModel)]="typetoken.prix" name="prix">
     </div>
 
     <button type="submit" class="btn btn-success">Ajouter</button>
