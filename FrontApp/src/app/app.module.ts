@@ -21,6 +21,7 @@ import { CreateTypetokenComponent } from './create-typetoken/create-typetoken.co
 import { UpdateTypetokenComponent } from './update-typetoken/update-typetoken.component';
 import { TokenListComponent } from './token-list/token-list.component';
 import { CreateTokenComponent } from './create-token/create-token.component';
+import { UpdateTokenComponent } from './update-token/update-token.component';
 
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -43,6 +44,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     UpdateTypetokenComponent,
     TokenListComponent,
     CreateTokenComponent,
+    UpdateTokenComponent,
   ],
   imports: [
     BrowserModule,

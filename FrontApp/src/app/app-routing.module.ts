@@ -16,6 +16,7 @@ import { CreateTypetokenComponent } from './create-typetoken/create-typetoken.co
 import { UpdateTypetokenComponent } from './update-typetoken/update-typetoken.component';
 import { TokenListComponent } from './token-list/token-list.component';
 import { CreateTokenComponent } from './create-token/create-token.component';
+import { UpdateTokenComponent } from './update-token/update-token.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'update-typetoken/:id', component: UpdateTypetokenComponent },
   { path: 'tokens', component: TokenListComponent },
   { path: 'token/new', component: CreateTokenComponent },
+  { path: 'update-token/:id', component: UpdateTokenComponent },
 ];
 
 @NgModule({
