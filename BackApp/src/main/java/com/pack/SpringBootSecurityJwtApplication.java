@@ -8,12 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.pack.models.Typetoken;
+import com.pack.models.User;
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
 import com.pack.models.Formateur;
 import com.pack.models.Role;
 import com.pack.models.Token;
 import com.pack.repository.TypetokenRepository;
+import com.pack.repository.UserRepository;
 import com.pack.repository.TokenRepository;
 import com.pack.repository.CompteurRepository;
 import com.pack.repository.FormateurRepository;
@@ -41,6 +43,9 @@ public class SpringBootSecurityJwtApplication {
 	  
 	  @Autowired 
 	  CompteurRepository compteurrepository;
+	  
+	  @Autowired 
+	  UserRepository userrepository;
 
 	  @Bean
 	public CommandLineRunner demo() {
@@ -65,16 +70,36 @@ public class SpringBootSecurityJwtApplication {
 			  typetokenrepository.findAll().forEach(t->{
 				  System.out.println(t.toString());
 			  });
-			  
+			  //ajout user
+			  User dh=new User("dha", "dh@g.com", "adhgdhdh");
+			  User md=new User("mda", "mda@g.com", "aaaamddahdh");
+			  userrepository.save(dh);
+			  userrepository.save(md);
 			//Ajout compteur
 
 			  Compteur compteur1 = new Compteur();
+			  Compteur compteur2 = new Compteur();
 			  compteur1.setLibelle("C-124578");
+			  compteur1.setLibelle("C-104578");
+			  compteur1.setUser(dh);
+			  compteur2.setUser(md);
 			  compteurrepository.save(compteur1);
-			  compteurrepository.findAll().forEach(c->{
+			  compteurrepository.save(compteur2);
+			
+			  //affichage des compteurs d'un utilisateur x
+			  compteurrepository.getCompteursByUsername(md.getUsername()).forEach(c->{
 				  System.out.println(c.toString());
 			  });
+
+			  //affichage des compteurs de tous les utilisateurs
+			  userrepository.findAll().forEach(u->{
+				  System.out.println("compteurs de user "+u.getUsername());
+				  compteurrepository.getCompteursByUsername(u.getUsername()).forEach(cu->{
+					  System.out.println(cu.toString());
+				  });
+			  });
 			  
+			  // Affichage de tous les tokens
 			  Token token1 = new Token(compteur1,typetoken10); 
 			  tokenrepository.save(token1);
 			  tokenrepository.findAll().forEach(t->{

@@ -15,8 +15,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Compteur {
 	long id;
-	String libelle;
-	// private User user;
+	private String libelle;
+	private User user;
 
 	public Compteur() {
 	}
@@ -25,6 +25,14 @@ public class Compteur {
 	public Compteur(String libelle) {
 		super();
 		this.libelle = libelle;
+	}
+
+	
+
+	public Compteur(String libelle, User user) {
+		super();
+		this.libelle = libelle;
+		this.user = user;
 	}
 
 
@@ -47,13 +55,23 @@ public class Compteur {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_user", nullable = false)
 
+		public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {
-		return "Compteur [id=" + id + ", libelle=" + libelle + "]";
+		return "Compteur [id=" + id + ", libelle=" + libelle + ", user=" + user + "]";
 	}
-
 
 	/*
 	 * @ManyToOne(fetch = FetchType.EAGER)

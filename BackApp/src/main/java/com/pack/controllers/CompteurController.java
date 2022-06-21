@@ -55,5 +55,11 @@ public class CompteurController {
 	public void deleteCompteur(@PathVariable Long id) {
 		compteurService.deleteCompteur(id);
 	}
+	@RequestMapping(method = RequestMethod.GET, value = "/compteurs/{username}") 
+	public List<Compteur> getCompteurByUser(@PathVariable String username) {
+//	public int getCompteurByUser(@PathVariable Long iduser) {
+		return compteurService.getCompteursByUser(username);
+
+	}
 
 }

@@ -37,5 +37,9 @@ public class CompteurService {
 		compteurRepo.deleteById(id);
 	}
 	
+	public List<Compteur> getCompteursByUser(String username) {
+		return compteurRepo.getCompteursByUsername(username);
+	}
+	
 	
 }
