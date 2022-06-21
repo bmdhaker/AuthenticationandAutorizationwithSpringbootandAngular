@@ -8,12 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.pack.models.Typetoken;
+import com.pack.models.Compteur;
 import com.pack.models.ERole;
 import com.pack.models.Formateur;
 import com.pack.models.Role;
 import com.pack.models.Token;
 import com.pack.repository.TypetokenRepository;
 import com.pack.repository.TokenRepository;
+import com.pack.repository.CompteurRepository;
 import com.pack.repository.FormateurRepository;
 import com.pack.repository.RoleRepository;
 
@@ -36,6 +38,9 @@ public class SpringBootSecurityJwtApplication {
 
 	  @Autowired 
 	  TokenRepository tokenrepository;
+	  
+	  @Autowired 
+	  CompteurRepository compteurrepository;
 
 	  @Bean
 	public CommandLineRunner demo() {
@@ -67,6 +72,14 @@ public class SpringBootSecurityJwtApplication {
 				  System.out.println(t.toString());
 			  });
 
+			  //Ajout compteur
+
+			  Compteur compteur1 = new Compteur();
+			  compteur1.setNumero("C-123456789");
+			  compteurrepository.save(compteur1);
+			  compteurrepository.findAll().forEach(c->{
+				  System.out.println(c.toString());
+			  });
 			  
 
 			// Create users with BCrypt encoded password (user/user, admin/admin)
@@ -76,7 +89,8 @@ public class SpringBootSecurityJwtApplication {
 			roleRepo.save(role1);
 			roleRepo.save(role2);
 			roleRepo.save(role3);
-
+			
+			
 			// Affichage
 			roleRepo.findAll().forEach(p -> {
 				System.out.println(p.toString());

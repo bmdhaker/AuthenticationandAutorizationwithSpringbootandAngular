@@ -1,0 +1,11 @@
+<h3>Modification Compteur</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" id="numero" required [(ngModel)]="compteur.numero" name="numero">
+    </div>
+
+    <button type="submit" class="btn btn-success">Modifier</button>
+  </form>
+</div>

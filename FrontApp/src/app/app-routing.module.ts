@@ -17,6 +17,9 @@ import { UpdateTypetokenComponent } from './update-typetoken/update-typetoken.co
 import { TokenListComponent } from './token-list/token-list.component';
 import { CreateTokenComponent } from './create-token/create-token.component';
 import { UpdateTokenComponent } from './update-token/update-token.component';
+import { CompteurListComponent } from './compteur-list/compteur-list.component';
+import { CreateCompteurComponent } from './create-compteur/create-compteur.component';
+import { UpdateCompteurComponent } from './update-compteur/update-compteur.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -36,6 +39,9 @@ const routes: Routes = [
   { path: 'tokens', component: TokenListComponent },
   { path: 'token/new', component: CreateTokenComponent },
   { path: 'update-token/:id', component: UpdateTokenComponent },
+  { path: 'compteurs', component: CompteurListComponent },
+  { path: 'compteur/new', component: CreateCompteurComponent },
+  { path: 'update-compteur/:id', component: UpdateCompteurComponent },
 ];
 
 @NgModule({
