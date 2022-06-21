@@ -2,8 +2,13 @@
 <div style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="name">Numero Compteur</label>
-      <input type="text" class="form-control" id="numCompteur" required [(ngModel)]="token.numCompteur" name="numCompteur">
+      <label for="name">Ancien Libelle Compteur: </label>
+      <button class="btn btn-danger" type="button">{{ancienCompteur}}</button>
+      <br>
+      <label for="name">Libelle Compteur</label>
+      <select name="compteur" [(ngModel)]="token.compteur">
+        <option *ngFor="let compteur of compteurs | async"   [ngValue]="compteur">{{compteur.libelle}}</option>
+      </select>   
     </div>
 
     <div class="form-group">

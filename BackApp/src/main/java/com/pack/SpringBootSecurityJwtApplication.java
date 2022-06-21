@@ -66,20 +66,22 @@ public class SpringBootSecurityJwtApplication {
 				  System.out.println(t.toString());
 			  });
 			  
-			  Token token1 = new Token("C-12458965",typetoken10); 
+			//Ajout compteur
+
+			  Compteur compteur1 = new Compteur();
+			  compteur1.setLibelle("C-124578");
+			  compteurrepository.save(compteur1);
+			  compteurrepository.findAll().forEach(c->{
+				  System.out.println(c.toString());
+			  });
+			  
+			  Token token1 = new Token(compteur1,typetoken10); 
 			  tokenrepository.save(token1);
 			  tokenrepository.findAll().forEach(t->{
 				  System.out.println(t.toString());
 			  });
 
-			  //Ajout compteur
-
-			  Compteur compteur1 = new Compteur();
-			  compteur1.setNumero("C-123456789");
-			  compteurrepository.save(compteur1);
-			  compteurrepository.findAll().forEach(c->{
-				  System.out.println(c.toString());
-			  });
+			  
 			  
 
 			// Create users with BCrypt encoded password (user/user, admin/admin)

@@ -1,6 +1,7 @@
 import { Typetoken } from './typetoken';
+import { Compteur } from './compteur';
 export class Token {
   id: number;
-  numCompteur: string;
+  compteur: Compteur;
   typetoken: Typetoken;
 }

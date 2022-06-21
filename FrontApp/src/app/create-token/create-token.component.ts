@@ -1,7 +1,9 @@
 import { TokenService } from '../token.service';
 import { TypetokenService } from '../typetoken.service';
+import { CompteurService } from '../compteur.service';
 import { Token } from '../token';
 import { Typetoken } from '../typetoken';
+import { Compteur } from '../compteur';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from "rxjs";
@@ -16,11 +18,12 @@ export class CreateTokenComponent implements OnInit {
 
   token: Token = new Token();
   typetokens: Observable<Typetoken[]>;
+  compteurs: Observable<Compteur[]>;
   
   submitted = false;
 
   constructor(private tokenService: TokenService,private typetokenService: TypetokenService,
-    private router: Router) { }
+    private compteurService: CompteurService, private router: Router) { }
 
     ngOnInit() {
       this.reloadData();
@@ -28,6 +31,7 @@ export class CreateTokenComponent implements OnInit {
   
     reloadData() {
       this.typetokens = this.typetokenService.getTypetokensList();
+      this.compteurs = this.compteurService.getCompteursList();
     }
   
   newToken(): void {

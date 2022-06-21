@@ -6,14 +6,14 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Numero compteur</th>
+            <th>Libelle compteur</th>
             <th>type token price</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let token of tokens | async">
-            <td>{{token.numCompteur}}</td>
+            <td>{{token.compteur.libelle}}</td>
             <td>{{token.typetoken.prix}} </td>
             <td><button (click)="deleteToken(token.id)" class="btn btn-danger">Supprimer</button>
               <button (click)="updateToken(token.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>

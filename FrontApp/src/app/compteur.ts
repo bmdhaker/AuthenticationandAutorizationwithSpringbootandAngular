@@ -1,4 +1,4 @@
 export class Compteur {
   id: number;
-  numero: string;
+  libelle: string;
 }

@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Token {
 	long id;
-	String numCompteur;
+	private Compteur compteur;
 	private Typetoken typetoken;
 	// private String typetoken;
 
@@ -19,13 +19,11 @@ public class Token {
 
 	}
 
-
-	public Token(String numCompteur, Typetoken typetoken) {
+	public Token(Compteur compteur, Typetoken typetoken) {
 		super();
-		this.numCompteur = numCompteur;
+		this.compteur = compteur;
 		this.typetoken = typetoken;
 	}
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,16 +35,7 @@ public class Token {
 		this.id = id;
 	}
 
-
-	public String getNumCompteur() {
-		return numCompteur;
-	}
-
-
-	public void setNumCompteur(String numCompteur) {
-		this.numCompteur = numCompteur;
-	}
-
+	
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_typetoken", nullable = false)
@@ -59,11 +48,21 @@ public class Token {
 		this.typetoken = typetoken;
 	}
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_compteur", nullable = false)
+	public Compteur getCompteur() {
+		return compteur;
+	}
+
+	public void setCompteur(Compteur compteur) {
+		this.compteur = compteur;
+	}
 
 	@Override
 	public String toString() {
-		return "Token [id=" + id + ", numCompteur=" + numCompteur + ", typetoken=" + typetoken + "]";
+		return "Token [id=" + id + ", compteur=" + compteur + ", typetoken=" + typetoken + "]";
 	}
+
 
 
 }

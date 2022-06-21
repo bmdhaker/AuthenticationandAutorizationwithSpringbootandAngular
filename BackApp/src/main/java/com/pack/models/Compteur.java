@@ -15,12 +15,18 @@ import javax.persistence.OneToMany;
 @Entity
 public class Compteur {
 	long id;
-	String numero;
-	//private User user;
-
+	String libelle;
+	// private User user;
 
 	public Compteur() {
 	}
+
+
+	public Compteur(String libelle) {
+		super();
+		this.libelle = libelle;
+	}
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,23 +38,22 @@ public class Compteur {
 		this.id = id;
 	}
 
-	public Compteur(String numero) {
-		super();
-		this.numero = numero;
+
+	public String getLibelle() {
+		return libelle;
 	}
 
-	public String getNumero() {
-		return numero;
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
 	}
 
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
 
 	@Override
 	public String toString() {
-		return "Compteur [id=" + id + ", num=" + numero + "]";
+		return "Compteur [id=" + id + ", libelle=" + libelle + "]";
 	}
+
 
 	/*
 	 * @ManyToOne(fetch = FetchType.EAGER)
@@ -58,8 +63,5 @@ public class Compteur {
 	 * 
 	 * public void setUser(User user) { this.user = user; }
 	 */
-	
-	
-	
 
 }

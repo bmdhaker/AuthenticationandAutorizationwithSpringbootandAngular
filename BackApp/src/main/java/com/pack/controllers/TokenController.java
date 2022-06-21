@@ -29,7 +29,12 @@ public class TokenController {
 	@PreAuthorize("hasRole('ROLE_MODERATOR')")
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/tokens") 
-	public List<Token> getToken() {
+	public List<Token> getToken() 
+	
+	{
+		tokenService.getAllToken().forEach(t->{
+			System.out.println(t.toString());
+		});
 		return (List<Token>) tokenService.getAllToken();
 
 	}
