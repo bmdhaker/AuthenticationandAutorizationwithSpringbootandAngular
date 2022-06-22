@@ -26,7 +26,7 @@ public class TypetokenController {
 
 	//@RequestMapping("/typetokens")
 	//@PreAuthorize("hasRole('ADMIN')")
-	@PreAuthorize("hasRole('ROLE_MODERATOR')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/typetokens") 
 	public List<Typetoken> getTypetoken() {

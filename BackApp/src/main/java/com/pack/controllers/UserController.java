@@ -26,7 +26,7 @@ public class UserController {
 
 	//@RequestMapping("/users")
 	//@PreAuthorize("hasRole('ADMIN')")
-	@PreAuthorize("hasRole('ROLE_MODERATOR')")
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/users") 
 	public List<User> getUser() {

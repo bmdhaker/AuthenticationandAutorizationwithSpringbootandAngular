@@ -25,8 +25,8 @@ public class CompteurController {
 	CompteurService compteurService;
 
 	// @RequestMapping("/compteurs")
-	// @PreAuthorize("hasRole('ADMIN')")
-	@PreAuthorize("hasRole('ROLE_MODERATOR')")
+//	@PreAuthorize("hasRole('ADMIN')")
+//	@PreAuthorize("hasRole('ROLE_MODERATOR')) 
 
 	@RequestMapping(method = RequestMethod.GET, value = "/compteurs")
 	public List<Compteur> getCompteur() {

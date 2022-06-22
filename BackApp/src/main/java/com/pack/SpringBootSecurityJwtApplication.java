@@ -108,17 +108,21 @@ public class SpringBootSecurityJwtApplication {
 			
 			Set<Role> rolesadmin = new HashSet<>();
 			Set<Role> rolesmoderator = new HashSet<>();
-			Role adminRole=new Role();
-			Role modRole = new Role();
-			adminRole.setName(ERole.ROLE_ADMIN);
+			rolesadmin.add(role3);
+			rolesmoderator.add(role2);
+/*			adminRole.setName(ERole.ROLE_ADMIN);
 			modRole.setName(ERole.ROLE_MODERATOR);
-			roleRepository.save(adminRole);
-			roleRepository.save(modRole);
-
+			/*
+			 * roleRepository.save(adminRole); roleRepository.save(modRole);
+			 
 			rolesadmin.add(adminRole);
 			rolesmoderator.add(modRole);
-
+*/
 			admin.setRoles(rolesadmin);
+			System.out.println("roles admin");
+			admin.getRoles().forEach(r->{
+				System.out.println(r.toString());
+			});
 			dh.setRoles(rolesmoderator);
 			md.setRoles(rolesmoderator);
 			userrepository.save(admin);
