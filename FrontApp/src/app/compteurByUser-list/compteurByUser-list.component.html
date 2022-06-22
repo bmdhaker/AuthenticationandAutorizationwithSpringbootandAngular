@@ -1,0 +1,24 @@
+<br><br><br>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Libelle</th>
+          <th>Utilisateur</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let compteurByUser of compteurByUsers | async">
+          <td>{{compteurByUser.libelle}}</td>
+          <td>{{compteurByUser.user.username}}</td>
+          <td><button (click)="deleteCompteurByUser(compteur.id)" class="btn btn-danger">Supprimer</button>
+             <button (click)="updateCompteurByUser(compteur.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

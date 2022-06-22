@@ -24,12 +24,19 @@ public class CompteurController {
 	@Autowired
 	CompteurService compteurService;
 
-	//@RequestMapping("/compteurs")
-	//@PreAuthorize("hasRole('ADMIN')")
+	// @RequestMapping("/compteurs")
+	// @PreAuthorize("hasRole('ADMIN')")
 	@PreAuthorize("hasRole('ROLE_MODERATOR')")
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/compteurs") 
+
+	@RequestMapping(method = RequestMethod.GET, value = "/compteurs")
 	public List<Compteur> getCompteur() {
+		return (List<Compteur>) compteurService.getAllCompteur();
+
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/compteurByUsers")
+	public List<Compteur> getCompteurByUser() {
+		System.out.println("je suis dans compteur By User");
 		return (List<Compteur>) compteurService.getAllCompteur();
 
 	}
@@ -45,6 +52,12 @@ public class CompteurController {
 		return compteurService.getSingleCompteur(id);
 	}
 
+	@RequestMapping("/compteurLoggedUsers/{username}")
+	public List<Compteur> getSingleCompteur(@PathVariable String username) {
+		System.out.println("username "+username);
+		return compteurService.getCompteursByUser(username);
+	}
+
 	@RequestMapping(method = RequestMethod.PUT, value = "/compteurs/{id}")
 	public void updateCompteur(@RequestBody Compteur compteur, @PathVariable Long id) {
 		System.out.println(compteur.toString());
@@ -55,9 +68,11 @@ public class CompteurController {
 	public void deleteCompteur(@PathVariable Long id) {
 		compteurService.deleteCompteur(id);
 	}
-	@RequestMapping(method = RequestMethod.GET, value = "/compteurs/{username}") 
+
+	@RequestMapping(method = RequestMethod.GET, value = "/compteurs/{username}")
 	public List<Compteur> getCompteurByUser(@PathVariable String username) {
 //	public int getCompteurByUser(@PathVariable Long iduser) {
+		System.out.println("username:= " + username);
 		return compteurService.getCompteursByUser(username);
 
 	}

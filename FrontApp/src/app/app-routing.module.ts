@@ -21,6 +21,8 @@ import { CompteurListComponent } from './compteur-list/compteur-list.component';
 import { CreateCompteurComponent } from './create-compteur/create-compteur.component';
 import { UpdateCompteurComponent } from './update-compteur/update-compteur.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { CompteurByUserListComponent } from './compteurByUser-list/compteurByUser-list.component';
+import { CompteurLoggedUserListComponent } from './compteurLoggedUser-list/compteurLoggedUser-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -44,6 +46,9 @@ const routes: Routes = [
   { path: 'compteur/new', component: CreateCompteurComponent },
   { path: 'update-compteur/:id', component: UpdateCompteurComponent },
   { path: 'users', component: UserListComponent },
+  { path: 'compteurByUsers', component: CompteurByUserListComponent },
+  { path: 'compteurLoggedUsers', component: CompteurLoggedUserListComponent },
+
 ];
 
 @NgModule({
