@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand navbar-dark bg-dark">
 <!--    <a href="#" class="navbar-brand">Magma</a>-->
 <a class="navbar-brand" href="#">
-      <button class="btn btn-outline-success" type="button">Magma</button>
+      <button class="btn btn-success" type="button">{{username}}</button>
   </a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item" *ngIf="showSimpleUserBoard">
@@ -72,11 +72,12 @@
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+<!--      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile"><button class="btn btn-outline-info" type="button">{{ username }}</button></a>
       </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
+
+-->      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()"><button class="btn btn-warning" type="button">Déconnexion</button></a>
       </li>
     </ul>
   </nav>
