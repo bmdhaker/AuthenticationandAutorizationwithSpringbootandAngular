@@ -25,6 +25,7 @@ import { UpdateTokenComponent } from './update-token/update-token.component';
 import { CompteurListComponent } from './compteur-list/compteur-list.component';
 import { CreateCompteurComponent } from './create-compteur/create-compteur.component';
 import { UpdateCompteurComponent } from './update-compteur/update-compteur.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -51,6 +52,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     CompteurListComponent,
     CreateCompteurComponent,
     UpdateCompteurComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,

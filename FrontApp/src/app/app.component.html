@@ -14,27 +14,16 @@
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Autre gestion</a>
       </li>-->
-      <li class="nav-item" *ngIf="showSimpleUserBoard">
-       <a href="/formateurs" class="nav-link" routerLink="formateurs">Evaluation Formation</a>
-    </li>
-    <li class="nav-item dropdown active" *ngIf="showAdminBoard">
-      <a class="nav-link dropdown-toggle "  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion Formateur</a>
-      <div class="dropdown-menu" aria-labelledby="dropdown01">
-        <a class="dropdown-item"  routerLink="/formateur/new">Nouveau Formateur</a>
-        <a class="dropdown-item"  routerLink="/formateurs">Lister Tous</a>
-      </div>
-    </li>      
-    <li class="nav-item dropdown active" *ngIf="showAdminBoard">
-      <a class="nav-link dropdown-toggle "  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion Formation</a>
-      <div class="dropdown-menu" aria-labelledby="dropdown01">
-        <a class="dropdown-item"  routerLink="/formateur/new">Nouvelle Formation</a>
-        <a class="dropdown-item"  routerLink="/formateurs">Lister Tous</a>
-      </div>
-    </li>     
     <li class="nav-item" *ngIf="showModeratorBoard">
         <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
       </li>
       <li class="nav-item dropdown active" *ngIf="showModeratorBoard">
+        <a class="nav-link dropdown-toggle "  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion Clients</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item"  routerLink="/users">Lister Tous</a>
+        </div>
+      </li>      
+        <li class="nav-item dropdown active" *ngIf="showModeratorBoard">
         <a class="nav-link dropdown-toggle "  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion Formateur</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item"  routerLink="/formateur/new">Nouveau Formateur</a>

@@ -20,6 +20,7 @@ import { UpdateTokenComponent } from './update-token/update-token.component';
 import { CompteurListComponent } from './compteur-list/compteur-list.component';
 import { CreateCompteurComponent } from './create-compteur/create-compteur.component';
 import { UpdateCompteurComponent } from './update-compteur/update-compteur.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'compteurs', component: CompteurListComponent },
   { path: 'compteur/new', component: CreateCompteurComponent },
   { path: 'update-compteur/:id', component: UpdateCompteurComponent },
+  { path: 'users', component: UserListComponent },
 ];
 
 @NgModule({
