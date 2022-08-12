@@ -7,6 +7,9 @@ import { Compteur } from '../compteur';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from "rxjs";
+import { TokenStorageService } from '../_services/token-storage.service';
+import { CompteurLoggedUserService } from "../compteurLoggedUser.service";
+
 
 
 @Component({
@@ -21,17 +24,24 @@ export class CreateTokenComponent implements OnInit {
   compteurs: Observable<Compteur[]>;
   
   submitted = false;
+  username: string;
 
   constructor(private tokenService: TokenService,private typetokenService: TypetokenService,
-    private compteurService: CompteurService, private router: Router) { }
+    private compteurService: CompteurService, private router: Router,private tokenStorageService: TokenStorageService,private compteurLoggedUserService: CompteurLoggedUserService) { }
 
     ngOnInit() {
       this.reloadData();
     }
   
     reloadData() {
+      const user = this.tokenStorageService.getUser();
+
+      this.username = user.username;
+  
+      this.compteurs = this.compteurLoggedUserService.getCompteurLoggedUsername(this.username);
+  
       this.typetokens = this.typetokenService.getTypetokensList();
-      this.compteurs = this.compteurService.getCompteursList();
+      //this.compteurs = this.compteurService.getCompteursList();
     }
   
   newToken(): void {

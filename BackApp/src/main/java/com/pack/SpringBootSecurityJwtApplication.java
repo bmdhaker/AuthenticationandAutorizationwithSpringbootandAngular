@@ -102,7 +102,7 @@ public class SpringBootSecurityJwtApplication {
 			cryptedPasswordadmin=encoder.encode(passwordadmin);
 			System.out.println("cryptedPassword1 "+cryptedPassword1+" &cryptedPassword2 "+cryptedPassword2);
 			// setting user  role
-			User admin = new User("admin", "admin@g.com", cryptedPassword1);
+			User admin = new User("admin", "admin@g.com", cryptedPasswordadmin);
 			User dh = new User("dha", "dh@g.com", cryptedPassword1);
 			User md = new User("mda", "mda@g.com", cryptedPassword2);
 			
