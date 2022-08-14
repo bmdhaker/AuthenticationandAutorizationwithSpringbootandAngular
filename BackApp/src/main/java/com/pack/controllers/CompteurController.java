@@ -74,7 +74,6 @@ public class CompteurController {
 //	public int getCompteurByUser(@PathVariable Long iduser) {
 		System.out.println("username:= " + username);
 		return compteurService.getCompteursByUser(username);
-
 	}
 
 }

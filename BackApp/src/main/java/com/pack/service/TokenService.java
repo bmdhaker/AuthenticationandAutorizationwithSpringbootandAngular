@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.pack.models.Token;
+import com.pack.models.Token;
 import com.pack.models.Typetoken;
 import com.pack.repository.TokenRepository;
 import com.pack.repository.TypetokenRepository;
@@ -38,6 +39,8 @@ public class TokenService {
 	public void deleteToken(Long id) {
 		tokenRepo.deleteById(id);
 	}
-	
+	public List<Token> getTokensByUser(String username) {
+		return tokenRepo.getTokensByUsername(username);
+	}
 	
 }

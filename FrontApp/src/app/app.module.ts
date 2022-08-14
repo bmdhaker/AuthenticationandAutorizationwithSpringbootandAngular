@@ -20,6 +20,7 @@ import { TypetokenListComponent } from './typetoken-list/typetoken-list.componen
 import { CreateTypetokenComponent } from './create-typetoken/create-typetoken.component';
 import { UpdateTypetokenComponent } from './update-typetoken/update-typetoken.component';
 import { TokenListComponent } from './token-list/token-list.component';
+import { TokenLoggedUserListComponent } from './tokenLoggedUser-list/tokenLoggedUser-list.component';
 import { CreateTokenComponent } from './create-token/create-token.component';
 import { UpdateTokenComponent } from './update-token/update-token.component';
 import { CompteurListComponent } from './compteur-list/compteur-list.component';
@@ -50,6 +51,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     CreateTypetokenComponent,
     UpdateTypetokenComponent,
     TokenListComponent,
+    TokenLoggedUserListComponent,
     CreateTokenComponent,
     UpdateTokenComponent,
     CompteurListComponent,

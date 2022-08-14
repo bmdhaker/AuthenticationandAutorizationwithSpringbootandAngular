@@ -54,7 +54,7 @@ public class SpringBootSecurityJwtApplication {
 
 	@Autowired
 	PasswordEncoder encoder;
-	
+
 	@Autowired
 	RoleRepository roleRepository;
 
@@ -64,12 +64,6 @@ public class SpringBootSecurityJwtApplication {
 	@Bean
 	public CommandLineRunner demo() {
 		return (args) -> {
-
-			Formateur siwar = new Formateur("Hammoudi", "Siwar", "2548", "87542136", "aaa", "fff", "bbb");
-			formateurrepository.save(siwar);
-			formateurrepository.findAll().forEach(f -> {
-				System.out.println(f.toString());
-			});
 
 			Typetoken typetoken5 = new Typetoken("5 dinars", 5.7);
 			typetokenrepository.save(typetoken5);
@@ -83,68 +77,67 @@ public class SpringBootSecurityJwtApplication {
 			typetokenrepository.findAll().forEach(t -> {
 				System.out.println(t.toString());
 			});
-			
+
 			// Create users with BCrypt encoded password (user/user, admin/admin)
-						Role role1 = new Role(ERole.ROLE_USER);
-						Role role2 = new Role(ERole.ROLE_MODERATOR);
-						Role role3 = new Role(ERole.ROLE_ADMIN);
-						roleRepo.save(role1);
-						roleRepo.save(role2);
-						roleRepo.save(role3);
+			Role role1 = new Role(ERole.ROLE_USER);
+			Role role2 = new Role(ERole.ROLE_MODERATOR);
+			Role role3 = new Role(ERole.ROLE_ADMIN);
+			roleRepo.save(role1);
+			roleRepo.save(role2);
+			roleRepo.save(role3);
 
-						// Affichage
-						roleRepo.findAll().forEach(r -> {
-							System.out.println(r.toString());
+			// Affichage
+			roleRepo.findAll().forEach(r -> {
+				System.out.println(r.toString());
 
-						});
-			
+			});
+
 			// ajout user
 			// cryptage de mot de passe
-			String password1 = "helloworld", password2 = "hitunisia", passwordadmin = "administrator", cryptedPassword1 = "", cryptedPassword2 = "",cryptedPasswordadmin = "";
+			String password1 = "helloworld", password2 = "hitunisia", passwordadmin = "administrator",
+					cryptedPassword1 = "", cryptedPassword2 = "", cryptedPasswordadmin = "";
 			cryptedPassword1 = encoder.encode(password1);
 			cryptedPassword2 = encoder.encode(password2);
-			cryptedPasswordadmin=encoder.encode(passwordadmin);
-			System.out.println("cryptedPassword1 "+cryptedPassword1+" &cryptedPassword2 "+cryptedPassword2);
-			// setting user  role
+			cryptedPasswordadmin = encoder.encode(passwordadmin);
+			System.out.println("cryptedPassword1 " + cryptedPassword1 + " &cryptedPassword2 " + cryptedPassword2);
+			// setting user role
 			User admin = new User("admin", "admin@g.com", cryptedPasswordadmin);
-			User dh = new User("dha", "dh@g.com", cryptedPassword1);
-			User md = new User("mda", "mda@g.com", cryptedPassword2);
-			
+			User mohamed = new User("mohamed", "mou@g.com", cryptedPassword2);
+			User siwar = new User("siwar", "siwar@g.com", cryptedPassword1);
+
 			Set<Role> rolesadmin = new HashSet<>();
 			Set<Role> rolesmoderator = new HashSet<>();
 			rolesadmin.add(role3);
 			rolesmoderator.add(role2);
-/*			adminRole.setName(ERole.ROLE_ADMIN);
-			modRole.setName(ERole.ROLE_MODERATOR);
 			/*
-			 * roleRepository.save(adminRole); roleRepository.save(modRole);
-			 
-			rolesadmin.add(adminRole);
-			rolesmoderator.add(modRole);
-*/
+			 * adminRole.setName(ERole.ROLE_ADMIN); modRole.setName(ERole.ROLE_MODERATOR);
+			 * /* roleRepository.save(adminRole); roleRepository.save(modRole);
+			 * 
+			 * rolesadmin.add(adminRole); rolesmoderator.add(modRole);
+			 */
 			admin.setRoles(rolesadmin);
 			System.out.println("roles admin");
-			admin.getRoles().forEach(r->{
+			admin.getRoles().forEach(r -> {
 				System.out.println(r.toString());
 			});
-			dh.setRoles(rolesmoderator);
-			md.setRoles(rolesmoderator);
+			mohamed.setRoles(rolesmoderator);
+			siwar.setRoles(rolesmoderator);
 			userrepository.save(admin);
-			userrepository.save(dh);
-			userrepository.save(md);
+			userrepository.save(mohamed);
+			userrepository.save(siwar);
 			// Ajout compteur
 
 			Compteur compteur1 = new Compteur();
 			Compteur compteur2 = new Compteur();
 			compteur1.setLibelle("C-124578");
 			compteur2.setLibelle("C-104578");
-			compteur1.setUser(dh);
-			compteur2.setUser(md);
+			compteur1.setUser(mohamed);
+			compteur2.setUser(siwar);
 			compteurrepository.save(compteur1);
 			compteurrepository.save(compteur2);
 
 			// affichage des compteurs d'un utilisateur x
-			compteurrepository.getCompteursByUsername(md.getUsername()).forEach(c -> {
+			compteurrepository.getCompteursByUsername(mohamed.getUsername()).forEach(c -> {
 				System.out.println(c.toString());
 			});
 
@@ -157,21 +150,23 @@ public class SpringBootSecurityJwtApplication {
 			});
 
 			// Affichage de tous les tokens
-			Token token1 = new Token(compteur1, typetoken10);
+			Token token1 = new Token(compteur1, typetoken10, mohamed);
 			tokenrepository.save(token1);
+			Token token2 = new Token(compteur2, typetoken20, siwar);
+			tokenrepository.save(token2);
+
+			
 			tokenrepository.findAll().forEach(t -> {
 				System.out.println(t.toString());
 			});
-			
-			
-			Panier paniermd=new Panier(md,token1);
-			panierRepository.save(paniermd);
-			System.out.println("panier de user "+md.getUsername()+" est");
-			panierRepository.findAll().forEach(p->{
+
+			Panier paniermohamed = new Panier(mohamed, token1);
+			panierRepository.save(paniermohamed);
+			Panier paniersiwar = new Panier(siwar, token2);
+			panierRepository.save(paniersiwar);
+			panierRepository.findAll().forEach(p -> {
 				System.out.println(p.toString());
 			});
-			
-			
 
 		};
 	}

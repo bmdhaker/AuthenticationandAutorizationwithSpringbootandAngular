@@ -40,7 +40,8 @@ export class CreateTokenComponent implements OnInit {
   
       this.compteurs = this.compteurLoggedUserService.getCompteurLoggedUsername(this.username);
   
-      this.typetokens = this.typetokenService.getTypetokensList();
+      //this.typetokens = this.typetokenService.getTypetokensList();
+      this.typetokens = this.typetokenService.getTypetokensByUserList();
       //this.compteurs = this.compteurService.getCompteursList();
     }
   

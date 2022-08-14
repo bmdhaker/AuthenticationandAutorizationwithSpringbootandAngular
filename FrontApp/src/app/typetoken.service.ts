@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class TypetokenService {
 
   private baseUrl = 'http://localhost:9093/api/test/typetokens';
+  private baseUrlByUser = 'http://localhost:9093/api/test/typetokensByUser';
 
   constructor(private http: HttpClient) { }
 
@@ -30,4 +31,9 @@ export class TypetokenService {
   getTypetokensList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
+  getTypetokensByUserList(): Observable<any> {
+    return this.http.get(`${this.baseUrlByUser}`);
+  }
+
 }

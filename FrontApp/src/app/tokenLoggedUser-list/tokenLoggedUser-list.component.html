@@ -1,0 +1,24 @@
+<br><br><br>
+<div class="panel panel-primary">
+  <div class="panel-body">
+<table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Compteur</th>
+          <th>Prix</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tokenLoggedUser of tokenLoggedUsers | async">
+          <td>{{tokenLoggedUser.compteur.libelle}}</td>
+          <td>{{tokenLoggedUser.typetoken.prix}}</td>
+          <td><button (click)="deleteTokenLoggedUser(token.id)" class="btn btn-danger">Supprimer</button>
+             <button (click)="updateTokenLoggedUser(token.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

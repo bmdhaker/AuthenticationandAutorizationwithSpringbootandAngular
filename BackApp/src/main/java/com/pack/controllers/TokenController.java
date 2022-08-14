@@ -25,8 +25,8 @@ public class TokenController {
 	TokenService tokenService;
 
 	//@RequestMapping("/tokens")
-	//@PreAuthorize("hasRole('ADMIN')")
-	@PreAuthorize("hasRole('ROLE_MODERATOR')")
+	@PreAuthorize("hasRole('ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_MODERATOR')")
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/tokens") 
 	public List<Token> getToken() 
@@ -61,4 +61,5 @@ public class TokenController {
 		tokenService.deleteToken(id);
 	}
 
+	
 }

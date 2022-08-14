@@ -13,6 +13,8 @@ public class Token {
 	long id;
 	private Compteur compteur;
 	private Typetoken typetoken;
+	private User user;
+
 	// private String typetoken;
 
 	public Token() {
@@ -23,6 +25,22 @@ public class Token {
 		super();
 		this.compteur = compteur;
 		this.typetoken = typetoken;
+	}
+
+	public Token(Compteur compteur, Typetoken typetoken, User user) {
+		super();
+		this.compteur = compteur;
+		this.typetoken = typetoken;
+		this.user = user;
+	}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_user", nullable = false)
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Id
@@ -60,7 +78,7 @@ public class Token {
 
 	@Override
 	public String toString() {
-		return "Token [id=" + id + ", compteur=" + compteur + ", typetoken=" + typetoken + "]";
+		return "Token [id=" + id + ", compteur=" + compteur + ", typetoken=" + typetoken + ", user=" + user + "]";
 	}
 
 
