@@ -16,6 +16,7 @@ import com.pack.models.User;
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
 import com.pack.models.Formateur;
+import com.pack.models.Panier;
 import com.pack.models.Role;
 import com.pack.models.Token;
 import com.pack.repository.TypetokenRepository;
@@ -23,6 +24,7 @@ import com.pack.repository.UserRepository;
 import com.pack.repository.TokenRepository;
 import com.pack.repository.CompteurRepository;
 import com.pack.repository.FormateurRepository;
+import com.pack.repository.PanierRepository;
 import com.pack.repository.RoleRepository;
 
 @SpringBootApplication
@@ -56,6 +58,8 @@ public class SpringBootSecurityJwtApplication {
 	@Autowired
 	RoleRepository roleRepository;
 
+	@Autowired
+	PanierRepository panierRepository;
 
 	@Bean
 	public CommandLineRunner demo() {
@@ -158,7 +162,15 @@ public class SpringBootSecurityJwtApplication {
 			tokenrepository.findAll().forEach(t -> {
 				System.out.println(t.toString());
 			});
-
+			
+			
+			Panier paniermd=new Panier(md,token1);
+			panierRepository.save(paniermd);
+			System.out.println("panier de user "+md.getUsername()+" est");
+			panierRepository.findAll().forEach(p->{
+				System.out.println(p.toString());
+			});
+			
 			
 
 		};

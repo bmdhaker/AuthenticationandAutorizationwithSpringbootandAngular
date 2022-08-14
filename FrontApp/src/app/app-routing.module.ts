@@ -23,6 +23,8 @@ import { UpdateCompteurComponent } from './update-compteur/update-compteur.compo
 import { UserListComponent } from './user-list/user-list.component';
 import { CompteurByUserListComponent } from './compteurByUser-list/compteurByUser-list.component';
 import { CompteurLoggedUserListComponent } from './compteurLoggedUser-list/compteurLoggedUser-list.component';
+import { PanierListComponent } from './panier-list/panier-list.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -48,6 +50,8 @@ const routes: Routes = [
   { path: 'users', component: UserListComponent },
   { path: 'compteurByUsers', component: CompteurByUserListComponent },
   { path: 'compteurLoggedUsers', component: CompteurLoggedUserListComponent },
+  { path: 'paniers', component: PanierListComponent },
+
 
 ];
 

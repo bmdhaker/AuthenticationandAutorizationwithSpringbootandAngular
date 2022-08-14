@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Detail panier</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Libelle compteur</th>
+            <th>prix</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let panier of paniers | async">
+            <td>{{panier.token.compteur.libelle}}</td>
+            <td>{{panier.token.typetoken.prix}} </td>
+            <td><button (click)="deletePanier(panier.id)" class="btn btn-danger">Paiement</button>
+              <!--<button (click)="updatePanier(panier.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

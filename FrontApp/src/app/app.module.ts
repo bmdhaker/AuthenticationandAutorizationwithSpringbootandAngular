@@ -28,6 +28,7 @@ import { UpdateCompteurComponent } from './update-compteur/update-compteur.compo
 import { UserListComponent } from './user-list/user-list.component';
 import { CompteurByUserListComponent } from './compteurByUser-list/compteurByUser-list.component';
 import { CompteurLoggedUserListComponent } from './compteurLoggedUser-list/compteurLoggedUser-list.component';
+import { PanierListComponent } from './panier-list/panier-list.component';
 
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -57,6 +58,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     UserListComponent,
     CompteurByUserListComponent,
     CompteurLoggedUserListComponent,
+    PanierListComponent,
+
 
   ],
   imports: [
