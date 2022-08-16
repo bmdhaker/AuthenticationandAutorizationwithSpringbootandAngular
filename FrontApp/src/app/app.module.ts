@@ -31,6 +31,8 @@ import { CompteurByUserListComponent } from './compteurByUser-list/compteurByUse
 import { CompteurLoggedUserListComponent } from './compteurLoggedUser-list/compteurLoggedUser-list.component';
 import { PanierListComponent } from './panier-list/panier-list.component';
 import { SoldeListComponent } from './solde-list/solde-list.component';
+import { CommandeListComponent } from './commande-list/commande-list.component';
+import { CommandeLoggedUserListComponent } from './commandeLoggedUser-list/commandeLoggedUser-list.component';
 
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -63,9 +65,10 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     CompteurLoggedUserListComponent,
     PanierListComponent,
     SoldeListComponent,
-
-
+    CommandeListComponent,
+    CommandeLoggedUserListComponent,
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

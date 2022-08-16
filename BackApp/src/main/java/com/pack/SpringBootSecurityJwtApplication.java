@@ -1,5 +1,6 @@
 package com.pack;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.pack.models.Typetoken;
 import com.pack.models.User;
+import com.pack.models.Commande;
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
 import com.pack.models.Formateur;
@@ -23,6 +25,7 @@ import com.pack.models.Token;
 import com.pack.repository.TypetokenRepository;
 import com.pack.repository.UserRepository;
 import com.pack.repository.TokenRepository;
+import com.pack.repository.CommandeRepository;
 import com.pack.repository.CompteurRepository;
 import com.pack.repository.FormateurRepository;
 import com.pack.repository.PanierRepository;
@@ -62,6 +65,9 @@ public class SpringBootSecurityJwtApplication {
 
 	@Autowired
 	PanierRepository panierRepository;
+
+	@Autowired
+	CommandeRepository commandeRepository;
 
 	@Autowired
 	SoldeRepository soldeRepository;
@@ -134,13 +140,22 @@ public class SpringBootSecurityJwtApplication {
 			// Ajout compteur
 
 			Compteur compteur1 = new Compteur();
-			Compteur compteur2 = new Compteur();
+			Compteur compteur11 = new Compteur();
 			compteur1.setLibelle("C-124578");
-			compteur2.setLibelle("C-104578");
+			compteur11.setLibelle("C-1444578");
 			compteur1.setUser(mohamed);
+			compteur11.setUser(mohamed);
+
+			Compteur compteur2 = new Compteur();
+			Compteur compteur22 = new Compteur();
+			compteur2.setLibelle("C-104578");
+			compteur22.setLibelle("C-154578");
 			compteur2.setUser(siwar);
+			compteur22.setUser(siwar);
 			compteurrepository.save(compteur1);
+			compteurrepository.save(compteur11);
 			compteurrepository.save(compteur2);
+			compteurrepository.save(compteur22);
 
 			// affichage des compteurs d'un utilisateur x
 			compteurrepository.getCompteursByUsername(mohamed.getUsername()).forEach(c -> {
@@ -157,23 +172,41 @@ public class SpringBootSecurityJwtApplication {
 
 			// Affichage de tous les tokens
 			Token token1 = new Token(compteur1, typetoken10, mohamed);
+			Token token11 = new Token(compteur11, typetoken20, mohamed);
 			tokenrepository.save(token1);
+			tokenrepository.save(token11);
 			Token token2 = new Token(compteur2, typetoken20, siwar);
+			Token token22 = new Token(compteur22, typetoken5, siwar);
 			tokenrepository.save(token2);
+			tokenrepository.save(token22);
 
 			
 			tokenrepository.findAll().forEach(t -> {
 				System.out.println(t.toString());
 			});
 
-			Panier paniermohamed = new Panier(mohamed, token1);
+			Panier paniermohamed = new Panier(mohamed, token1,true);
+			Panier paniermohamed2 = new Panier(mohamed, token11,true);
 			panierRepository.save(paniermohamed);
-			Panier paniersiwar = new Panier(siwar, token2);
+			panierRepository.save(paniermohamed2);
+			
+			Panier paniersiwar = new Panier(siwar, token2,false);
+			Panier paniersiwar2 = new Panier(siwar, token22,true);
 			panierRepository.save(paniersiwar);
+			panierRepository.save(paniersiwar2);
 			panierRepository.findAll().forEach(p -> {
 				System.out.println(p.toString());
 			});
+			
+			Commande commandemohamed=new Commande(mohamed, paniermohamed, new Date());
+			Commande commandemohamed2=new Commande(mohamed, paniermohamed2, new Date());
+			commandeRepository.save(commandemohamed);
+			commandeRepository.save(commandemohamed2);
 
+			Commande commandsiwar22=new Commande(siwar, paniersiwar2, new Date());
+			commandeRepository.save(commandsiwar22);
+
+			
 			Solde soldemohamed = new Solde(mohamed, 50);
 			soldeRepository.save(soldemohamed);
 			Solde soldesiwar = new Solde(siwar, 40);

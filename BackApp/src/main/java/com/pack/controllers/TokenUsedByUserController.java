@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pack.models.Token;
 import com.pack.models.ERole;
+import com.pack.models.Panier;
 import com.pack.models.Token;
+import com.pack.service.PanierService;
 import com.pack.service.TokenService;
 
 @CrossOrigin(origins = "*")
@@ -24,6 +26,10 @@ public class TokenUsedByUserController {
 
 	@Autowired
 	TokenService tokenService;
+	
+	@Autowired
+	PanierService panierService;
+	
 
 	//@RequestMapping("/tokens")
 	//@PreAuthorize("hasRole('ADMIN')")
@@ -47,6 +53,7 @@ public class TokenUsedByUserController {
 	
 	@RequestMapping(method = RequestMethod.POST, value = "/tokens")
 	public void addTokenUsername(@RequestBody Token token) {
+		Panier panier=new Panier();
 		System.out.println("je suis dans ajout token with username");
 		token.setCompteur(token.getCompteur());
 		System.out.println("token compteur:= "+token.getCompteur());
@@ -55,6 +62,13 @@ public class TokenUsedByUserController {
 		token.setUser(token.getCompteur().getUser());
 		System.out.println("token user:= "+token.getUser());
 		tokenService.addToken(token);
+		//vreation du panier
+		panier.setToken(token);
+		panier.setUser(token.getUser());
+		panier.setActive(true);
+		panierService.addPanier(panier);
+		
+		
 	}
 	
 }

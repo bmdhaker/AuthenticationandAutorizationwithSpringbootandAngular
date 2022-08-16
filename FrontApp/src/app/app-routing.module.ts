@@ -26,6 +26,8 @@ import { CompteurByUserListComponent } from './compteurByUser-list/compteurByUse
 import { CompteurLoggedUserListComponent } from './compteurLoggedUser-list/compteurLoggedUser-list.component';
 import { PanierListComponent } from './panier-list/panier-list.component';
 import { SoldeListComponent } from './solde-list/solde-list.component';
+import { CommandeListComponent } from './commande-list/commande-list.component';
+import { CommandeLoggedUserListComponent } from './commandeLoggedUser-list/commandeLoggedUser-list.component';
 
 
 const routes: Routes = [
@@ -55,6 +57,8 @@ const routes: Routes = [
   { path: 'compteurLoggedUsers', component: CompteurLoggedUserListComponent },
   { path: 'paniers', component: PanierListComponent },
   { path: 'soldes', component: SoldeListComponent },
+  { path: 'commandes', component: CommandeListComponent },
+  { path: 'commandeLoggedUsers', component: CommandeLoggedUserListComponent },
 
 
 ];

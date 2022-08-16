@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Details commandes</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>details commande</th>
+            <th>total</th>
+            <th>date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let commande of commandes | async">
+            <td style="color:red">{{commande.panier.user.username}}</td>
+            <td>{{commande.panier.token.compteur.libelle}}</td>
+            <td>{{commande.panier.token.typetoken.prix}}</td>
+            <td>{{commande.date}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
