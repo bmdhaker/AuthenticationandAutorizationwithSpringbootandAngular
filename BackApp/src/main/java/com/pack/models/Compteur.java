@@ -75,11 +75,7 @@ public class Compteur {
 	}
 
 
-	public void setUser(Optional<User> user2) {
-		this.user = user;
-		
-	}
-
+	
 	/*
 	 * @ManyToOne(fetch = FetchType.EAGER)
 	 * 

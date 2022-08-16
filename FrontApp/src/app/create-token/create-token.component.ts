@@ -51,7 +51,7 @@ export class CreateTokenComponent implements OnInit {
   }
 
   save() {
-    this.tokenService.createToken(this.token)
+    this.tokenService.createTokenUsername(this.token)
       .subscribe(data => console.log(data), error => console.log(error));
     this.token = new Token();
     this.gotoList();
@@ -63,6 +63,6 @@ export class CreateTokenComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/tokens']);
+    this.router.navigate(['/tokenLoggedUsers']);
   }
 }

@@ -39,11 +39,13 @@ public class TokenController {
 
 	}
 
-	@RequestMapping(method = RequestMethod.POST, value = "/tokens")
-	public void addToken(@RequestBody Token token) {
-		System.out.println(token.toString());
-		tokenService.addToken(token);
-	}
+	/*
+	 * @RequestMapping(method = RequestMethod.POST, value = "/tokens") public void
+	 * addToken(@RequestBody Token token) {
+	 * System.out.println("je suis dans ajout token");
+	 * System.out.println(token.toString()); tokenService.addToken(token); }
+	 */
+	
 
 	@RequestMapping("/tokens/{id}")
 	public Optional<Token> getSingleToken(@PathVariable Long id) {

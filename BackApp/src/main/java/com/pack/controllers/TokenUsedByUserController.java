@@ -45,4 +45,16 @@ public class TokenUsedByUserController {
 		return tokenService.getTokensByUser(username);
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, value = "/tokens")
+	public void addTokenUsername(@RequestBody Token token) {
+		System.out.println("je suis dans ajout token with username");
+		token.setCompteur(token.getCompteur());
+		System.out.println("token compteur:= "+token.getCompteur());
+		token.setTypetoken(token.getTypetoken());
+		System.out.println("token typetoken:= "+token.getTypetoken());
+		token.setUser(token.getCompteur().getUser());
+		System.out.println("token user:= "+token.getUser());
+		tokenService.addToken(token);
+	}
+	
 }

@@ -32,6 +32,10 @@ export class TokenService {
     return this.http.get(`${this.baseUrl}`);
   }
 
+  createTokenUsername(token: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, token);
+  }
+
   
 
 }

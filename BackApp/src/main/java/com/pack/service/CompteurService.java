@@ -30,12 +30,12 @@ public class CompteurService {
 		compteurRepo.save(compteur);
 	}
 	
-	public void addCompteur(Compteur compteur, String username) {
-		Optional<User> user=userRepo.findByUsername(username);
-		System.out.println("user:= "+user.toString());
-		compteur.setUser(user);
-		compteurRepo.save(compteur);
-	}
+	/*
+	 * public void addCompteur(Compteur compteur, String username) { Optional<User>
+	 * user=userRepo.findByUsername(username);
+	 * System.out.println("user:= "+user.toString()); compteur.setUser(user);
+	 * compteurRepo.save(compteur); }
+	 */
 	
 	public Optional<Compteur> getSingleCompteur(Long id) {
 		return compteurRepo.findById(id);
