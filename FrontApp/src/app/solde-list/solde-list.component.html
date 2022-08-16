@@ -1,0 +1,22 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Detail solde</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>valeur</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let solde of soldes | async">
+            <td style="color:red">{{solde.valeur}} TND</td>
+            <!--<td><button (click)="deleteSolde(solde.id)" class="btn btn-danger">Paiement</button>
+              <button (click)="updateSolde(solde.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+            </td>-->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

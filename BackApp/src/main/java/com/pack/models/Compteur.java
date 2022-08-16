@@ -1,6 +1,7 @@
 package com.pack.models;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -71,6 +72,12 @@ public class Compteur {
 	@Override
 	public String toString() {
 		return "Compteur [id=" + id + ", libelle=" + libelle + ", user=" + user + "]";
+	}
+
+
+	public void setUser(Optional<User> user2) {
+		this.user = user;
+		
 	}
 
 	/*

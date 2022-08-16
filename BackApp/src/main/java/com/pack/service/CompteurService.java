@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.pack.models.Compteur;
+import com.pack.models.Typetoken;
+import com.pack.models.User;
 import com.pack.repository.CompteurRepository;
+import com.pack.repository.UserRepository;
 
 
 @Component
@@ -15,6 +18,8 @@ public class CompteurService {
 
 	@Autowired
 	private CompteurRepository compteurRepo;
+	@Autowired
+	private UserRepository userRepo;
 	
 	
 	public List<Compteur> getAllCompteur() {
@@ -22,6 +27,13 @@ public class CompteurService {
 	}
 	
 	public void addCompteur(Compteur compteur) {
+		compteurRepo.save(compteur);
+	}
+	
+	public void addCompteur(Compteur compteur, String username) {
+		Optional<User> user=userRepo.findByUsername(username);
+		System.out.println("user:= "+user.toString());
+		compteur.setUser(user);
 		compteurRepo.save(compteur);
 	}
 	

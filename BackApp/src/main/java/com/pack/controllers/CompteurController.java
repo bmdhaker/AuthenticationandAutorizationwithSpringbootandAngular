@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pack.models.ERole;
+import com.pack.models.Token;
+import com.pack.models.Typetoken;
+import com.pack.repository.CompteurRepository;
+import com.pack.repository.UserRepository;
 import com.pack.models.Compteur;
 import com.pack.service.CompteurService;
 
@@ -23,10 +27,12 @@ public class CompteurController {
 
 	@Autowired
 	CompteurService compteurService;
+	@Autowired
+	private UserRepository userRepo;
 
 	// @RequestMapping("/compteurs")
 //	@PreAuthorize("hasRole('ADMIN')")
-//	@PreAuthorize("hasRole('ROLE_MODERATOR')) 
+	@PreAuthorize("hasRole('ROLE_MODERATOR')")
 
 	@RequestMapping(method = RequestMethod.GET, value = "/compteurs")
 	public List<Compteur> getCompteur() {
@@ -43,9 +49,27 @@ public class CompteurController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/compteurs")
 	public void addCompteur(@RequestBody Compteur compteur) {
-		System.out.println(compteur.toString());
+		System.out.println("addCompteur");
 		compteurService.addCompteur(compteur);
 	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/compteurs/{libelle}/{username}")
+	public void addCompteur(@PathVariable String libcompteur, @PathVariable String username) {
+		// System.out.println(compteur.toString());
+		System.out.println("here");
+		System.out.println("username:= " + username);
+		System.out.println("libelle:= " + libcompteur);
+		// System.out.println("user:= "+userRepo.findByUsername(username).toString());
+		// compteurService.addCompteur(compteur,username);
+	}
+
+	/*
+	 * @RequestMapping(method = RequestMethod.GET, value =
+	 * "/tokensByUser/{username}") public List<Token> getTokenByUser(@PathVariable
+	 * String username) { // public int getTokenByUser(@PathVariable Long iduser) {
+	 * System.out.println("username:= " + username); return
+	 * tokenService.getTokensByUser(username); }
+	 */
 
 	@RequestMapping("/compteurs/{id}")
 	public Optional<Compteur> getSingleCompteur(@PathVariable Long id) {
@@ -54,7 +78,7 @@ public class CompteurController {
 
 	@RequestMapping("/compteurLoggedUsers/{username}")
 	public List<Compteur> getSingleCompteur(@PathVariable String username) {
-		System.out.println("username "+username);
+		System.out.println("username " + username);
 		return compteurService.getCompteursByUser(username);
 	}
 

@@ -30,4 +30,10 @@ export class CompteurService {
   getCompteursList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
+  createCompteurwithuser(libcompteur: string, username: string): Observable<Object> {
+    return this.http.post(`${this.baseUrl}/${username}`, libcompteur);
+  }
+
+  
 }

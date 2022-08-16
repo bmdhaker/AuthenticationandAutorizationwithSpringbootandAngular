@@ -18,6 +18,7 @@ import com.pack.models.ERole;
 import com.pack.models.Formateur;
 import com.pack.models.Panier;
 import com.pack.models.Role;
+import com.pack.models.Solde;
 import com.pack.models.Token;
 import com.pack.repository.TypetokenRepository;
 import com.pack.repository.UserRepository;
@@ -26,6 +27,7 @@ import com.pack.repository.CompteurRepository;
 import com.pack.repository.FormateurRepository;
 import com.pack.repository.PanierRepository;
 import com.pack.repository.RoleRepository;
+import com.pack.repository.SoldeRepository;
 
 @SpringBootApplication
 public class SpringBootSecurityJwtApplication {
@@ -61,6 +63,10 @@ public class SpringBootSecurityJwtApplication {
 	@Autowired
 	PanierRepository panierRepository;
 
+	@Autowired
+	SoldeRepository soldeRepository;
+
+	
 	@Bean
 	public CommandLineRunner demo() {
 		return (args) -> {
@@ -168,6 +174,15 @@ public class SpringBootSecurityJwtApplication {
 				System.out.println(p.toString());
 			});
 
+			Solde soldemohamed = new Solde(mohamed, 50);
+			soldeRepository.save(soldemohamed);
+			Solde soldesiwar = new Solde(siwar, 40);
+			soldeRepository.save(soldesiwar);
+			soldeRepository.findAll().forEach(p -> {
+				System.out.println(p.toString());
+			});
+
+		
 		};
 	}
 

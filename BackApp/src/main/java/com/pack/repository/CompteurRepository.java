@@ -22,5 +22,11 @@ public interface CompteurRepository extends JpaRepository<Compteur, Long> {
 //	@Query("FROM Compteur where user.username = 'dha'")
 	List<Compteur> getCompteursByUsername(String Username);
 	
+	/*
+	 * @Query("FROM Users where user.username = ?1")
+	 * // @Query("FROM Compteur where user.username = 'dha'") User
+	 * getUserFromUsername(String Username);
+	 */
+	
 
 }

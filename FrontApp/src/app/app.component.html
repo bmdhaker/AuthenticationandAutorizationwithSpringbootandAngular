@@ -27,7 +27,6 @@
         <li class="nav-item dropdown active" *ngIf="showAdminBoard">
           <a class="nav-link dropdown-toggle "  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion Compteur By User</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item"  routerLink="/compteur/new">Nouveau Compteur</a>
             <a class="dropdown-item"  routerLink="/compteurByUsers">Lister Tous</a>
           </div>
         </li>      
@@ -58,12 +57,21 @@
         <a class="nav-link dropdown-toggle "  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion Compteur Logged User</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item"  routerLink="/compteurLoggedUsers">Lister Tous</a>
+          <a class="dropdown-item"  routerLink="/compteur/new">Nouveau Compteur</a>
         </div>
       </li>      
       <li class="nav-item dropdown active" *ngIf="showModeratorBoard">
         <a class="nav-link dropdown-toggle "  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion Panier</a>
         <div class="dropdown-menu" aria-labelledby="dropdown01">
           <a class="dropdown-item"  routerLink="/paniers">Lister Tous</a>
+        </div>
+      </li>      
+      <li class="nav-item dropdown active" *ngIf="showModeratorBoard">
+        <a class="nav-link dropdown-toggle "  id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion Solde</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01">
+          <a class="dropdown-item"  routerLink="/soldes">Lister Tous</a>
+          <a class="dropdown-item"  routerLink="/solde/new">Alimenter Solde</a>
+
         </div>
       </li>      
   <!--<li class="nav-item">
