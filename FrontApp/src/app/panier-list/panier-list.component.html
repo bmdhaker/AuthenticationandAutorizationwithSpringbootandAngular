@@ -15,7 +15,7 @@
           <tr *ngFor="let panier of paniers | async">
             <td>{{panier.token.compteur.libelle}}</td>
             <td>{{panier.token.typetoken.prix}} </td>
-            <td><button (click)="deletePanier(panier.id)" class="btn btn-danger">Paiement</button>
+            <td><button (click)="payerPanier(panier.id)" class="btn btn-danger">Paiement</button>
               <!--<button (click)="updatePanier(panier.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>-->
             </td>
           </tr>

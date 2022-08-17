@@ -23,7 +23,7 @@ export class PanierService {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }
 
-  deletePanier(id: number): Observable<any> {
+  payerPanier(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 

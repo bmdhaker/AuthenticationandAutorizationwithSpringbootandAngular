@@ -37,6 +37,19 @@ public class PanierService {
 		panierRepo.deleteById(id);
 	}
 
+	public Panier getPanierById(Long id) {
+		Panier panier=new Panier();
+		System.out.println("id en parametre:= "+id);
+		List<Panier> listePaniers = new ArrayList<Panier>();
+		listePaniers=getAllPanier();
+		for(Panier p:listePaniers)
+			if (p.getId()==id)
+				panier=p;
+		System.out.println("panierX:= "+panier.toString());
+		return panier;
+	}
+
+	
 	public List<Panier> getPaniersByUser(String username) {
 		List<Panier> listePaniersActives = new ArrayList<Panier>();
 		panierRepo.getPaniersByUsername(username).forEach(p -> {
@@ -49,6 +62,12 @@ public class PanierService {
 			System.out.println(p.toString());
 		});
 		return listePaniersActives;
+	}
+	
+	public double retournermontantPanier(Panier panier) {
+		double montant=0;
+		montant=panier.getToken().getTypetoken().getPrix();
+		return montant;
 	}
 
 }

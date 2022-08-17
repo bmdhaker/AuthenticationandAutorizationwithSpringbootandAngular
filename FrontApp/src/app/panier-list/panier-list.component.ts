@@ -32,8 +32,8 @@ export class PanierListComponent implements OnInit {
     this.paniers = this.panierService.getPaniersList(this.username);
   }
 
-  deletePanier(id: number) {
-    this.panierService.deletePanier(id)
+  payerPanier(id: number) {
+    this.panierService.payerPanier(id)
       .subscribe(
         data => {
           console.log(data);
