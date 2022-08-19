@@ -71,6 +71,9 @@ public class SpringBootSecurityJwtApplication {
 
 	@Autowired
 	SoldeRepository soldeRepository;
+	
+	@Autowired
+	ConvertDate convertDate;
 
 	
 	@Bean
@@ -198,12 +201,13 @@ public class SpringBootSecurityJwtApplication {
 				System.out.println(p.toString());
 			});
 			
-			Commande commandemohamed=new Commande(mohamed, paniermohamed, new Date());
-			Commande commandemohamed2=new Commande(mohamed, paniermohamed2, new Date());
+			
+			Commande commandemohamed=new Commande(mohamed, paniermohamed, convertDate.cenvertirDate(new Date()));
+			Commande commandemohamed2=new Commande(mohamed, paniermohamed2, convertDate.cenvertirDate(new Date()));
 			commandeRepository.save(commandemohamed);
 			commandeRepository.save(commandemohamed2);
 
-			Commande commandsiwar22=new Commande(siwar, paniersiwar2, new Date());
+			Commande commandsiwar22=new Commande(siwar, paniersiwar2, convertDate.cenvertirDate(new Date()));
 			commandeRepository.save(commandsiwar22);
 
 			

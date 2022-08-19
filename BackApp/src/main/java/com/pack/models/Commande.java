@@ -16,14 +16,14 @@ public class Commande {
 	long id;
 	private User user;
 	private Panier panier;
-	private Date date;
+	private String date;
 	//private String active;
 
 	public Commande() {
 
 	}
 
-	public Commande(User user, Panier panier, Date date) {
+	public Commande(User user, Panier panier, String date) {
 		super();
 		this.user = user;
 		this.panier = panier;
@@ -36,11 +36,11 @@ public class Commande {
 	 * this.active = active; }
 	 */
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

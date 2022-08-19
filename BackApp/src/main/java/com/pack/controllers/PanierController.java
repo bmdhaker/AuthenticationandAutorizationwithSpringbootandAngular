@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pack.ConvertDate;
 import com.pack.models.Commande;
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
@@ -32,6 +33,8 @@ public class PanierController {
 	CommandeService commandeService;
 	@Autowired
 	SoldeService soldeService;
+	@Autowired
+	ConvertDate convertDate;
 
 	// @RequestMapping("/paniers")
 	// @PreAuthorize("hasRole('ADMIN')")
@@ -79,7 +82,7 @@ public class PanierController {
 		// verifier solde
 		if (soldeService.verifierSolde(panier)) {
 			System.out.println("panier à payer " + panier.toString());
-			commande.setDate(date);
+			commande.setDate(convertDate.cenvertirDate(date));
 			commande.setPanier(panier);
 			commande.setUser(panier.getUser());
 			System.out.println("nouvelle commande");
