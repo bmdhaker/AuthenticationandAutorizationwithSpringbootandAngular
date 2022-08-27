@@ -8,9 +8,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { FormateurListComponent } from './formateur-list/formateur-list.component';
-import { CreateFormateurComponent } from './create-formateur/create-formateur.component';
-import { UpdateFormateurComponent } from './update-formateur/update-formateur.component';
 import { TypetokenListComponent } from './typetoken-list/typetoken-list.component';
 import { CreateTypetokenComponent } from './create-typetoken/create-typetoken.component';
 import { UpdateTypetokenComponent } from './update-typetoken/update-typetoken.component';
@@ -28,6 +25,9 @@ import { PanierListComponent } from './panier-list/panier-list.component';
 import { SoldeListComponent } from './solde-list/solde-list.component';
 import { CommandeListComponent } from './commande-list/commande-list.component';
 import { CommandeLoggedUserListComponent } from './commandeLoggedUser-list/commandeLoggedUser-list.component';
+import { CentreRechargeListComponent } from './centreRecharge-list/centreRecharge-list.component';
+import { CreateCentreRechargeComponent } from './create-centreRecharge/create-centreRecharge.component';
+import { UpdateCentreRechargeComponent } from './update-centreRecharge/update-centreRecharge.component';
 
 
 const routes: Routes = [
@@ -39,9 +39,6 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
-  { path: 'formateurs', component: FormateurListComponent },
-  { path: 'formateur/new', component: CreateFormateurComponent },
-  { path: 'update-formateur/:id', component: UpdateFormateurComponent },
   { path: 'typetokens', component: TypetokenListComponent },
   { path: 'typetoken/new', component: CreateTypetokenComponent },
   { path: 'update-typetoken/:id', component: UpdateTypetokenComponent },
@@ -59,6 +56,9 @@ const routes: Routes = [
   { path: 'soldes', component: SoldeListComponent },
   { path: 'commandes', component: CommandeListComponent },
   { path: 'commandeLoggedUsers', component: CommandeLoggedUserListComponent },
+  { path: 'centreRecharges', component: CentreRechargeListComponent },
+  { path: 'centreRecharge/new', component: CreateCentreRechargeComponent },
+  { path: 'update-centreRecharge/:id', component: UpdateCentreRechargeComponent },
 
 
 ];

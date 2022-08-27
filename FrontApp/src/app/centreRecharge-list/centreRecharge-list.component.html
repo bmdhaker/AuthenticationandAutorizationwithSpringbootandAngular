@@ -1,0 +1,25 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Liste centre recharges</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Libelle</th>
+            <th>Gouvernorat</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let centreRecharge of centreRecharges | async">
+            <td>{{centreRecharge.libelle}}</td>
+            <td style="color:red">{{centreRecharge.gouvernorat.nom}}</td>
+            <td><button (click)="deleteCentreRecharge(centreRecharge.id)" class="btn btn-danger">Supprimer</button>
+              <button (click)="updateCentreRecharge(centreRecharge.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

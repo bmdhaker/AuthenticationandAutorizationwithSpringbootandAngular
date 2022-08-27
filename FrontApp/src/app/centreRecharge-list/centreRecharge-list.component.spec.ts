@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateFormateurComponent } from './create-formateur.component';
+import { CentreRechargeListComponent } from './centreRecharge-list.component';
 
-describe('CreateFormateurComponent', () => {
-  let component: CreateFormateurComponent;
-  let fixture: ComponentFixture<CreateFormateurComponent>;
+describe('CentreRechargeListComponent', () => {
+  let component: CentreRechargeListComponent;
+  let fixture: ComponentFixture<CentreRechargeListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateFormateurComponent ]
+      declarations: [ CentreRechargeListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateFormateurComponent);
+    fixture = TestBed.createComponent(CentreRechargeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,5 +1,6 @@
 package com.pack;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
@@ -14,10 +15,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.pack.models.Typetoken;
 import com.pack.models.User;
+import com.pack.models.CentreRecharge;
 import com.pack.models.Commande;
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
 import com.pack.models.Formateur;
+import com.pack.models.Gouvernorat;
 import com.pack.models.Panier;
 import com.pack.models.Role;
 import com.pack.models.Solde;
@@ -25,9 +28,11 @@ import com.pack.models.Token;
 import com.pack.repository.TypetokenRepository;
 import com.pack.repository.UserRepository;
 import com.pack.repository.TokenRepository;
+import com.pack.repository.CentreRechargeRepository;
 import com.pack.repository.CommandeRepository;
 import com.pack.repository.CompteurRepository;
 import com.pack.repository.FormateurRepository;
+import com.pack.repository.GouvernoratRepository;
 import com.pack.repository.PanierRepository;
 import com.pack.repository.RoleRepository;
 import com.pack.repository.SoldeRepository;
@@ -74,6 +79,14 @@ public class SpringBootSecurityJwtApplication {
 	
 	@Autowired
 	ConvertDate convertDate;
+
+	@Autowired
+	GouvernoratRepository gouvernoratrepository;
+
+	@Autowired
+	CentreRechargeRepository centrerechargerepository;
+	
+	ArrayList<Gouvernorat> gouvernorats = new ArrayList<Gouvernorat>();
 
 	
 	@Bean
@@ -218,8 +231,71 @@ public class SpringBootSecurityJwtApplication {
 			soldeRepository.findAll().forEach(p -> {
 				System.out.println(p.toString());
 			});
-
+			Gouvernorat tunis=new Gouvernorat("Tunis");
+			gouvernorats.add(tunis);
+			Gouvernorat mennouba=new Gouvernorat("Mennouba");
+			gouvernorats.add(mennouba);
+			Gouvernorat benarous=new Gouvernorat("Ben Arous");
+			gouvernorats.add(benarous);
+			Gouvernorat ariana=new Gouvernorat("Ariana");
+			gouvernorats.add(ariana);
+			Gouvernorat nabeul=new Gouvernorat("Nabeul");
+			gouvernorats.add(nabeul);
+			Gouvernorat zaghouan=new Gouvernorat("Zaghouan");
+			gouvernorats.add(zaghouan);
+			Gouvernorat bizerte=new Gouvernorat("Bizerte");
+			gouvernorats.add(bizerte);
+			Gouvernorat beja=new Gouvernorat("Béja");
+			gouvernorats.add(beja);
+			Gouvernorat jendouba=new Gouvernorat("Jendouba");
+			gouvernorats.add(jendouba);
+			Gouvernorat kef=new Gouvernorat("Le Kef");
+			gouvernorats.add(kef);
+			Gouvernorat siliana=new Gouvernorat("Siliana");
+			gouvernorats.add(siliana);
+			Gouvernorat sousse=new Gouvernorat("Sousse");
+			gouvernorats.add(sousse);
+			Gouvernorat monastir=new Gouvernorat("Monastir");
+			gouvernorats.add(monastir);
+			Gouvernorat mahdia=new Gouvernorat("Mahdia");
+			gouvernorats.add(mahdia);
+			Gouvernorat sfax=new Gouvernorat("Sfax");
+			gouvernorats.add(sfax);
+			Gouvernorat kairouan=new Gouvernorat("Kairouan");
+			gouvernorats.add(kairouan);
+			Gouvernorat bouZid=new Gouvernorat("Sidi BouZid");
+			gouvernorats.add(bouZid);
+			Gouvernorat kasserine=new Gouvernorat("Kasserine");
+			gouvernorats.add(kasserine);
+			Gouvernorat gabes=new Gouvernorat("Gabès");
+			gouvernorats.add(gabes);
+			Gouvernorat medenine=new Gouvernorat("Medenine");
+			gouvernorats.add(medenine);
+			Gouvernorat tataouine=new Gouvernorat("Tataouine");
+			gouvernorats.add(tataouine);
+			Gouvernorat gafsa=new Gouvernorat("Gafsa");
+			gouvernorats.add(gafsa);
+			Gouvernorat tozeur=new Gouvernorat("Tozeur");
+			gouvernorats.add(tozeur);
+			Gouvernorat kebili=new Gouvernorat("Kebili");
+			gouvernorats.add(kebili);
+			gouvernorats.forEach(g->{
+				gouvernoratrepository.save(g);
+			});
 		
+			// Initatiation des gouvernorats
+			gouvernoratrepository.save(tunis);
+			gouvernoratrepository.save(sousse);
+			gouvernoratrepository.save(sfax);
+			gouvernoratrepository.save(siliana);
+			
+			centrerechargerepository.save(new CentreRecharge("centre LaFayette",tunis));
+			centrerechargerepository.save(new CentreRecharge("centre Boujaafar",sousse));
+			centrerechargerepository.save(new CentreRecharge("centre centmetres",sfax));
+			centrerechargerepository.save(new CentreRecharge("centre Elmedina",siliana));
+			centrerechargerepository.findAll().forEach(c->{
+				System.out.println(c.toString());
+			});
 		};
 	}
 

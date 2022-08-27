@@ -1,0 +1,26 @@
+<h3>Ajout centre Recharge</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="name">Libelle</label>
+      <input type="text" class="form-control" id="libelle" required [(ngModel)]="centreRecharge.libelle" name="libelle">
+    </div>
+
+
+    <div class="form-group">
+      <label for="name">Gouvernorat</label>
+      <br>
+      <select name="gouvernorat" [(ngModel)]="centreRecharge.gouvernorat">
+        <option *ngFor="let gouvernorat of gouvernorats | async"   [ngValue]="gouvernorat">{{gouvernorat.nom}}</option>
+      </select>   
+     </div>
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newFormateur()">Add</button> -->
+</div>

@@ -13,9 +13,6 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { ProfileComponent } from './profile/profile.component';
-import { FormateurListComponent } from './formateur-list/formateur-list.component';
-import { CreateFormateurComponent } from './create-formateur/create-formateur.component';
-import { UpdateFormateurComponent } from './update-formateur/update-formateur.component';
 import { TypetokenListComponent } from './typetoken-list/typetoken-list.component';
 import { CreateTypetokenComponent } from './create-typetoken/create-typetoken.component';
 import { UpdateTypetokenComponent } from './update-typetoken/update-typetoken.component';
@@ -33,6 +30,9 @@ import { PanierListComponent } from './panier-list/panier-list.component';
 import { SoldeListComponent } from './solde-list/solde-list.component';
 import { CommandeListComponent } from './commande-list/commande-list.component';
 import { CommandeLoggedUserListComponent } from './commandeLoggedUser-list/commandeLoggedUser-list.component';
+import { CentreRechargeListComponent } from './centreRecharge-list/centreRecharge-list.component';
+import { CreateCentreRechargeComponent } from './create-centreRecharge/create-centreRecharge.component';
+import { UpdateCentreRechargeComponent } from './update-centreRecharge/update-centreRecharge.component';
 
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -47,9 +47,6 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     BoardUserComponent,
     BoardModeratorComponent,
     ProfileComponent,
-    FormateurListComponent,
-    CreateFormateurComponent,
-    UpdateFormateurComponent,
     TypetokenListComponent,
     CreateTypetokenComponent,
     UpdateTypetokenComponent,
@@ -67,6 +64,10 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     SoldeListComponent,
     CommandeListComponent,
     CommandeLoggedUserListComponent,
+    CentreRechargeListComponent,
+    CreateCentreRechargeComponent,
+    UpdateCentreRechargeComponent,
+
   ],
 
   imports: [

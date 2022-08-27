@@ -1,0 +1,21 @@
+<h3>Modification CentreRecharge</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Ancien  Gouvernorat: </label>
+      <button class="btn btn-danger" type="button">{{ancienGouvernorat}}</button>
+      <br>
+      <label for="name"> Gouvernorat</label>
+      <select name="gouvernorat" [(ngModel)]="centreRecharge.gouvernorat">
+        <option *ngFor="let gouvernorat of gouvernorats | async"   [ngValue]="gouvernorat">{{gouvernorat.nom}}</option>
+      </select>   
+    </div>
+
+    <div class="form-group">
+      <label for="name">Libelle</label>
+      <input type="text" class="form-control" id="nom" required [(ngModel)]="centreRecharge.libelle" name="libelle">
+    </div>
+
+     <button type="submit" class="btn btn-success">Modifier</button>
+  </form>
+</div>
