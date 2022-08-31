@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 
+import { TokenStorageService } from '../_services/token-storage.service';
+
+
 @Component({
   selector: 'app-board-user',
   templateUrl: './board-user.component.html',
   styleUrls: ['./board-user.component.css']
 })
 export class BoardUserComponent implements OnInit {
-  content = '';
+  content: any;
+  currentUser: any;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,private token: TokenStorageService) { }
 
   ngOnInit() {
+    this.currentUser = this.token.getUser();
     this.userService.getUserBoard().subscribe(
       data => {
         this.content = data;

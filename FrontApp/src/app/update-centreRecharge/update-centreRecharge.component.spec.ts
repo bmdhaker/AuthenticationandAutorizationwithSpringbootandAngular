@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UpdateTokenComponent } from './update-token.component';
+import { UpdateCentreRechargeComponent } from './update-centreRecharge.component';
 
-describe('UpdateTokenComponent', () => {
-  let component: UpdateTokenComponent;
-  let fixture: ComponentFixture<UpdateTokenComponent>;
+describe('UpdateCentreRechargeComponent', () => {
+  let component: UpdateCentreRechargeComponent;
+  let fixture: ComponentFixture<UpdateCentreRechargeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateTokenComponent ]
+      declarations: [ UpdateCentreRechargeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UpdateTokenComponent);
+    fixture = TestBed.createComponent(UpdateCentreRechargeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

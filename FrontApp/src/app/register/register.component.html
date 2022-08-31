@@ -34,7 +34,26 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
+     <div class="form-group">
+        <label for="telephone">Telephone</label>
+        <input
+          type="telephone"
+          class="form-control"
+          name="telephone"
+          [(ngModel)]="form.telephone"
+          required
+          telephone
+          #telephone="ngModel"
+        />
+        <div class="alert-danger" *ngIf="f.submitted && telephone.invalid">
+          <div *ngIf="telephone.errors.required">Telephone is required</div>
+          <div *ngIf="telephone.errors.telephone">
+            Telephone must be a valid telephone address
+          </div>
+        </div>
+      </div>
+<!--
+     <div class="form-group">
         <label for="email">Email</label>
         <input
           type="email"
@@ -52,7 +71,31 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
+-->    
+    <!--<div class="form-group">
+      <input 
+        type="text" 
+        placeholder="phone number xx-xxx-xxx" 
+        class="form-control" 
+        name="telephone" 
+        maxlength="8"
+       [(ngModel)]="form.telephone" 
+       phoneMask
+       [ngClass]="{ 'is-invalid': telephone.touched || form.submitted && telephone.invalid }"
+       #phone="ngModel" 
+       phoneMask 
+       (input)="numbersOnlyValidator($event)" />
+
+       <div *ngIf="(telephone.touched || form.submitted) &&
+       telephone.invalid" class="invalid-feedback">
+             <div *ngIf="telephone.errors">
+               Please enter valid telephone number.
+             </div>
+           </div>
+</div>-->
+
+
+    <div class="form-group">
         <label for="password">Password</label>
         <input
           type="password"
