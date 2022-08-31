@@ -28,6 +28,8 @@ import { CommandeLoggedUserListComponent } from './commandeLoggedUser-list/comma
 import { CentreRechargeListComponent } from './centreRecharge-list/centreRecharge-list.component';
 import { CreateCentreRechargeComponent } from './create-centreRecharge/create-centreRecharge.component';
 import { UpdateCentreRechargeComponent } from './update-centreRecharge/update-centreRecharge.component';
+import { CreateRechargeComponent } from './create-recharge/create-recharge.component';
+import { RechargeListComponent } from './recharge-list/recharge-list.component';
 
 
 const routes: Routes = [
@@ -59,6 +61,8 @@ const routes: Routes = [
   { path: 'centreRecharges', component: CentreRechargeListComponent },
   { path: 'centreRecharge/new', component: CreateCentreRechargeComponent },
   { path: 'update-centreRecharge/:id', component: UpdateCentreRechargeComponent },
+  { path: 'recharge/new', component: CreateRechargeComponent },
+  { path: 'recharges', component: RechargeListComponent },
 
 
 ];

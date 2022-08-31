@@ -42,6 +42,12 @@ public class SoldeService {
 	public List<Solde> getSoldesByUser(String username) {
 		return soldeRepo.getSoldesByUsername(username);
 	}
+
+	public Solde getSoldesByTelephone(String telephone) {
+		return soldeRepo.getSoldesByTelephone(telephone);
+	}
+
+	
 	public Boolean verifierSolde(Panier panier) {
 		double soldeUser=0,montantPanier=0;
 		Boolean transaction=false;

@@ -14,4 +14,7 @@ public interface SoldeRepository extends JpaRepository<Solde, Long> {
 //	@Query("FROM Compteur where user.username = 'dha'")
 	List<Solde> getSoldesByUsername(String Username);
 
+	@Query("FROM Solde where user.telephone = ?1")
+//	@Query("FROM Compteur where user.username = 'dha'")
+	Solde getSoldesByTelephone(String telephone);
 }

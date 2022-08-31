@@ -31,7 +31,6 @@ import com.pack.repository.TokenRepository;
 import com.pack.repository.CentreRechargeRepository;
 import com.pack.repository.CommandeRepository;
 import com.pack.repository.CompteurRepository;
-import com.pack.repository.FormateurRepository;
 import com.pack.repository.GouvernoratRepository;
 import com.pack.repository.PanierRepository;
 import com.pack.repository.RoleRepository;
@@ -46,9 +45,6 @@ public class SpringBootSecurityJwtApplication {
 
 	@Autowired
 	RoleRepository roleRepo;
-
-	@Autowired
-	FormateurRepository formateurrepository;
 
 	@Autowired
 	TypetokenRepository typetokenrepository;
@@ -76,7 +72,7 @@ public class SpringBootSecurityJwtApplication {
 
 	@Autowired
 	SoldeRepository soldeRepository;
-	
+
 	@Autowired
 	ConvertDate convertDate;
 
@@ -85,10 +81,9 @@ public class SpringBootSecurityJwtApplication {
 
 	@Autowired
 	CentreRechargeRepository centrerechargerepository;
-	
+
 	ArrayList<Gouvernorat> gouvernorats = new ArrayList<Gouvernorat>();
 
-	
 	@Bean
 	public CommandLineRunner demo() {
 		return (args) -> {
@@ -123,20 +118,25 @@ public class SpringBootSecurityJwtApplication {
 			// ajout user
 			// cryptage de mot de passe
 			String password1 = "helloworld", password2 = "hitunisia", passwordadmin = "administrator",
-					cryptedPassword1 = "", cryptedPassword2 = "", cryptedPasswordadmin = "";
+					passwordlafayette = "lafayette", cryptedPassword1 = "", cryptedPassword2 = "",
+					cryptedPasswordadmin = "", cryptedPasswordlafayette = "";
 			cryptedPassword1 = encoder.encode(password1);
 			cryptedPassword2 = encoder.encode(password2);
 			cryptedPasswordadmin = encoder.encode(passwordadmin);
+			cryptedPasswordlafayette = encoder.encode(passwordlafayette);
 			System.out.println("cryptedPassword1 " + cryptedPassword1 + " &cryptedPassword2 " + cryptedPassword2);
 			// setting user role
 			User admin = new User("admin", "55123456", cryptedPasswordadmin);
+			User lafayette = new User("lafayette", "71123456", cryptedPasswordlafayette);
 			User mohamed = new User("mohamed", "22123456", cryptedPassword2);
 			User siwar = new User("siwar", "98123456", cryptedPassword1);
 
 			Set<Role> rolesadmin = new HashSet<>();
 			Set<Role> rolesmoderator = new HashSet<>();
+			Set<Role> rolesuser = new HashSet<>();
 			rolesadmin.add(role3);
 			rolesmoderator.add(role2);
+			rolesuser.add(role1);
 			/*
 			 * adminRole.setName(ERole.ROLE_ADMIN); modRole.setName(ERole.ROLE_MODERATOR);
 			 * /* roleRepository.save(adminRole); roleRepository.save(modRole);
@@ -148,11 +148,14 @@ public class SpringBootSecurityJwtApplication {
 			admin.getRoles().forEach(r -> {
 				System.out.println(r.toString());
 			});
-			mohamed.setRoles(rolesmoderator);
-			siwar.setRoles(rolesmoderator);
+
+			lafayette.setRoles(rolesmoderator);
+			mohamed.setRoles(rolesuser);
+			siwar.setRoles(rolesuser);
 			userrepository.save(admin);
 			userrepository.save(mohamed);
 			userrepository.save(siwar);
+			userrepository.save(lafayette);
 			// Ajout compteur
 
 			Compteur compteur1 = new Compteur();
@@ -196,34 +199,31 @@ public class SpringBootSecurityJwtApplication {
 			tokenrepository.save(token2);
 			tokenrepository.save(token22);
 
-			
 			tokenrepository.findAll().forEach(t -> {
 				System.out.println(t.toString());
 			});
 
-			Panier paniermohamed = new Panier(mohamed, token1,true);
-			Panier paniermohamed2 = new Panier(mohamed, token11,true);
+			Panier paniermohamed = new Panier(mohamed, token1, true);
+			Panier paniermohamed2 = new Panier(mohamed, token11, true);
 			panierRepository.save(paniermohamed);
 			panierRepository.save(paniermohamed2);
-			
-			Panier paniersiwar = new Panier(siwar, token2,false);
-			Panier paniersiwar2 = new Panier(siwar, token22,true);
+
+			Panier paniersiwar = new Panier(siwar, token2, false);
+			Panier paniersiwar2 = new Panier(siwar, token22, true);
 			panierRepository.save(paniersiwar);
 			panierRepository.save(paniersiwar2);
 			panierRepository.findAll().forEach(p -> {
 				System.out.println(p.toString());
 			});
-			
-			
-			Commande commandemohamed=new Commande(mohamed, paniermohamed, convertDate.cenvertirDate(new Date()));
-			Commande commandemohamed2=new Commande(mohamed, paniermohamed2, convertDate.cenvertirDate(new Date()));
+
+			Commande commandemohamed = new Commande(mohamed, paniermohamed, convertDate.cenvertirDate(new Date()));
+			Commande commandemohamed2 = new Commande(mohamed, paniermohamed2, convertDate.cenvertirDate(new Date()));
 			commandeRepository.save(commandemohamed);
 			commandeRepository.save(commandemohamed2);
 
-			Commande commandsiwar22=new Commande(siwar, paniersiwar2, convertDate.cenvertirDate(new Date()));
+			Commande commandsiwar22 = new Commande(siwar, paniersiwar2, convertDate.cenvertirDate(new Date()));
 			commandeRepository.save(commandsiwar22);
 
-			
 			Solde soldemohamed = new Solde(mohamed, 50);
 			soldeRepository.save(soldemohamed);
 			Solde soldesiwar = new Solde(siwar, 40);
@@ -231,69 +231,69 @@ public class SpringBootSecurityJwtApplication {
 			soldeRepository.findAll().forEach(p -> {
 				System.out.println(p.toString());
 			});
-			Gouvernorat tunis=new Gouvernorat("Tunis");
+			Gouvernorat tunis = new Gouvernorat("Tunis");
 			gouvernorats.add(tunis);
-			Gouvernorat mennouba=new Gouvernorat("Mennouba");
+			Gouvernorat mennouba = new Gouvernorat("Mennouba");
 			gouvernorats.add(mennouba);
-			Gouvernorat benarous=new Gouvernorat("Ben Arous");
+			Gouvernorat benarous = new Gouvernorat("Ben Arous");
 			gouvernorats.add(benarous);
-			Gouvernorat ariana=new Gouvernorat("Ariana");
+			Gouvernorat ariana = new Gouvernorat("Ariana");
 			gouvernorats.add(ariana);
-			Gouvernorat nabeul=new Gouvernorat("Nabeul");
+			Gouvernorat nabeul = new Gouvernorat("Nabeul");
 			gouvernorats.add(nabeul);
-			Gouvernorat zaghouan=new Gouvernorat("Zaghouan");
+			Gouvernorat zaghouan = new Gouvernorat("Zaghouan");
 			gouvernorats.add(zaghouan);
-			Gouvernorat bizerte=new Gouvernorat("Bizerte");
+			Gouvernorat bizerte = new Gouvernorat("Bizerte");
 			gouvernorats.add(bizerte);
-			Gouvernorat beja=new Gouvernorat("Béja");
+			Gouvernorat beja = new Gouvernorat("Béja");
 			gouvernorats.add(beja);
-			Gouvernorat jendouba=new Gouvernorat("Jendouba");
+			Gouvernorat jendouba = new Gouvernorat("Jendouba");
 			gouvernorats.add(jendouba);
-			Gouvernorat kef=new Gouvernorat("Le Kef");
+			Gouvernorat kef = new Gouvernorat("Le Kef");
 			gouvernorats.add(kef);
-			Gouvernorat siliana=new Gouvernorat("Siliana");
+			Gouvernorat siliana = new Gouvernorat("Siliana");
 			gouvernorats.add(siliana);
-			Gouvernorat sousse=new Gouvernorat("Sousse");
+			Gouvernorat sousse = new Gouvernorat("Sousse");
 			gouvernorats.add(sousse);
-			Gouvernorat monastir=new Gouvernorat("Monastir");
+			Gouvernorat monastir = new Gouvernorat("Monastir");
 			gouvernorats.add(monastir);
-			Gouvernorat mahdia=new Gouvernorat("Mahdia");
+			Gouvernorat mahdia = new Gouvernorat("Mahdia");
 			gouvernorats.add(mahdia);
-			Gouvernorat sfax=new Gouvernorat("Sfax");
+			Gouvernorat sfax = new Gouvernorat("Sfax");
 			gouvernorats.add(sfax);
-			Gouvernorat kairouan=new Gouvernorat("Kairouan");
+			Gouvernorat kairouan = new Gouvernorat("Kairouan");
 			gouvernorats.add(kairouan);
-			Gouvernorat bouZid=new Gouvernorat("Sidi BouZid");
+			Gouvernorat bouZid = new Gouvernorat("Sidi BouZid");
 			gouvernorats.add(bouZid);
-			Gouvernorat kasserine=new Gouvernorat("Kasserine");
+			Gouvernorat kasserine = new Gouvernorat("Kasserine");
 			gouvernorats.add(kasserine);
-			Gouvernorat gabes=new Gouvernorat("Gabès");
+			Gouvernorat gabes = new Gouvernorat("Gabès");
 			gouvernorats.add(gabes);
-			Gouvernorat medenine=new Gouvernorat("Medenine");
+			Gouvernorat medenine = new Gouvernorat("Medenine");
 			gouvernorats.add(medenine);
-			Gouvernorat tataouine=new Gouvernorat("Tataouine");
+			Gouvernorat tataouine = new Gouvernorat("Tataouine");
 			gouvernorats.add(tataouine);
-			Gouvernorat gafsa=new Gouvernorat("Gafsa");
+			Gouvernorat gafsa = new Gouvernorat("Gafsa");
 			gouvernorats.add(gafsa);
-			Gouvernorat tozeur=new Gouvernorat("Tozeur");
+			Gouvernorat tozeur = new Gouvernorat("Tozeur");
 			gouvernorats.add(tozeur);
-			Gouvernorat kebili=new Gouvernorat("Kebili");
+			Gouvernorat kebili = new Gouvernorat("Kebili");
 			gouvernorats.add(kebili);
-			gouvernorats.forEach(g->{
+			gouvernorats.forEach(g -> {
 				gouvernoratrepository.save(g);
 			});
-		
+
 			// Initatiation des gouvernorats
 			gouvernoratrepository.save(tunis);
 			gouvernoratrepository.save(sousse);
 			gouvernoratrepository.save(sfax);
 			gouvernoratrepository.save(siliana);
-			
-			centrerechargerepository.save(new CentreRecharge("centre LaFayette",tunis));
-			centrerechargerepository.save(new CentreRecharge("centre Boujaafar",sousse));
-			centrerechargerepository.save(new CentreRecharge("centre centmetres",sfax));
-			centrerechargerepository.save(new CentreRecharge("centre Elmedina",siliana));
-			centrerechargerepository.findAll().forEach(c->{
+
+			centrerechargerepository.save(new CentreRecharge("centre LaFayette", tunis));
+			centrerechargerepository.save(new CentreRecharge("centre Boujaafar", sousse));
+			centrerechargerepository.save(new CentreRecharge("centre centmetres", sfax));
+			centrerechargerepository.save(new CentreRecharge("centre Elmedina", siliana));
+			centrerechargerepository.findAll().forEach(c -> {
 				System.out.println(c.toString());
 			});
 		};

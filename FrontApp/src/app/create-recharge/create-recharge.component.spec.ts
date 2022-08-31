@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateTokenComponent } from './create-solde.component';
+import { CreateRechargeComponent } from './create-recharge.component';
 
-describe('CreateTokenComponent', () => {
-  let component: CreateTokenComponent;
-  let fixture: ComponentFixture<CreateTokenComponent>;
+describe('CreateRechargeComponent', () => {
+  let component: CreateRechargeComponent;
+  let fixture: ComponentFixture<CreateRechargeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateTokenComponent ]
+      declarations: [ CreateRechargeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateTokenComponent);
+    fixture = TestBed.createComponent(CreateRechargeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
