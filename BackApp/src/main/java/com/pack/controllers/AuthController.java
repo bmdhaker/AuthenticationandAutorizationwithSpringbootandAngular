@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pack.models.ERole;
 import com.pack.models.Role;
+import com.pack.models.Solde;
 import com.pack.models.User;
 import com.pack.payload.request.LoginRequest;
 import com.pack.payload.request.SignupRequest;
@@ -31,6 +32,7 @@ import com.pack.repository.RoleRepository;
 import com.pack.repository.UserRepository;
 import com.pack.security.jwt.JwtUtils;
 import com.pack.security.services.UserDetailsImpl;
+import com.pack.service.SoldeService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -50,6 +52,9 @@ public class AuthController {
 
 	@Autowired
 	JwtUtils jwtUtils;
+	
+	@Autowired
+	SoldeService soldeService;
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -123,6 +128,10 @@ public class AuthController {
 
 		user.setRoles(roles);
 		userRepository.save(user);
+		//initiation du solde null
+		Solde solde=new Solde(user,0);
+		soldeService.addSolde(solde);
+		
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
