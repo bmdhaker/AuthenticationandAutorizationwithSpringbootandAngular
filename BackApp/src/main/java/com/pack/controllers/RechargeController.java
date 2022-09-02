@@ -46,6 +46,8 @@ public class RechargeController {
 	@RequestMapping(method = RequestMethod.POST, value = "/recharges")
 	public void addRecharge(@RequestBody Recharge recharge) {
 		if (rechargeService.verifierRecharge(recharge)) {
+			//ajout de bonus
+			recharge.setPrix(rechargeService.ajouterBonus(recharge));
 			System.out.println(solderrepo.getSoldesByTelephone(recharge.getTelephone()));
 			rechargeService.updateSolde(recharge.getTelephone(), recharge.getPrix());
 			rechargeService.addRecharge(recharge);

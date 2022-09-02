@@ -58,9 +58,9 @@ public class RechargeService {
 		} else
 			System.out.println("utilisateur inexistant");
 	}
-	
+
 	public Boolean verifierRecharge(Recharge recharge) {
-		Boolean ok=false;
+		Boolean ok = false;
 		String telephone = "";
 		double prix;
 		System.out.println(recharge.toString());
@@ -78,12 +78,24 @@ public class RechargeService {
 		// if (userrepo.existsByTelephone(telephone) && prix > 0 && prix<=50) {
 		else {
 			System.out.println(soldeRepo.getSoldesByTelephone(telephone));
-			/*updateSolde(telephone, prix);
-			addRecharge(recharge);*/
-			ok=true;
+			/*
+			 * updateSolde(telephone, prix); addRecharge(recharge);
+			 */
+			ok = true;
 		}
-
 		return ok;
 	}
 
+	public double ajouterBonus(Recharge recharge) {
+		double newmontant=0;
+		newmontant=recharge.getPrix();
+		if(newmontant>=50)
+			newmontant*=1.2;
+		else
+			if(newmontant>=20)
+				newmontant*=1.1;
+
+		System.out.println("newmontant:= "+newmontant);
+		return newmontant;
+	}
 }
