@@ -12,13 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.pack.models.Recharge;
 import com.pack.models.User;
 import com.pack.repository.SoldeRepository;
 import com.pack.repository.UserRepository;
 import com.pack.service.RechargeService;
-
 
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/test")
@@ -29,16 +27,18 @@ public class RechargeController {
 	RechargeService rechargeService;
 	@Autowired
 	SoldeRepository solderrepo;
+	@Autowired
+	UserRepository userrepo;
 
-	//@RequestMapping("/recharges")
-	//@PreAuthorize("hasRole('ADMIN')")
+	// @RequestMapping("/recharges")
+	// @PreAuthorize("hasRole('ADMIN')")
 	@PreAuthorize("hasRole('ROLE_MODERATOR')")
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/recharges") 
-	public List<Recharge> getRecharge() 
-	
+
+	@RequestMapping(method = RequestMethod.GET, value = "/recharges")
+	public List<Recharge> getRecharge()
+
 	{
-		rechargeService.getAllRecharge().forEach(t->{
+		rechargeService.getAllRecharge().forEach(t -> {
 			System.out.println(t.toString());
 		});
 		return (List<Recharge>) rechargeService.getAllRecharge();
@@ -47,17 +47,30 @@ public class RechargeController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/recharges")
 	public void addRecharge(@RequestBody Recharge recharge) {
-		String telephone="";
+		String telephone = "";
 		double prix;
-		System.out.println(recharge.toString())	;
-		telephone=recharge.getTelephone();
-		prix=recharge.getPrix();
-		//if(solderrepo.)
-		System.out.println(solderrepo.getSoldesByTelephone(telephone));
-		rechargeService.updateSolde(telephone, prix);
-		rechargeService.addRecharge(recharge);
-		//System.out.println("user for tel "+telephone+" is "+rechargeService.getUserByTelephone(telephone).toString());
-		//rechargeService.addRecharge(recharge);
+		System.out.println(recharge.toString());
+		telephone = recharge.getTelephone();
+		System.out.println("telephone exist " + userrepo.existsByTelephone(telephone));
+		prix = recharge.getPrix();
+		// verifier telephone et montant
+		if (prix <= 0 || prix > 50) {
+			System.out.println("recharge impossible");
+			System.out.println("montant errone");
+		} else if (!userrepo.existsByTelephone(telephone)) {
+			System.out.println("recharge impossible");
+			System.out.println("numero telephone non valide");
+		}
+		// if (userrepo.existsByTelephone(telephone) && prix > 0 && prix<=50) {
+		else {
+			System.out.println(solderrepo.getSoldesByTelephone(telephone));
+			rechargeService.updateSolde(telephone, prix);
+			rechargeService.addRecharge(recharge);
+		}
+
+		// System.out.println("user for tel "+telephone+" is
+		// "+rechargeService.getUserByTelephone(telephone).toString());
+		// rechargeService.addRecharge(recharge);
 	}
 
 	@RequestMapping("/recharges/{id}")
@@ -75,7 +88,7 @@ public class RechargeController {
 	public void deleteRecharge(@PathVariable Long id) {
 		rechargeService.deleteRecharge(id);
 	}
-	
+
 	/*
 	 * @RequestMapping(method = RequestMethod.GET, value = "/recharges/{username}")
 	 * public List<Recharge> getRechargeByUser(@PathVariable String username) { //
