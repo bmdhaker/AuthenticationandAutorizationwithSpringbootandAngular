@@ -25,7 +25,7 @@ public class CentreRechargeController {
 	CentreRechargeService centreRechargeService;
 
 	//@RequestMapping("/centreRecharges")
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	//@PreAuthorize("hasRole('ROLE_ADMIN')")
 	//@PreAuthorize("hasRole('ROLE_MODERATOR')")
 
 	/*
@@ -35,6 +35,7 @@ public class CentreRechargeController {
 	 * 
 	 * }
 	 */
+	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST, value = "/centreRecharges")
 	public void addCentreRecharge(@RequestBody CentreRecharge centreRecharge) {
 		System.out.println(centreRecharge.toString());

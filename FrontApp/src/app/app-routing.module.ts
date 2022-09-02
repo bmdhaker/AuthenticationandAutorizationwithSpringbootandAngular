@@ -30,6 +30,7 @@ import { CreateCentreRechargeComponent } from './create-centreRecharge/create-ce
 import { UpdateCentreRechargeComponent } from './update-centreRecharge/update-centreRecharge.component';
 import { CreateRechargeComponent } from './create-recharge/create-recharge.component';
 import { RechargeListComponent } from './recharge-list/recharge-list.component';
+import { CentreRechargeforUserListComponent } from './centreRechargeforUser-list/centreRechargeforUser-list.component';
 
 
 const routes: Routes = [
@@ -63,6 +64,7 @@ const routes: Routes = [
   { path: 'update-centreRecharge/:id', component: UpdateCentreRechargeComponent },
   { path: 'recharge/new', component: CreateRechargeComponent },
   { path: 'recharges', component: RechargeListComponent },
+  { path: 'centreRechargeforUsers', component: CentreRechargeforUserListComponent },
 
 
 ];
