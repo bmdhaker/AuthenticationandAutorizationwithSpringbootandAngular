@@ -27,8 +27,6 @@ public class RechargeController {
 	RechargeService rechargeService;
 	@Autowired
 	SoldeRepository solderrepo;
-	@Autowired
-	UserRepository userrepo;
 
 	// @RequestMapping("/recharges")
 	// @PreAuthorize("hasRole('ADMIN')")
@@ -47,30 +45,11 @@ public class RechargeController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/recharges")
 	public void addRecharge(@RequestBody Recharge recharge) {
-		String telephone = "";
-		double prix;
-		System.out.println(recharge.toString());
-		telephone = recharge.getTelephone();
-		System.out.println("telephone exist " + userrepo.existsByTelephone(telephone));
-		prix = recharge.getPrix();
-		// verifier telephone et montant
-		if (prix <= 0 || prix > 50) {
-			System.out.println("recharge impossible");
-			System.out.println("montant errone");
-		} else if (!userrepo.existsByTelephone(telephone)) {
-			System.out.println("recharge impossible");
-			System.out.println("numero telephone non valide");
-		}
-		// if (userrepo.existsByTelephone(telephone) && prix > 0 && prix<=50) {
-		else {
-			System.out.println(solderrepo.getSoldesByTelephone(telephone));
-			rechargeService.updateSolde(telephone, prix);
+		if (rechargeService.verifierRecharge(recharge)) {
+			System.out.println(solderrepo.getSoldesByTelephone(recharge.getTelephone()));
+			rechargeService.updateSolde(recharge.getTelephone(), recharge.getPrix());
 			rechargeService.addRecharge(recharge);
 		}
-
-		// System.out.println("user for tel "+telephone+" is
-		// "+rechargeService.getUserByTelephone(telephone).toString());
-		// rechargeService.addRecharge(recharge);
 	}
 
 	@RequestMapping("/recharges/{id}")
