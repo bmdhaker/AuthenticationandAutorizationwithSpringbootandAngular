@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.pack.models.Compteur;
 import com.pack.models.Panier;
 import com.pack.models.Recharge;
+import com.pack.models.Rechargeform;
 import com.pack.models.Solde;
 import com.pack.models.User;
 import com.pack.repository.RechargeRepository;
@@ -59,14 +60,14 @@ public class RechargeService {
 			System.out.println("utilisateur inexistant");
 	}
 
-	public Boolean verifierRecharge(Recharge recharge) {
+	public Boolean verifierRecharge(Rechargeform rechargeform) {
 		Boolean ok = false;
 		String telephone = "";
 		double prix;
-		System.out.println(recharge.toString());
-		telephone = recharge.getTelephone();
+		System.out.println(rechargeform.toString());
+		telephone = rechargeform.getTelephone();
 		System.out.println("telephone exist " + userrepo.existsByTelephone(telephone));
-		prix = recharge.getPrix();
+		prix = rechargeform.getPrix();
 		// verifier telephone et montant
 		if (prix <= 0 || prix > 50) {
 			System.out.println("recharge impossible");
@@ -86,14 +87,13 @@ public class RechargeService {
 		return ok;
 	}
 
-	public double ajouterBonus(Recharge recharge) {
-		double newmontant=0;
-		newmontant=recharge.getPrix();
-		if(newmontant>=50)
-			newmontant*=1.2;
+	public double ajouterBonus(double montant) {
+		double newmontant=montant;
+		if(montant>=50)
+			newmontant=montant*1.2;
 		else
-			if(newmontant>=20)
-				newmontant*=1.1;
+			if(montant>=20)
+				newmontant=montant*1.1;
 
 		System.out.println("newmontant:= "+newmontant);
 		return newmontant;

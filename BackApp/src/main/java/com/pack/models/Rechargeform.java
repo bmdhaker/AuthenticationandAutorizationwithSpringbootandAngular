@@ -8,21 +8,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class Recharge {
+public class Rechargeform {
 	long id;
-	private User user;
+	private String telephone;
 	private double prix;
 
-	public Recharge() {
+	public Rechargeform() {
 
 	}
 
-	public Recharge(User user, double prix) {
+
+	public Rechargeform(String telephone, double prix) {
 		super();
-		this.user = user;
+		this.telephone = telephone;
 		this.prix = prix;
 	}
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,15 +35,6 @@ public class Recharge {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_user", nullable = false)
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public double getPrix() {
 		return prix;
@@ -52,9 +44,19 @@ public class Recharge {
 		this.prix = prix;
 	}
 
+	public String getTelephone() {
+		return telephone;
+	}
+
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+
 	@Override
 	public String toString() {
-		return "RechargeUser [id=" + id + ", user=" + user + ", prix=" + prix + "]";
+		return "Rechargeform [id=" + id + ", telephone=" + telephone + ", prix=" + prix + "]";
 	}
 
 }

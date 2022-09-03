@@ -3,12 +3,12 @@
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Numero téléphone</label>
-      <input type="text" class="form-control" id="telephone" required [(ngModel)]="recharge.telephone" name="telephone">
+      <input type="text" class="form-control" id="telephone" required [(ngModel)]="rechargeform.telephone" name="telephone">
     </div>
 
     <div class="form-group">
       <label for="name">Prix</label>
-      <input type="number" class="form-control" id="prix" required [(ngModel)]="recharge.prix" name="prix">
+      <input type="number" class="form-control" id="prix" required [(ngModel)]="rechargeform.prix" name="prix">
     </div>
 
     <button type="submit" class="btn btn-success">Ajouter</button>

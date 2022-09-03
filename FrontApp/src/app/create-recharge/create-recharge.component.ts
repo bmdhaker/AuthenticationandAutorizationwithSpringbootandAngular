@@ -1,5 +1,5 @@
 import { RechargeService } from '../recharge.service';
-import { Recharge } from '../recharge';
+import { Rechargeform } from '../rechargeform';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class CreateRechargeComponent implements OnInit {
 
-  recharge: Recharge = new Recharge();
+  rechargeform: Rechargeform = new Rechargeform();
   submitted = false;
 
   constructor(private rechargeService: RechargeService,
@@ -21,13 +21,13 @@ export class CreateRechargeComponent implements OnInit {
 
   newRecharge(): void {
     this.submitted = false;
-    this.recharge = new Recharge();
+    this.rechargeform = new Rechargeform();
   }
 
   save() {
-    this.rechargeService.createRecharge(this.recharge)
+    this.rechargeService.createRecharge(this.rechargeform)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.recharge = new Recharge();
+    this.rechargeform = new Rechargeform();
     this.gotoList();
   }
 

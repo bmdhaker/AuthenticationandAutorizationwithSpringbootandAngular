@@ -1,5 +1,6 @@
+import { User } from './user';
 export class Recharge {
   id: number;
-  telephone: string;
+  User: User;
   prix: number;
 }

@@ -15,8 +15,8 @@ export class RechargeService {
     return this.http.get(`${this.baseUrl}`);
   }
 
-  createRecharge(recharge: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, recharge);
+  createRecharge(rechargeform: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, rechargeform);
   }
 
   updateRecharge(id: number, value: any): Observable<Object> {

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pack.models.ERole;
 import com.pack.models.Recharge;
+import com.pack.models.Rechargeform;
+import com.pack.models.Role;
 import com.pack.models.User;
 import com.pack.repository.SoldeRepository;
 import com.pack.repository.UserRepository;
@@ -27,6 +31,8 @@ public class RechargeController {
 	RechargeService rechargeService;
 	@Autowired
 	SoldeRepository solderrepo;
+	@Autowired
+	private UserRepository userRepository;
 
 	// @RequestMapping("/recharges")
 	// @PreAuthorize("hasRole('ADMIN')")
@@ -43,6 +49,7 @@ public class RechargeController {
 
 	}
 
+/*ancien code
 	@RequestMapping(method = RequestMethod.POST, value = "/recharges")
 	public void addRecharge(@RequestBody Recharge recharge) {
 		if (rechargeService.verifierRecharge(recharge)) {
@@ -50,6 +57,21 @@ public class RechargeController {
 			recharge.setPrix(rechargeService.ajouterBonus(recharge));
 			//System.out.println(solderrepo.getSoldesByTelephone(recharge.getTelephone()));
 			rechargeService.updateSolde(recharge.getTelephone(), recharge.getPrix());
+			rechargeService.addRecharge(recharge);
+		}
+	}
+*/
+	@RequestMapping(method = RequestMethod.POST, value = "/recharges")
+	public void addRecharge(@RequestBody Rechargeform rechargeform) {
+		Recharge recharge=new Recharge();
+		if (rechargeService.verifierRecharge(rechargeform)) {
+			//ajout de bonus
+			recharge.setPrix(rechargeService.ajouterBonus(rechargeform.getPrix()));
+			User user = userRepository.findByTelephone(rechargeform.getTelephone())
+					.orElseThrow(() -> new UsernameNotFoundException("Role Not Found with telephone: " + rechargeform.getTelephone()));
+			System.out.println("user:= "+user.toString());
+			recharge.setUser(user);
+			rechargeService.updateSolde(rechargeform.getTelephone(),rechargeService.ajouterBonus(rechargeform.getPrix()));
 			rechargeService.addRecharge(recharge);
 		}
 	}

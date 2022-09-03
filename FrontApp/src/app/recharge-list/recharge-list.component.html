@@ -6,13 +6,13 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Téléphone</th>
+            <th>Utilisateur</th>
             <th>montant rechargé</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let recharge of recharges | async">
-            <td style="color:green">{{recharge.telephone}}</td>
+            <td style="color:green">{{recharge.user.username}}</td>
             <td style="color:red">{{recharge.prix}} TND</td>
             <!--<td><button (click)="deleteRecharge(recharge.id)" class="btn btn-danger">Paiement</button>
               <button (click)="updateRecharge(recharge.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
