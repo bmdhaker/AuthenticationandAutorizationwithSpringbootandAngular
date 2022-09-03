@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pack.models.ERole;
+import com.pack.models.User;
 import com.pack.models.CentreRecharge;
 import com.pack.service.CentreRechargeService;
 
@@ -39,6 +40,8 @@ public class CentreRechargeController {
 	@RequestMapping(method = RequestMethod.POST, value = "/centreRecharges")
 	public void addCentreRecharge(@RequestBody CentreRecharge centreRecharge) {
 		System.out.println(centreRecharge.toString());
+		System.out.println("login:= "+centreRecharge.getLogin());
+		System.out.println("password:= "+centreRecharge.getPassword());
 		centreRechargeService.addCentreRecharge(centreRecharge);
 	}
 

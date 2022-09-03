@@ -33,7 +33,7 @@ public class TokenUsedByUserController {
 
 	//@RequestMapping("/tokens")
 	//@PreAuthorize("hasRole('ADMIN')")
-	@PreAuthorize("hasRole('ROLE_MODERATOR')")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	
 	/*
 	 * @RequestMapping(method = RequestMethod.GET, value = "/tokensByUser") public

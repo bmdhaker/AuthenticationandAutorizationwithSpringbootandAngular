@@ -31,8 +31,8 @@ export class CompteurService {
     return this.http.get(`${this.baseUrl}`);
   }
 
-  createCompteurwithuser(libcompteur: string, username: string): Observable<Object> {
-    return this.http.post(`${this.baseUrl}/${username}`, libcompteur);
+  createCompteurwithuser(compteur: Object, username: string): Observable<Object> {
+    return this.http.post(`${this.baseUrl}/${username}`, compteur);
   }
 
   

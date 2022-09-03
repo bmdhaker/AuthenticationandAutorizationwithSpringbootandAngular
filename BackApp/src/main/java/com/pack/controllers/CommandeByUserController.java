@@ -27,7 +27,7 @@ public class CommandeByUserController {
 
 	// @RequestMapping("/commandes")
 	// @PreAuthorize("hasRole('ADMIN')")
-	@PreAuthorize("hasRole('ROLE_MODERATOR')")
+	@PreAuthorize("hasRole('ROLE_USER')")
 
 	@RequestMapping(method = RequestMethod.POST, value = "/commandes")
 	public void addCommande(@RequestBody Commande commande) {

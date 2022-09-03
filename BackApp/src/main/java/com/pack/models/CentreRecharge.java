@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class CentreRecharge {
 	long id;
+	private String login;
+	private String password;
 	private String libelle;
 	private Gouvernorat gouvernorat;
 
@@ -20,16 +22,29 @@ public class CentreRecharge {
 
 	}
 
-
-	
-
-
 	public CentreRecharge(String libelle, Gouvernorat gouvernorat) {
 		super();
 		this.libelle = libelle;
 		this.gouvernorat = gouvernorat;
 	}
 
+
+	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -54,29 +69,17 @@ public class CentreRecharge {
 		this.gouvernorat = gouvernorat;
 	}
 
-	
-
 	public String getLibelle() {
 		return libelle;
 	}
-
-
-
-
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
 
-
-
-
-
 	@Override
 	public String toString() {
-		return "CentreRecharge [id=" + id + ", libelle=" + libelle + ", gouvernorat=" + gouvernorat + "]";
+		return "CentreRecharge [id=" + id + ", login=" + login + ", password=" + password + ", libelle=" + libelle
+				+ ", gouvernorat=" + gouvernorat + "]";
 	}
-
-
-
 }

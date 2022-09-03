@@ -37,6 +37,12 @@ public class UserService {
 		userRepo.deleteById(id);
 	}
 	
+	/*
+	 * public User findUserbyUsername(String username) { User user= new User();
+	 * userRepo.findAll().forEach(u->{ if(u.getUsername().equals(username)) {
+	 * user.setId(u.getId()); user.se } }); return user; }
+	 */
+	
 	
 	
 	

@@ -2,6 +2,8 @@ import { CompteurService } from '../compteur.service';
 import { Compteur } from '../compteur';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenStorageService } from '../_services/token-storage.service';
+
 
 @Component({
   selector: 'app-create-compteur',
@@ -12,8 +14,9 @@ export class CreateCompteurComponent implements OnInit {
 
   compteur: Compteur = new Compteur();
   submitted = false;
+  username: string;
 
-  constructor(private compteurService: CompteurService,
+  constructor(private compteurService: CompteurService,private tokenStorageService: TokenStorageService,
     private router: Router) { }
 
   ngOnInit() {
@@ -25,7 +28,9 @@ export class CreateCompteurComponent implements OnInit {
   }
 
   save() {
-    this.compteurService.createCompteur(this.compteur)
+    const user = this.tokenStorageService.getUser();
+    this.username = user.username;
+    this.compteurService.createCompteurwithuser(this.compteur,this.username)
       .subscribe(data => console.log(data), error => console.log(error));
     this.compteur = new Compteur();
     this.gotoList();
@@ -37,6 +42,6 @@ export class CreateCompteurComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/compteurs']);
+    this.router.navigate(['/compteurLoggedUsers']);
   }
 }

@@ -38,7 +38,7 @@ public class PanierController {
 
 	// @RequestMapping("/paniers")
 	// @PreAuthorize("hasRole('ADMIN')")
-	@PreAuthorize("hasRole('ROLE_MODERATOR')")
+	@PreAuthorize("hasRole('ROLE_USER')")
 
 	@RequestMapping(method = RequestMethod.GET, value = "/paniers")
 	public List<Panier> getPanier()
