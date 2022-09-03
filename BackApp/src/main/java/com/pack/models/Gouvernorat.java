@@ -44,7 +44,7 @@ public class Gouvernorat {
 
 	@Override
 	public String toString() {
-		return "Typetoken [id=" + id + ", nom=" + nom + "]";
+		return "Gouvernorat [id=" + id + ", nom=" + nom + "]";
 	}
 
 }

@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import com.pack.models.ERole;
 import com.pack.models.Role;
 import com.pack.models.User;
 import com.pack.repository.CentreRechargeRepository;
+import com.pack.repository.RoleRepository;
 import com.pack.repository.UserRepository;
 
 
@@ -26,6 +28,8 @@ public class CentreRechargeService {
 	private UserRepository userRepo;
 	@Autowired
 	PasswordEncoder encoder;
+	@Autowired
+	RoleRepository roleRepository;
 	
 	
 	public List<CentreRecharge> getAllCentreRecharge() {
@@ -52,8 +56,10 @@ public class CentreRechargeService {
 	public void addUserCentreRecharge(CentreRecharge centreRecharge) {
 		String cryptedPassword;
 		Set<Role> rolesmoderator = new HashSet<>();
-		Role role2 = new Role(ERole.ROLE_MODERATOR);
-		rolesmoderator.add(role2);
+		Role rolemoderator = roleRepository.findByName(ERole.ROLE_MODERATOR)
+				.orElseThrow(() -> new UsernameNotFoundException("Role Not Found with username: " + ERole.ROLE_MODERATOR));
+		rolesmoderator.add(rolemoderator);
+		System.out.println("roles of moderator: ");
 		rolesmoderator.forEach(r->{
 			System.out.println(r.toString());
 		});
@@ -62,7 +68,6 @@ public class CentreRechargeService {
 		user.setUsername(centreRecharge.getLogin());
 		user.setPassword(cryptedPassword);
 		user.setTelephone("00001234");
-		userRepo.save(user);
 		user.setRoles(rolesmoderator);
 		System.out.println("new user for centre recharge "+user.toString());
 		userRepo.save(user);

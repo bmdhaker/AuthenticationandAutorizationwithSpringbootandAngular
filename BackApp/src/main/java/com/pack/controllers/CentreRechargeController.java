@@ -39,9 +39,10 @@ public class CentreRechargeController {
 	@PreAuthorize("hasRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST, value = "/centreRecharges")
 	public void addCentreRecharge(@RequestBody CentreRecharge centreRecharge) {
-		System.out.println(centreRecharge.toString());
+		System.out.println("centreRecharge to add "+centreRecharge.toString());
 		System.out.println("login:= "+centreRecharge.getLogin());
 		System.out.println("password:= "+centreRecharge.getPassword());
+		System.out.println("telephone:= "+centreRecharge.getTelephone());
 		centreRechargeService.addCentreRecharge(centreRecharge);
 	}
 

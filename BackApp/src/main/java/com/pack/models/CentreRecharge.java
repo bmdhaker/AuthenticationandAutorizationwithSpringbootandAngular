@@ -14,6 +14,7 @@ public class CentreRecharge {
 	private String login;
 	private String password;
 	private String libelle;
+	private String telephone;
 	private Gouvernorat gouvernorat;
 
 	// private String gouvernorat;
@@ -30,6 +31,23 @@ public class CentreRecharge {
 
 
 	
+	public CentreRecharge(String login, String password, String libelle, String telephone, Gouvernorat gouvernorat) {
+		super();
+		this.login = login;
+		this.password = password;
+		this.libelle = libelle;
+		this.telephone = telephone;
+		this.gouvernorat = gouvernorat;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
 	public String getLogin() {
 		return login;
 	}
@@ -80,6 +98,6 @@ public class CentreRecharge {
 	@Override
 	public String toString() {
 		return "CentreRecharge [id=" + id + ", login=" + login + ", password=" + password + ", libelle=" + libelle
-				+ ", gouvernorat=" + gouvernorat + "]";
+				+ ", telephone=" + telephone + ", gouvernorat=" + gouvernorat + "]";
 	}
 }
