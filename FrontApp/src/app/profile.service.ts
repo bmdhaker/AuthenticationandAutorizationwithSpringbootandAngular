@@ -29,4 +29,9 @@ export class ProfileService {
     return this.http.get(`${this.baseUrlByUser}`);
   }
 
+  updateLoggedProfile(username: string, value: any): Observable<Object> {
+    return this.http.post(`${this.baseUrl}/${username}`, value);
+  }
+
+
 }

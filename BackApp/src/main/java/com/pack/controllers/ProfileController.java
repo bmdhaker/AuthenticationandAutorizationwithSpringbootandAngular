@@ -6,6 +6,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,9 +20,12 @@ import com.pack.ConvertDate;
 import com.pack.models.Commande;
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
+import com.pack.models.Profileform;
 import com.pack.models.User;
+import com.pack.repository.UserRepository;
 import com.pack.service.CommandeService;
 import com.pack.service.SoldeService;
+import com.pack.service.UserService;
 
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/test")
@@ -36,6 +41,13 @@ public class ProfileController {
 	SoldeService soldeService;
 	@Autowired
 	ConvertDate convertDate;
+	@Autowired
+	private UserRepository userRepository;
+	@Autowired
+	PasswordEncoder encoder;
+	@Autowired
+	UserService userService;
+
 
 	// @RequestMapping("/profiles")
 	// @PreAuthorize("hasRole('ADMIN')")
@@ -62,14 +74,25 @@ public class ProfileController {
 	 * profileService.getSingleProfile(id); }
 	 */
 
-	@RequestMapping(method = RequestMethod.POST, value = "/profiles/{telephone}")
-	public void updateProfile(@PathVariable String telephone,@RequestBody String password) {
+	@RequestMapping(method = RequestMethod.POST, value = "/profiles/{username}")
+	public void updateLoggedProfile(@PathVariable String username,@RequestBody Profileform profileform) {
+		String password=profileform.getPassword(),cryptedPassword="";
 		System.out.println("je suis dans profile");
-		System.out.println(password+";"+telephone);
+		System.out.println("username "+username);
+		System.out.println("profileform "+ profileform.toString());
+		User user = userRepository.findByUsername(username)
+				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+//		if(profileform.getTelephone()!=null) {
+			if(profileform.getTelephone()!="") {
+			user.setTelephone(profileform.getTelephone());
+		}
+		cryptedPassword = encoder.encode(password);
+		user.setPassword(cryptedPassword);
+		userService.updateUser(user.getId(), user);
 		//System.out.println(user.toString());
 		//profileService.updateProfile(id, profile);
 	}
-
+	
 	
 	/*
 	 * @RequestMapping(method = RequestMethod.GET, value = "/profiles/{username}")

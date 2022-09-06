@@ -1,48 +1,56 @@
-import { Component, OnInit } from '@angular/core';
-import { Profile } from '../profile';
-import { User } from '../user';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ProfileService } from '../profile.service';
+import { Observable } from "rxjs";
+import { ProfileService } from "../profile.service";
+import { Profile } from "../profile";
+import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
 import { TokenStorageService } from '../_services/token-storage.service';
 
 
+
 @Component({
-  selector: 'app-update-profile',
-  templateUrl: './update-profile.component.html',
-  styleUrls: ['./update-profile.component.css']
+  selector: "app-update-profile-list",
+  templateUrl: "./update-profile.component.html",
+  styleUrls: ["./update-profile.component.css"]
 })
+
+
+
 export class UpdateProfileComponent implements OnInit {
+  
+  submitted = false;
+  username: string;
+  profile: Profile = new Profile();
 
-  id: number;
-  profile: Profile;
-  currentUser: User;
-  telephone: string;
-  password: string;
+  constructor(private profileService: ProfileService,private tokenStorageService: TokenStorageService,
+    private router: Router) {}
 
-  constructor(private route: ActivatedRoute,private router: Router,private token: TokenStorageService,
-    private profileService: ProfileService) { }
+    currentUser: any;
 
-  ngOnInit() {
-      this.currentUser = this.token.getUser();
+    ngOnInit() {
+      const user = this.tokenStorageService.getUser();
+
+      this.currentUser = this.tokenStorageService.getUser();
+    }
+    
+    newProfile(): void {
+      this.submitted = false;
+      this.profile = new Profile();
+    }
+  
+    save() {
+      const user = this.tokenStorageService.getUser();
+      this.username = user.username;
+      this.profileService.updateLoggedProfile(this.username,this.profile)
+        .subscribe(data => console.log(data), error => console.log(error));
+      this.profile = new Profile();
+    }
+  
+    onSubmit() {
+      this.submitted = true;
+      this.save();    
+      this.tokenStorageService.signOut();
+      this.router.navigate(['/login']);
     }
   
 
-  updateProfile2() {
-    
-    this.profileService.updateProfile2(this.telephone,this.password)
-      .subscribe(data => console.log(data), error => console.log(error));
-    //this.currentUser = new User();
-    //this.gotoList();
-  }
-
-
-  onSubmit() {
-    this.telephone = this.route.snapshot.params['telephone'];
-    this.password = this.route.snapshot.params['password'];
-    this.updateProfile2();    
-  }
-
-  gotoList() {
-    this.router.navigate(['/profiles']);
-  }
 }

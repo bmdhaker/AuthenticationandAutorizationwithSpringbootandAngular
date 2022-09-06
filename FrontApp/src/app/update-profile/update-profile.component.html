@@ -1,17 +1,22 @@
-<h3>Modification Profile<button class="btn btn-danger" type="button">{{currentUser.username}}</button>
+<h3><u>Modification Profile</u>
       <br>
+      <!--<button class="btn btn-danger" type="button">{{currentUser.username}}</button>-->
       <br>
 <div style="width: 400px;">
 <form (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <!--<h4><label for="name">Ancien telephone </label>{{currentUser.telephone}}</h4>-->
-    <input type="text" class="form-control" id="telephone" name="telephone">
+    <!--<h4>Numero telephone <button class="btn btn-success" type="button">{{currentUser.telephone}}</button></h4>-->
+    <h4><i><label for="name">Téléphone</label><button class="btn btn-primary" type="button">{{currentUser.telephone}}</button></i></h4>
+    <input type="text" placeholder ="{{currentUser.telephone}} (ne rien ecrire si inchangé!!)" class="form-control" id="telephone" name="telephone" [(ngModel)]="profile.telephone">
     </div>
 
    <div class="form-group">
-      <h4><label for="name">Mot de Passe</label></h4>
-      <input type="text" class="form-control" id="password" required  name="password">
+      <!--<h4><label for="name">Mot de Passe</label></h4>-->
+      <h4><i><label for="name">Nouveau mot de passe</label></i></h4>
+      <input type="password" placeholder ="nouveau mot de passe" class="form-control" id="password" required  name="password" [(ngModel)]="profile.password">
+      <!--<div *ngIf="password.errors.required">Password is required</div>-->
     </div>
-      <button type="submit" class="btn btn-success">Modifier</button>
+    <td><button type="submit" class="btn btn-success">Modifier</button>&nbsp;
+      <button type="reset" class="btn btn-danger">Annuler</button></td>
   </form>
 </div>
