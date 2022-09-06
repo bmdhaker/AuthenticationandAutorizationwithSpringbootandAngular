@@ -190,7 +190,10 @@ public class SpringBootSecurityJwtApplication {
 			});
 
 			// Affichage de tous les tokens
-			Token token1 = new Token(compteur1, typetoken10, mohamed);
+			/*
+			 * token tested successfully
+			 */
+			/*Token token1 = new Token(compteur1, typetoken10, mohamed);
 			Token token11 = new Token(compteur11, typetoken20, mohamed);
 			tokenrepository.save(token1);
 			tokenrepository.save(token11);
@@ -202,8 +205,11 @@ public class SpringBootSecurityJwtApplication {
 			tokenrepository.findAll().forEach(t -> {
 				System.out.println(t.toString());
 			});
-
-			Panier paniermohamed = new Panier(mohamed, token1, true);
+			*/
+			/*
+			 * Panier tested successfully
+			 */
+			/*Panier paniermohamed = new Panier(mohamed, token1, true);
 			Panier paniermohamed2 = new Panier(mohamed, token11, true);
 			panierRepository.save(paniermohamed);
 			panierRepository.save(paniermohamed2);
@@ -215,15 +221,19 @@ public class SpringBootSecurityJwtApplication {
 			panierRepository.findAll().forEach(p -> {
 				System.out.println(p.toString());
 			});
-
-			Commande commandemohamed = new Commande(mohamed, paniermohamed, convertDate.cenvertirDate(new Date()));
+			*/
+			/*
+			 * commande tested successfully
+			 */
+			/*Commande commandemohamed = new Commande(mohamed, paniermohamed, convertDate.cenvertirDate(new Date()));
 			Commande commandemohamed2 = new Commande(mohamed, paniermohamed2, convertDate.cenvertirDate(new Date()));
 			commandeRepository.save(commandemohamed);
 			commandeRepository.save(commandemohamed2);
 
 			Commande commandsiwar22 = new Commande(siwar, paniersiwar2, convertDate.cenvertirDate(new Date()));
 			commandeRepository.save(commandsiwar22);
-
+			*/
+			
 			Solde soldemohamed = new Solde(mohamed, 50);
 			soldeRepository.save(soldemohamed);
 			Solde soldesiwar = new Solde(siwar, 40);

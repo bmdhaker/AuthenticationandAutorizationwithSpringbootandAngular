@@ -36,6 +36,7 @@ import { UpdateCentreRechargeComponent } from './update-centreRecharge/update-ce
 import { CreateRechargeComponent } from './create-recharge/create-recharge.component';
 import { RechargeListComponent } from './recharge-list/recharge-list.component';
 import { CentreRechargeforUserListComponent } from './centreRechargeforUser-list/centreRechargeforUser-list.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -73,6 +74,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     CreateRechargeComponent,
     RechargeListComponent,
     CentreRechargeforUserListComponent,
+    UpdateProfileComponent,
   ],
 
   imports: [

@@ -18,9 +18,11 @@ import com.pack.models.Commande;
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
 import com.pack.models.Panier;
+import com.pack.models.Token;
 import com.pack.service.CommandeService;
 import com.pack.service.PanierService;
 import com.pack.service.SoldeService;
+import com.pack.service.TokenService;
 
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/test")
@@ -35,6 +37,8 @@ public class PanierController {
 	SoldeService soldeService;
 	@Autowired
 	ConvertDate convertDate;
+	@Autowired
+	TokenService tokenService;
 
 	// @RequestMapping("/paniers")
 	// @PreAuthorize("hasRole('ADMIN')")
@@ -73,12 +77,16 @@ public class PanierController {
 
 		Commande commande = new Commande();
 		double montantPanier = 0;
+		long id_token;
 		Date date = new Date();
 		Panier panier = new Panier();
+		Token token=new Token();
 		System.out.println("I'm here dans paiement");
 		System.out.println("idPanier:= " + id);
 		// Création commande
 		panier = panierService.getPanierById(id);
+		token=panier.getToken();
+		id_token=token.getId();
 		// verifier solde
 		if (soldeService.verifierSolde(panier)) {
 			System.out.println("panier à payer " + panier.toString());
@@ -89,8 +97,11 @@ public class PanierController {
 			System.out.println(commande.toString());
 			commandeService.addCommande(commande);
 			panier.setActive(false);
+			token.setActive(false);
 			panierService.addPanier(panier);
 			soldeService.soustraire(panier);
+			//suppression du token
+			tokenService.updateToken(id_token, token);
 		} else {
 			System.out.println("solde insuffisant");
 		}

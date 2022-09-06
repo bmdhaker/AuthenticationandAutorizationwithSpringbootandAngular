@@ -30,13 +30,11 @@ public class TokenController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/tokens") 
 	public List<Token> getToken() 
-	
 	{
 		tokenService.getAllToken().forEach(t->{
 			System.out.println(t.toString());
 		});
 		return (List<Token>) tokenService.getAllToken();
-
 	}
 
 	/*

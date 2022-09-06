@@ -1,5 +1,6 @@
 package com.pack.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +41,12 @@ public class TokenService {
 		tokenRepo.deleteById(id);
 	}
 	public List<Token> getTokensByUser(String username) {
-		return tokenRepo.getTokensByUsername(username);
+		List<Token> listtokens=new ArrayList();
+		tokenRepo.getTokensByUsername(username).forEach(t->{
+			if(t.getActive())
+				listtokens.add(t);
+		});
+		return listtokens;
 	}
 	
 }
