@@ -2,6 +2,7 @@ import { RechargeService } from '../recharge.service';
 import { Rechargeform } from '../rechargeform';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-create-recharge',
@@ -12,8 +13,9 @@ export class CreateRechargeComponent implements OnInit {
 
   rechargeform: Rechargeform = new Rechargeform();
   submitted = false;
+  username: string;
 
-  constructor(private rechargeService: RechargeService,
+  constructor(private rechargeService: RechargeService,private tokenStorageService: TokenStorageService,
     private router: Router) { }
 
   ngOnInit() {
@@ -31,9 +33,18 @@ export class CreateRechargeComponent implements OnInit {
     this.gotoList();
   }
 
+  save2() {
+    const user = this.tokenStorageService.getUser();
+    this.username = user.username;
+    this.rechargeService.rechargerwithLoggedcentreRecharge(this.username,this.rechargeform)
+      .subscribe(data => console.log(data), error => console.log(error));
+    this.rechargeform = new Rechargeform();
+    this.gotoList();
+  }
+
   onSubmit() {
     this.submitted = true;
-    this.save();    
+    this.save2();    
   }
 
   gotoList() {

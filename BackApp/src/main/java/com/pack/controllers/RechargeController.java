@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pack.models.Compteur;
 import com.pack.models.ERole;
 import com.pack.models.Recharge;
 import com.pack.models.Rechargeform;
@@ -75,7 +76,30 @@ public class RechargeController {
 			rechargeService.addRecharge(recharge);
 		}
 	}
+	
+//recharge par centre de recharge
+	@RequestMapping(method = RequestMethod.POST, value = "/recharges//{username}")
+	public void addRechargeparCentreRecharge(@RequestBody Rechargeform rechargeform, @PathVariable String username) {
+		System.out.println("centrerecharge "+username);
+		System.out.println("rechageform "+rechargeform.toString());
+		Recharge recharge=new Recharge();
+		if (rechargeService.verifierRecharge(rechargeform)&&rechargeService.verifierSoldeCentreRecharge(rechargeform, username)) {
+			//verifier solde centre recharge
+			//ajout de bonus
+			recharge.setPrix(rechargeService.ajouterBonus(rechargeform.getPrix()));
+			User user = userRepository.findByTelephone(rechargeform.getTelephone())
+					.orElseThrow(() -> new UsernameNotFoundException("Role Not Found with telephone: " + rechargeform.getTelephone()));
+			System.out.println("user:= "+user.toString());
+			recharge.setUser(user);
+			rechargeService.updateSolde(rechargeform.getTelephone(),rechargeService.ajouterBonus(rechargeform.getPrix()));
+			rechargeService.addRecharge(recharge);
+			rechargeService.reduireSoldeCentreRecharge(username,rechargeform.getPrix());
+		}
+	}
 
+	
+	
+	
 	@RequestMapping("/recharges/{id}")
 	public Optional<Recharge> getSingleRecharge(@PathVariable Long id) {
 		return rechargeService.getSingleRecharge(id);

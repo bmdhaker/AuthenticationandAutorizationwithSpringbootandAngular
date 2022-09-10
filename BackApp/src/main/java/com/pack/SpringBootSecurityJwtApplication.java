@@ -197,50 +197,6 @@ public class SpringBootSecurityJwtApplication {
 				});
 			});
 
-			// Affichage de tous les tokens
-			/*
-			 * token tested successfully
-			 */
-			/*Token token1 = new Token(compteur1, typetoken10, mohamed);
-			Token token11 = new Token(compteur11, typetoken20, mohamed);
-			tokenrepository.save(token1);
-			tokenrepository.save(token11);
-			Token token2 = new Token(compteur2, typetoken20, siwar);
-			Token token22 = new Token(compteur22, typetoken5, siwar);
-			tokenrepository.save(token2);
-			tokenrepository.save(token22);
-
-			tokenrepository.findAll().forEach(t -> {
-				System.out.println(t.toString());
-			});
-			*/
-			/*
-			 * Panier tested successfully
-			 */
-			/*Panier paniermohamed = new Panier(mohamed, token1, true);
-			Panier paniermohamed2 = new Panier(mohamed, token11, true);
-			panierRepository.save(paniermohamed);
-			panierRepository.save(paniermohamed2);
-
-			Panier paniersiwar = new Panier(siwar, token2, false);
-			Panier paniersiwar2 = new Panier(siwar, token22, true);
-			panierRepository.save(paniersiwar);
-			panierRepository.save(paniersiwar2);
-			panierRepository.findAll().forEach(p -> {
-				System.out.println(p.toString());
-			});
-			*/
-			/*
-			 * commande tested successfully
-			 */
-			/*Commande commandemohamed = new Commande(mohamed, paniermohamed, convertDate.cenvertirDate(new Date()));
-			Commande commandemohamed2 = new Commande(mohamed, paniermohamed2, convertDate.cenvertirDate(new Date()));
-			commandeRepository.save(commandemohamed);
-			commandeRepository.save(commandemohamed2);
-
-			Commande commandsiwar22 = new Commande(siwar, paniersiwar2, convertDate.cenvertirDate(new Date()));
-			commandeRepository.save(commandsiwar22);
-			*/
 			
 			Solde soldemohamed = new Solde(mohamed, 50);
 			soldeRepository.save(soldemohamed);
@@ -317,6 +273,8 @@ public class SpringBootSecurityJwtApplication {
 			centrerechargerepository.findAll().forEach(c -> {
 				System.out.println(c.toString());
 			});
+			
+			
 			// Initiation des soldes
 			Solde soldeclafayette = new Solde(lafayette, 1050);
 			Solde soldecboujaafar = new Solde(boujaafar, 1000);

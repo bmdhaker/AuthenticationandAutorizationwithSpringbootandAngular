@@ -25,29 +25,7 @@ public class CentreRechargeController {
 
 	@Autowired
 	CentreRechargeService centreRechargeService;
-
-	//@RequestMapping("/centreRecharges")
-	//@PreAuthorize("hasRole('ROLE_ADMIN')")
-	//@PreAuthorize("hasRole('ROLE_MODERATOR')")
-
-	/*
-	 * @RequestMapping(method = RequestMethod.GET, value = "/centreRecharges")
-	 * public List<CentreRecharge> getCentreRecharge() { return
-	 * (List<CentreRecharge>) centreRechargeService.getAllCentreRecharge();
-	 * 
-	 * }
-	 */
 	@PreAuthorize("hasRole('ADMIN')")
-	/*
-	 * @RequestMapping(method = RequestMethod.POST, value = "/centreRecharges")
-	 * public void addCentreRecharge(@RequestBody CentreRecharge centreRecharge) {
-	 * System.out.println("centreRecharge to add "+centreRecharge.toString());
-	 * System.out.println("login:= "+centreRecharge.getLogin());
-	 * System.out.println("password:= "+centreRecharge.getPassword());
-	 * System.out.println("telephone:= "+centreRecharge.getTelephone());
-	 * System.out.println("solde initiale:= "+centreRecharge.getSoldeInitial());
-	 * centreRechargeService.addCentreRecharge(centreRecharge); }
-	 */
 
 	@RequestMapping(method = RequestMethod.POST, value = "/centreRecharges")
 	public void addCentreRecharge(@RequestBody CentreRechargeform centreRechargeform) {

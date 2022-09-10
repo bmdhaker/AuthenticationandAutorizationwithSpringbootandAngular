@@ -27,6 +27,10 @@ export class RechargeService {
     return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
+  rechargerwithLoggedcentreRecharge(username: string, value: any): Observable<Object> {
+    return this.http.post(`${this.baseUrl}/${username}`, value);
+  }
+
   /*getRechargesList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }*/
