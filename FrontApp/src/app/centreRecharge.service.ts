@@ -16,8 +16,8 @@ export class CentreRechargeService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
-  createCentreRecharge(centreRecharge: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, centreRecharge);
+  createCentreRecharge(centreRechargeform: Object): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, centreRechargeform);
   }
 
   updateCentreRecharge(id: number, value: any): Observable<Object> {

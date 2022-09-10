@@ -8,12 +8,14 @@
           <tr>
             <th>Libelle</th>
             <th>Gouvernorat</th>
+            <th>Téléphone</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let centreRecharge of centreRecharges | async">
             <td>{{centreRecharge.libelle}}</td>
             <td style="color:red">{{centreRecharge.gouvernorat.nom}}</td>
+            <td style="color:blue">{{centreRecharge.user.telephone}}</td>
           </tr>
         </tbody>
       </table>

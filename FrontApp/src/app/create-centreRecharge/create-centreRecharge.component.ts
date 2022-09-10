@@ -1,5 +1,5 @@
 import { CentreRechargeService } from '../centreRecharge.service';
-import { CentreRecharge } from '../centreRecharge';
+import { CentreRechargeform } from '../centrerechargeform';
 import { GouvernoratService } from '../gouvernorat.service';
 import { Gouvernorat } from '../gouvernorat';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class CreateCentreRechargeComponent implements OnInit {
 
-  centreRecharge: CentreRecharge = new CentreRecharge();
+  centreRechargeform: CentreRechargeform = new CentreRechargeform();
   gouvernorats: Observable<Gouvernorat[]>;
   submitted = false;
 
@@ -29,13 +29,13 @@ export class CreateCentreRechargeComponent implements OnInit {
   }
   newCentreRecharge(): void {
     this.submitted = false;
-    this.centreRecharge = new CentreRecharge();
+    this.centreRechargeform = new CentreRechargeform();
   }
 
   save() {
-    this.centreRechargeService.createCentreRecharge(this.centreRecharge)
+    this.centreRechargeService.createCentreRecharge(this.centreRechargeform)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.centreRecharge = new CentreRecharge();
+    this.centreRechargeform = new CentreRechargeform();
     this.gotoList();
   }
 

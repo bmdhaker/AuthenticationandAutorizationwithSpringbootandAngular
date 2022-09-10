@@ -4,28 +4,33 @@
 
     <div class="form-group">
       <label for="name">Libelle</label>
-      <input type="text" class="form-control" id="libelle" required [(ngModel)]="centreRecharge.libelle" name="libelle">
+      <input type="text" class="form-control" id="libelle" required [(ngModel)]="centreRechargeform.libelle" name="libelle">
     </div>
 
     <div class="form-group">
       <label for="name">Téléphone</label>
-      <input type="text" class="form-control" id="telephone" required [(ngModel)]="centreRecharge.telephone" name="telephone">
+      <input type="text" class="form-control" id="telephone" required [(ngModel)]="centreRechargeform.telephone" name="telephone">
     </div>
  
     <div class="form-group">
       <label for="name">Login</label>
-      <input type="text" class="form-control" id="login" required [(ngModel)]="centreRecharge.login" name="login">
+      <input type="text" class="form-control" id="login" required [(ngModel)]="centreRechargeform.login" name="login">
     </div>
 
     <div class="form-group">
       <label for="name">Password</label>
-      <input type="password" class="form-control" id="password" required [(ngModel)]="centreRecharge.password" name="password">
+      <input type="password" class="form-control" id="password" required [(ngModel)]="centreRechargeform.password" name="password">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Solde Initiale</label>
+      <input type="number" class="form-control" id="soldeInitial" required [(ngModel)]="centreRechargeform.soldeInitial" name="soldeInitial">
     </div>
 
     <div class="form-group">
       <label for="name">Gouvernorat</label>
       <br>
-      <select name="gouvernorat" [(ngModel)]="centreRecharge.gouvernorat">
+      <select name="gouvernorat" [(ngModel)]="centreRechargeform.gouvernorat">
         <option *ngFor="let gouvernorat of gouvernorats | async"   [ngValue]="gouvernorat">{{gouvernorat.nom}}</option>
       </select>   
      </div>

@@ -74,4 +74,17 @@ public class SoldeController {
 
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value = "/soldes/{utilisateur}")
+	public Solde getSoldeOfUser(@PathVariable String utilisateur) {
+//	public int getCompteurByUser(@PathVariable Long iduser) {
+		System.out.println("je suis dans solde de centre de recharge");
+		System.out.println("username:= " + utilisateur);
+		System.out.println("solde de l'utilistauer");
+		soldeService.getSoldesByUser(utilisateur).forEach(p->{
+			System.out.println(p.toString());
+		});
+		return soldeService.getSoldesByUser(utilisateur).get(0);
+
+	}
+
 }

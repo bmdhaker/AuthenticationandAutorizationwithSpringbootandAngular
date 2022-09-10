@@ -33,4 +33,9 @@ export class SoldeService {
   getSoldesList(username: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${username}`);
   }
+
+  getSoldesofUser(username: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${username}`);
+  }
+
 }

@@ -19,7 +19,6 @@ import com.pack.models.CentreRecharge;
 import com.pack.models.Commande;
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
-import com.pack.models.Formateur;
 import com.pack.models.Gouvernorat;
 import com.pack.models.Panier;
 import com.pack.models.Role;
@@ -127,9 +126,12 @@ public class SpringBootSecurityJwtApplication {
 			System.out.println("cryptedPassword1 " + cryptedPassword1 + " &cryptedPassword2 " + cryptedPassword2);
 			// setting user role
 			User admin = new User("admin", "55123456", cryptedPasswordadmin);
-			User lafayette = new User("lafayette", "71123456", cryptedPasswordlafayette);
 			User mohamed = new User("mohamed", "22123456", cryptedPassword2);
 			User siwar = new User("siwar", "98123456", cryptedPassword1);
+			User lafayette = new User("lafayette", "71123456", cryptedPasswordlafayette);
+			User boujaafar = new User("boujaafar", "73123456", cryptedPasswordlafayette);
+			User cmetres = new User("cmetres", "74123456", cryptedPasswordlafayette);
+			User lamedina = new User("lamedina", "78123456", cryptedPasswordlafayette);
 
 			Set<Role> rolesadmin = new HashSet<>();
 			Set<Role> rolesmoderator = new HashSet<>();
@@ -150,12 +152,18 @@ public class SpringBootSecurityJwtApplication {
 			});
 
 			lafayette.setRoles(rolesmoderator);
+			boujaafar.setRoles(rolesmoderator);
+			cmetres.setRoles(rolesmoderator);
+			lamedina.setRoles(rolesmoderator);
 			mohamed.setRoles(rolesuser);
 			siwar.setRoles(rolesuser);
 			userrepository.save(admin);
 			userrepository.save(mohamed);
 			userrepository.save(siwar);
 			userrepository.save(lafayette);
+			userrepository.save(boujaafar);
+			userrepository.save(cmetres);
+			userrepository.save(lamedina);
 			// Ajout compteur
 
 			Compteur compteur1 = new Compteur();
@@ -293,19 +301,31 @@ public class SpringBootSecurityJwtApplication {
 				gouvernoratrepository.save(g);
 			});
 
-			// Initatiation des gouvernorats
+			// Initatiation des centres de recharge
 			gouvernoratrepository.save(tunis);
 			gouvernoratrepository.save(sousse);
 			gouvernoratrepository.save(sfax);
 			gouvernoratrepository.save(siliana);
-
-			centrerechargerepository.save(new CentreRecharge("centre LaFayette", tunis));
-			centrerechargerepository.save(new CentreRecharge("centre Boujaafar", sousse));
-			centrerechargerepository.save(new CentreRecharge("centre centmetres", sfax));
-			centrerechargerepository.save(new CentreRecharge("centre Elmedina", siliana));
+			CentreRecharge clafayette=new CentreRecharge(lafayette,"centre LaFayette", tunis);
+			CentreRecharge cboujaafar=new CentreRecharge(boujaafar,"centre Boujaafar", sousse);
+			CentreRecharge ccmetres=new CentreRecharge(cmetres,"centre centmetres", sfax);
+			CentreRecharge clamedina=new CentreRecharge(lamedina,"centre Elmedina", siliana);
+			centrerechargerepository.save(clafayette);
+			centrerechargerepository.save(cboujaafar);
+			centrerechargerepository.save(ccmetres);
+			centrerechargerepository.save(clamedina);
 			centrerechargerepository.findAll().forEach(c -> {
 				System.out.println(c.toString());
 			});
+			// Initiation des soldes
+			Solde soldeclafayette = new Solde(lafayette, 1050);
+			Solde soldecboujaafar = new Solde(boujaafar, 1000);
+			Solde soldeccmetres = new Solde(cmetres, 950);
+			Solde soldeclamedina = new Solde(lamedina, 850);
+			soldeRepository.save(soldeclafayette);
+			soldeRepository.save(soldecboujaafar);
+			soldeRepository.save(soldeccmetres);
+			soldeRepository.save(soldeclamedina);
 		};
 	}
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pack.models.ERole;
 import com.pack.models.User;
 import com.pack.models.CentreRecharge;
+import com.pack.models.CentreRechargeform;
 import com.pack.service.CentreRechargeService;
 
 @CrossOrigin(origins = "*")
@@ -37,15 +38,29 @@ public class CentreRechargeController {
 	 * }
 	 */
 	@PreAuthorize("hasRole('ADMIN')")
-	@RequestMapping(method = RequestMethod.POST, value = "/centreRecharges")
-	public void addCentreRecharge(@RequestBody CentreRecharge centreRecharge) {
-		System.out.println("centreRecharge to add "+centreRecharge.toString());
-		System.out.println("login:= "+centreRecharge.getLogin());
-		System.out.println("password:= "+centreRecharge.getPassword());
-		System.out.println("telephone:= "+centreRecharge.getTelephone());
-		centreRechargeService.addCentreRecharge(centreRecharge);
-	}
+	/*
+	 * @RequestMapping(method = RequestMethod.POST, value = "/centreRecharges")
+	 * public void addCentreRecharge(@RequestBody CentreRecharge centreRecharge) {
+	 * System.out.println("centreRecharge to add "+centreRecharge.toString());
+	 * System.out.println("login:= "+centreRecharge.getLogin());
+	 * System.out.println("password:= "+centreRecharge.getPassword());
+	 * System.out.println("telephone:= "+centreRecharge.getTelephone());
+	 * System.out.println("solde initiale:= "+centreRecharge.getSoldeInitial());
+	 * centreRechargeService.addCentreRecharge(centreRecharge); }
+	 */
 
+	@RequestMapping(method = RequestMethod.POST, value = "/centreRecharges")
+	public void addCentreRecharge(@RequestBody CentreRechargeform centreRechargeform) {
+		System.out.println("centreRecharge to add "+centreRechargeform.toString());
+		
+		  System.out.println("login:= "+centreRechargeform.getLogin());
+		  System.out.println("password:= "+centreRechargeform.getPassword());
+		  System.out.println("telephone:= "+centreRechargeform.getTelephone());
+		  System.out.println("solde initiale:= "+centreRechargeform.getSoldeInitial());
+		  centreRechargeService.addCentreRecharge(centreRechargeform);
+		 
+	}
+	
 	@RequestMapping("/centreRecharges/{id}")
 	public Optional<CentreRecharge> getSingleCentreRecharge(@PathVariable Long id) {
 		return centreRechargeService.getSingleCentreRecharge(id);

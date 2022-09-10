@@ -1,9 +1,11 @@
 import { Gouvernorat } from './gouvernorat';
 import { Solde } from './solde';
-import { User } from './user';
-export class CentreRecharge {
+export class CentreRechargeform {
   id: number;
   libelle: string;
-  user: User;
+  telephone: string;
+  login: string;
+  password: string;
+  soldeInitial: Solde;
   gouvernorat: Gouvernorat;
 }

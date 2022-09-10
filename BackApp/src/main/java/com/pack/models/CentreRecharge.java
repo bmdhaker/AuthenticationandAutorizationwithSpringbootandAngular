@@ -11,10 +11,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class CentreRecharge {
 	long id;
-	private String login;
-	private String password;
+	private User user;
 	private String libelle;
-	private String telephone;
 	private Gouvernorat gouvernorat;
 
 	// private String gouvernorat;
@@ -23,46 +21,14 @@ public class CentreRecharge {
 
 	}
 
-	public CentreRecharge(String libelle, Gouvernorat gouvernorat) {
+
+		public CentreRecharge(User user, String libelle, Gouvernorat gouvernorat) {
 		super();
+		this.user = user;
 		this.libelle = libelle;
 		this.gouvernorat = gouvernorat;
 	}
 
-
-	
-	public CentreRecharge(String login, String password, String libelle, String telephone, Gouvernorat gouvernorat) {
-		super();
-		this.login = login;
-		this.password = password;
-		this.libelle = libelle;
-		this.telephone = telephone;
-		this.gouvernorat = gouvernorat;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -70,11 +36,11 @@ public class CentreRecharge {
 		return id;
 	}
 
+
 	public void setId(long id) {
 		this.id = id;
 	}
 
-	
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_gouvernorat", nullable = false)
@@ -94,10 +60,20 @@ public class CentreRecharge {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_user", nullable = false)
+	public User getUser() {
+		return user;
+	}
+
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 
 	@Override
 	public String toString() {
-		return "CentreRecharge [id=" + id + ", login=" + login + ", password=" + password + ", libelle=" + libelle
-				+ ", telephone=" + telephone + ", gouvernorat=" + gouvernorat + "]";
+		return "CentreRecharge [id=" + id + ", libelle=" + libelle + ", gouvernorat=" + gouvernorat + "]";
 	}
 }
