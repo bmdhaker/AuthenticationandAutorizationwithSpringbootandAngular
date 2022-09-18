@@ -63,21 +63,21 @@ public class SoldeController {
 	}
 	
  
-	/*
-	 * @RequestMapping(method = RequestMethod.GET, value = "/soldes/{username}")
-	 * public List<Solde> getSoldeByUser(@PathVariable String username) { // public
-	 * int getCompteurByUser(@PathVariable Long iduser) {
-	 * System.out.println("username:= " + username);
-	 * System.out.println("solde de l'utilistauer");
-	 * soldeService.getSoldesByUser(username).forEach(p->{
-	 * System.out.println(p.toString()); }); return
-	 * soldeService.getSoldesByUser(username);
-	 * 
-	 * }
-	 */
+	
+	  @RequestMapping(method = RequestMethod.GET, value = "/soldes/{username}/{listSolde}")
+	  public List<Solde> getSoldeByUser(@PathVariable String username) { // public
+	  //int getCompteurByUser(@PathVariable Long iduser) {
+	  System.out.println("username:= " + username);
+	  System.out.println("solde de l'utilistauer");
+	  soldeService.getSoldesByUser(username).forEach(p->{
+	  System.out.println(p.toString()); }); return
+	  soldeService.getSoldesByUser(username);
+	  
+	  }
+	 
 
 	@RequestMapping(method = RequestMethod.GET, value = "/soldes/{utilisateur}")
-	public Solde getSoldeOfUser(@PathVariable String utilisateur) {
+	public Solde getSoldeOfUser(@PathVariable String utilisateur,@PathVariable Boolean listSolde) {
 //	public int getCompteurByUser(@PathVariable Long iduser) {
 		System.out.println("je suis dans solde de centre de recharge");
 		System.out.println("username:= " + utilisateur);

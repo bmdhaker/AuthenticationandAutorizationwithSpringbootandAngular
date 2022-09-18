@@ -1,0 +1,22 @@
+<h3>Modification Type Token</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="name">Valeur minimale</label>
+      <input type="number" class="form-control" id="min" required [(ngModel)]="bonus.min" name="min">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Valeur maximale</label>
+      <input type="number" class="form-control" id="max" required [(ngModel)]="bonus.max" name="max">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Pourcentage</label>
+      <input type="number" class="form-control" id="valeur" required [(ngModel)]="bonus.valeur" name="valeur">
+    </div>
+
+    <button type="submit" class="btn btn-success">Modifier</button>
+  </form>
+</div>

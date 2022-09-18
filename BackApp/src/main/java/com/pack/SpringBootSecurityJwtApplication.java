@@ -15,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.pack.models.Typetoken;
 import com.pack.models.User;
+import com.pack.models.Bonus;
 import com.pack.models.CentreRecharge;
 import com.pack.models.Commande;
 import com.pack.models.Compteur;
@@ -27,6 +28,7 @@ import com.pack.models.Token;
 import com.pack.repository.TypetokenRepository;
 import com.pack.repository.UserRepository;
 import com.pack.repository.TokenRepository;
+import com.pack.repository.BonusRepository;
 import com.pack.repository.CentreRechargeRepository;
 import com.pack.repository.CommandeRepository;
 import com.pack.repository.CompteurRepository;
@@ -81,6 +83,10 @@ public class SpringBootSecurityJwtApplication {
 	@Autowired
 	CentreRechargeRepository centrerechargerepository;
 
+	@Autowired
+	BonusRepository bonusRepository;
+
+	
 	ArrayList<Gouvernorat> gouvernorats = new ArrayList<Gouvernorat>();
 
 	@Bean
@@ -276,14 +282,26 @@ public class SpringBootSecurityJwtApplication {
 			
 			
 			// Initiation des soldes
+			Solde soldeadmin = new Solde(admin, 0000);
 			Solde soldeclafayette = new Solde(lafayette, 1050);
 			Solde soldecboujaafar = new Solde(boujaafar, 1000);
 			Solde soldeccmetres = new Solde(cmetres, 950);
 			Solde soldeclamedina = new Solde(lamedina, 850);
+			soldeRepository.save(soldeadmin);
 			soldeRepository.save(soldeclafayette);
 			soldeRepository.save(soldecboujaafar);
 			soldeRepository.save(soldeccmetres);
 			soldeRepository.save(soldeclamedina);
+
+			//initiation Bonus
+			// Initiation des soldes
+			Bonus bonus = new Bonus(0,20,0);
+			Bonus bonus2 = new Bonus(20,50,10);
+			Bonus bonus3 = new Bonus(50,100,20);
+			bonusRepository.save(bonus);
+			bonusRepository.save(bonus2);
+			bonusRepository.save(bonus3);
+
 		};
 	}
 

@@ -14,6 +14,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
 export class SoldeListComponent implements OnInit {
   soldes: Observable<Solde[]>;
   username: string;
+  listSolde=true;
 
   constructor(private soldeService: SoldeService,private tokenStorageService: TokenStorageService,
     private router: Router) {}
@@ -29,7 +30,7 @@ export class SoldeListComponent implements OnInit {
 
     //this.compteurLoggedUsers = this.compteurLoggedUserService.getCompteurLoggedUsername(this.username);
     //this.soldes = this.soldeService.getSoldesList();
-    this.soldes = this.soldeService.getSoldesList(this.username);
+    this.soldes = this.soldeService.getSoldesList(this.username,this.listSolde);
   }
 
   deleteSolde(id: number) {

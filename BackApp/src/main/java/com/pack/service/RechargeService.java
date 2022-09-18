@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import com.pack.models.Bonus;
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
 import com.pack.models.Panier;
@@ -16,6 +17,7 @@ import com.pack.models.Rechargeform;
 import com.pack.models.Role;
 import com.pack.models.Solde;
 import com.pack.models.User;
+import com.pack.repository.BonusRepository;
 import com.pack.repository.CentreRechargeRepository;
 import com.pack.repository.RechargeRepository;
 import com.pack.repository.SoldeRepository;
@@ -32,6 +34,8 @@ public class RechargeService {
 	UserRepository userrepo;
 	@Autowired
 	private CentreRechargeRepository centrerechargeRepo;
+	@Autowired
+	private BonusRepository bonusRepo;
 
 	public List<Recharge> getAllRecharge() {
 		return rechargeRepo.findAll();
@@ -110,7 +114,7 @@ public class RechargeService {
 		return ok;
 	}
 
-	public double ajouterBonus(double montant) {
+	public double ajouterBonus0(double montant) {
 		double newmontant=montant;
 		if(montant>=50)
 			newmontant=montant*1.2;
@@ -122,6 +126,20 @@ public class RechargeService {
 		return newmontant;
 	}
 	
+	public double ajouterBonus2(double montant) {
+		double pourcentage=0;
+		double newmontant=montant;
+		for(Bonus b:bonusRepo.findAll()) {
+			if(montant>=b.getMin()&&montant<b.getMax()) {
+				pourcentage=b.getValeur();
+			}
+		}
+		System.out.println("pourcentage:= "+pourcentage);
+		newmontant=((montant*(pourcentage+100))/100);
+		System.out.println("newmontant:= "+newmontant);
+		return newmontant;
+	}
+
 	public void reduireSoldeCentreRecharge(String centreRechargeusername,double prix) {
 		Solde solde = soldeRepo.getSoldesByUsername(centreRechargeusername).get(0);
 		System.out.println("solde centre "+solde.toString());

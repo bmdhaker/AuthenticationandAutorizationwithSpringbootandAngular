@@ -67,18 +67,18 @@ public class RechargeController {
 		Recharge recharge=new Recharge();
 		if (rechargeService.verifierRecharge(rechargeform)) {
 			//ajout de bonus
-			recharge.setPrix(rechargeService.ajouterBonus(rechargeform.getPrix()));
+			recharge.setPrix(rechargeService.ajouterBonus0(rechargeform.getPrix()));
 			User user = userRepository.findByTelephone(rechargeform.getTelephone())
 					.orElseThrow(() -> new UsernameNotFoundException("Role Not Found with telephone: " + rechargeform.getTelephone()));
 			System.out.println("user:= "+user.toString());
 			recharge.setUser(user);
-			rechargeService.updateSolde(rechargeform.getTelephone(),rechargeService.ajouterBonus(rechargeform.getPrix()));
+			rechargeService.updateSolde(rechargeform.getTelephone(),rechargeService.ajouterBonus0(rechargeform.getPrix()));
 			rechargeService.addRecharge(recharge);
 		}
 	}
 	
 //recharge par centre de recharge
-	@RequestMapping(method = RequestMethod.POST, value = "/recharges//{username}")
+	@RequestMapping(method = RequestMethod.POST, value = "/recharges/{username}")
 	public void addRechargeparCentreRecharge(@RequestBody Rechargeform rechargeform, @PathVariable String username) {
 		System.out.println("centrerecharge "+username);
 		System.out.println("rechageform "+rechargeform.toString());
@@ -86,12 +86,12 @@ public class RechargeController {
 		if (rechargeService.verifierRecharge(rechargeform)&&rechargeService.verifierSoldeCentreRecharge(rechargeform, username)) {
 			//verifier solde centre recharge
 			//ajout de bonus
-			recharge.setPrix(rechargeService.ajouterBonus(rechargeform.getPrix()));
+			recharge.setPrix(rechargeService.ajouterBonus2(rechargeform.getPrix()));
 			User user = userRepository.findByTelephone(rechargeform.getTelephone())
 					.orElseThrow(() -> new UsernameNotFoundException("Role Not Found with telephone: " + rechargeform.getTelephone()));
 			System.out.println("user:= "+user.toString());
 			recharge.setUser(user);
-			rechargeService.updateSolde(rechargeform.getTelephone(),rechargeService.ajouterBonus(rechargeform.getPrix()));
+			rechargeService.updateSolde(rechargeform.getTelephone(),rechargeService.ajouterBonus2(rechargeform.getPrix()));
 			rechargeService.addRecharge(recharge);
 			rechargeService.reduireSoldeCentreRecharge(username,rechargeform.getPrix());
 		}

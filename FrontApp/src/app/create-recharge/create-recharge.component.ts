@@ -26,13 +26,13 @@ export class CreateRechargeComponent implements OnInit {
     this.rechargeform = new Rechargeform();
   }
 
-  save() {
+  /*save() {
     this.rechargeService.createRecharge(this.rechargeform)
       .subscribe(data => console.log(data), error => console.log(error));
     this.rechargeform = new Rechargeform();
     this.gotoList();
   }
-
+*/
   save2() {
     const user = this.tokenStorageService.getUser();
     this.username = user.username;

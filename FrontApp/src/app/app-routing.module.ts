@@ -32,6 +32,9 @@ import { CreateRechargeComponent } from './create-recharge/create-recharge.compo
 import { RechargeListComponent } from './recharge-list/recharge-list.component';
 import { CentreRechargeforUserListComponent } from './centreRechargeforUser-list/centreRechargeforUser-list.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { BonusListComponent } from './bonus-list/bonus-list.component';
+import { CreateBonusComponent } from './create-bonus/create-bonus.component';
+import { UpdateBonusComponent } from './update-bonus/update-bonus.component';
 
 
 const routes: Routes = [
@@ -67,6 +70,9 @@ const routes: Routes = [
   { path: 'recharges', component: RechargeListComponent },
   { path: 'centreRechargeforUsers', component: CentreRechargeforUserListComponent },
   { path: 'update-profile', component: UpdateProfileComponent },
+  { path: 'bonuss', component: BonusListComponent },
+  { path: 'bonus/new', component: CreateBonusComponent },
+  { path: 'update-bonus/:id', component: UpdateBonusComponent },
 
 
 ];

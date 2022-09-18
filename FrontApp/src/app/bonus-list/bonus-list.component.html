@@ -1,0 +1,28 @@
+<br><br><br>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Valeur minimale</th>
+          <th>Valeur maximale</th>
+          <th>Pourcentage</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bonus of bonuss | async">
+          <td>{{bonus.min}}</td>
+          <td>{{bonus.max}}</td>
+          <td>{{bonus.valeur}}</td>
+          <td><button (click)="deleteBonus(bonus.id)" class="btn btn-danger">Supprimer</button>
+             <button (click)="updateBonus(bonus.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+<button routerLink="/bonus/new" class="btn btn-secondary" style="margin-left: 10px">new Bonus</button>
+

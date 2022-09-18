@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   username: string;
   valeurSolde:string;
   soldes: Observable<Solde[]>;
+  listSolde=true;
   constructor(private tokenStorageService: TokenStorageService, private soldeService:SoldeService) { }
 
   ngOnInit() {
@@ -35,8 +36,7 @@ export class AppComponent implements OnInit {
       this.showSimpleUserBoard = this.roles.includes('ROLE_USER');
 
       this.username = user.username;
-      this.soldes = this.soldeService.getSoldesofUser(this.username);
-      this.valeurSolde=this.soldes.forEach.toString();
+      this.soldes = this.soldeService.getSoldesList(this.username,this.listSolde);
     }
   }
 

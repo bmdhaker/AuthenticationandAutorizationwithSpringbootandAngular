@@ -30,8 +30,8 @@ export class SoldeService {
   /*getSoldesList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }*/
-  getSoldesList(username: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${username}`);
+  getSoldesList(username: string,listSolde:boolean): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${username}/${listSolde}`);
   }
 
   getSoldesofUser(username: string): Observable<any> {
