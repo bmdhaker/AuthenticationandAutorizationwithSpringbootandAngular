@@ -4,6 +4,8 @@ import { CompteurLoggedUser } from "../compteurLoggedUser";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { CompteurByUserform } from '../compteurByUserform';
+
 
 
 
@@ -14,8 +16,11 @@ import { TokenStorageService } from '../_services/token-storage.service';
 })
 export class CompteurLoggedUserListComponent implements OnInit {
   compteurLoggedUsers: Observable<CompteurLoggedUser[]>;
-
+  compteurform: CompteurByUserform = new CompteurByUserform();
+  submitted = false;
   username: string;
+  lib: string;
+
 
   constructor(private compteurLoggedUserService: CompteurLoggedUserService,private tokenStorageService: TokenStorageService,
     private router: Router) {}
@@ -48,4 +53,5 @@ export class CompteurLoggedUserListComponent implements OnInit {
   updateCompteurLoggedUser(id: number){
     this.router.navigate(['update-compteurLoggedUser', id]);
   }
+
 }

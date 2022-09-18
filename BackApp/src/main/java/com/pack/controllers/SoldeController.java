@@ -62,17 +62,19 @@ public class SoldeController {
 		soldeService.deleteSolde(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/soldes/{username}")
-	public List<Solde> getSoldeByUser(@PathVariable String username) {
-//	public int getCompteurByUser(@PathVariable Long iduser) {
-		System.out.println("username:= " + username);
-		System.out.println("solde de l'utilistauer");
-		soldeService.getSoldesByUser(username).forEach(p->{
-			System.out.println(p.toString());
-		});
-		return soldeService.getSoldesByUser(username);
-
-	}
+ 
+	/*
+	 * @RequestMapping(method = RequestMethod.GET, value = "/soldes/{username}")
+	 * public List<Solde> getSoldeByUser(@PathVariable String username) { // public
+	 * int getCompteurByUser(@PathVariable Long iduser) {
+	 * System.out.println("username:= " + username);
+	 * System.out.println("solde de l'utilistauer");
+	 * soldeService.getSoldesByUser(username).forEach(p->{
+	 * System.out.println(p.toString()); }); return
+	 * soldeService.getSoldesByUser(username);
+	 * 
+	 * }
+	 */
 
 	@RequestMapping(method = RequestMethod.GET, value = "/soldes/{utilisateur}")
 	public Solde getSoldeOfUser(@PathVariable String utilisateur) {

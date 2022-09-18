@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './_services/token-storage.service';
+import { SoldeService } from './solde.service';
+import { Solde } from './solde';
+import { Observable } from "rxjs";
+
 
 @Component({
   selector: 'app-root',
@@ -14,14 +18,16 @@ export class AppComponent implements OnInit {
   showSimpleUserBoard = false;
 
   username: string;
-
-  constructor(private tokenStorageService: TokenStorageService) { }
+  valeurSolde:string;
+  soldes: Observable<Solde[]>;
+  constructor(private tokenStorageService: TokenStorageService, private soldeService:SoldeService) { }
 
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
+
       this.roles = user.roles;
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
@@ -29,6 +35,8 @@ export class AppComponent implements OnInit {
       this.showSimpleUserBoard = this.roles.includes('ROLE_USER');
 
       this.username = user.username;
+      this.soldes = this.soldeService.getSoldesofUser(this.username);
+      this.valeurSolde=this.soldes.forEach.toString();
     }
   }
 
