@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,10 +19,14 @@ import com.pack.models.Commande;
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
 import com.pack.models.Panier;
+import com.pack.models.StatistiqueAnnuel;
+import com.pack.models.StatistiqueMensuel;
 import com.pack.models.Token;
 import com.pack.service.CommandeService;
 import com.pack.service.PanierService;
 import com.pack.service.SoldeService;
+import com.pack.service.StatistiqueAnnuelService;
+import com.pack.service.StatistiqueMensuelService;
 import com.pack.service.TokenService;
 
 @CrossOrigin(origins = "*")
@@ -39,6 +44,10 @@ public class PanierController {
 	ConvertDate convertDate;
 	@Autowired
 	TokenService tokenService;
+	@Autowired
+	StatistiqueAnnuelService statistiqueAnnuelService;
+	@Autowired
+	StatistiqueMensuelService statistiqueMensuelService;
 
 	// @RequestMapping("/paniers")
 	// @PreAuthorize("hasRole('ADMIN')")
@@ -76,9 +85,14 @@ public class PanierController {
 	public void payerPanier(@PathVariable Long id) {
 
 		Commande commande = new Commande();
+		StatistiqueAnnuel statistiqueAnnuel=new StatistiqueAnnuel();
+		StatistiqueMensuel statistiqueMensuel=new StatistiqueMensuel();
 		double montantPanier = 0;
 		long id_token;
 		Date date = new Date();
+		int annee,mois,nb_mois,nb_annee;
+		long idstatAnne;
+		Boolean anneeExist=false,moisExist=false;
 		Panier panier = new Panier();
 		Token token=new Token();
 		System.out.println("I'm here dans paiement");
@@ -87,8 +101,37 @@ public class PanierController {
 		panier = panierService.getPanierById(id);
 		token=panier.getToken();
 		id_token=token.getId();
-		// verifier solde
+		//extraction annee et mois
+		ConvertDate c = new ConvertDate();
+		annee=c.retournerAnnee(date);
+		mois=c.retournerMois(date);
+		System.out.println("annee:= "+annee+" mois:= "+mois );
+		
+			
+			// verifier solde
 		if (soldeService.verifierSolde(panier)) {
+			//insertion statistiques
+			System.out.println("affichage statistiques");
+			statistiqueAnnuelService.getAllStatistiqueAnnuel().forEach(ssa->{
+				System.out.println("here "+ssa.toString());
+
+			});
+			for(StatistiqueAnnuel sa :statistiqueAnnuelService.getAllStatistiqueAnnuel()) {
+				if(sa.getAnnee()==annee) {
+					System.out.println("here "+sa.toString());
+					idstatAnne=sa.getId();
+					sa.setNb(sa.getNb()+1);
+					statistiqueAnnuelService.updateStatistiqueAnnuel(idstatAnne, sa);
+					anneeExist=true;
+				}
+			}
+			if(anneeExist=false) {
+				System.out.println("nouvelle insertion");
+				StatistiqueAnnuel saa=new StatistiqueAnnuel(annee,1);
+				statistiqueAnnuelService.addStatistiqueAnnuel(saa);
+			}
+			
+			//
 			System.out.println("panier à payer " + panier.toString());
 			commande.setDate(convertDate.cenvertirDate(date));
 			commande.setPanier(panier);
@@ -102,7 +145,8 @@ public class PanierController {
 			soldeService.soustraire(panier);
 			//suppression du token
 			tokenService.updateToken(id_token, token);
-		} else {
+		} 
+		else {
 			System.out.println("solde insuffisant");
 		}
 		// soustraire montant

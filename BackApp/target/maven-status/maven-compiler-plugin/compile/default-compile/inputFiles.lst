@@ -1,23 +1,71 @@
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/payload/request/LoginRequest.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/service/FormateurService.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/models/User.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/security/jwt/AuthEntryPointJwt.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/controllers/FormateurController.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/payload/response/MessageResponse.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/security/services/UserDetailsImpl.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/models/ERole.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/security/services/UserDetailsServiceImpl.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/repository/UserRepository.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/payload/request/SignupRequest.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/security/jwt/AuthTokenFilter.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/payload/response/JwtResponse.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/SpringBootSecurityJwtApplication.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/controllers/TestController.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/security/WebSecurityConfig.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/security/jwt/JwtUtils.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/models/Formateur.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/CORSFilter.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/models/Role.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/repository/FormateurRepository.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/repository/RoleRepository.java
-/media/mnarios/DATA1/Projet synthese/projrefangsprbootauthorization/spring-boot-spring-security-jwt-authentication-master/src/main/java/com/pack/controllers/AuthController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/PanierService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/CommandeByUserController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Profileform.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/RechargeService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/CompteurRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Gouvernorat.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/CentreRechargeClientController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Panier.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/TokenController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/CORSFilter.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/GouvernoratService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/payload/response/JwtResponse.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/TypetokenController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Role.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Commande.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/User.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/RoleRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/CentreRechargeController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/GouvernoratController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Compteur.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/SoldeRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/GouvernoratRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/security/jwt/AuthTokenFilter.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Typetoken.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/PanierRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/TokenService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/CentreRechargeRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/security/services/UserDetailsImpl.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/TypetokenUsedbyUserController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/payload/response/MessageResponse.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/ERole.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Solde.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/BonusController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/randomm/Carte.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/RechargeRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/UserController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Recharge.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Rechargeform.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/security/WebSecurityConfig.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/CentreRechargeService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/SoldeController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/CentreRecharge.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/ProfileController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Token.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/BonusService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/CommandeService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/CommandeRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/UserService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/CompteurController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/TypetokenRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/SpringBootSecurityJwtApplication.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/security/jwt/AuthEntryPointJwt.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/Bonus.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/TokenRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/models/CentreRechargeform.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/TestController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/UserRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/payload/request/SignupRequest.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/security/services/UserDetailsServiceImpl.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/payload/request/LoginRequest.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/PanierController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/SoldeService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/ConvertDate.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/TokenUsedByUserController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/CompteurService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/RechargeController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/service/TypetokenService.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/security/jwt/JwtUtils.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/AuthController.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/repository/BonusRepository.java
+/home/mouhamed/siwar_pfe/AuthenticationandAutorizationwithSpringbootandAngular/BackApp/src/main/java/com/pack/controllers/CommandeController.java

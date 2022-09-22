@@ -1,5 +1,6 @@
 package com.pack.controllers;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pack.models.Compteur;
 import com.pack.models.ERole;
+import com.pack.ConvertDate;
 import com.pack.models.Commande;
 import com.pack.service.CommandeService;
 
@@ -38,10 +40,20 @@ public class CommandeByUserController {
 	@RequestMapping(method = RequestMethod.GET, value = "/commandes/{username}")
 	public List<Commande> getCommandeByUser(@PathVariable String username) {
 //	public int getCompteurByUser(@PathVariable Long iduser) {
+		ConvertDate con = new ConvertDate();
+
 		System.out.println("username:= " + username);
-		System.out.println("commande de l'utilistauer");
-		commandeService.getCommandesByUser(username).forEach(p -> {
+		System.out.println("commande de l'utilisateur");
+		commandeService.getCommandesByUser(username).forEach(p->{
 			System.out.println(p.toString());
+		});
+		System.out.println("commande par Année");
+		commandeService.getCommandesByUser(username).forEach(c->{
+			System.out.println(con.extraireAnnee(c.getDate()));
+		});
+		System.out.println("commande par Mois");
+		commandeService.getCommandesByUser(username).forEach(c->{
+			System.out.println(con.extraireMois(c.getDate()));
 		});
 		return commandeService.getCommandesByUser(username);
 
