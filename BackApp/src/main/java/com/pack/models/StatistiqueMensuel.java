@@ -13,17 +13,17 @@ import javax.persistence.OneToMany;
 @Entity
 public class StatistiqueMensuel {
 	long id;
-	int mois;
 	int annee;
+	int mois;
 	int nb;
 	
 	public StatistiqueMensuel() {
 	}
 
-	public StatistiqueMensuel(int mois, int annee, int nb) {
+	public StatistiqueMensuel(int annee,int mois, int nb) {
 		super();
-		this.mois = mois;
 		this.annee = annee;
+		this.mois = mois;
 		this.nb = nb;
 	}
 
@@ -38,14 +38,6 @@ public class StatistiqueMensuel {
 	}
 
 
-	public int getMois() {
-		return mois;
-	}
-
-
-	public void setMois(int mois) {
-		this.mois = mois;
-	}
 
 
 	public int getAnnee() {
@@ -57,6 +49,14 @@ public class StatistiqueMensuel {
 		this.annee = annee;
 	}
 
+	public int getMois() {
+		return mois;
+	}
+
+
+	public void setMois(int mois) {
+		this.mois = mois;
+	}
 
 	public int getNb() {
 		return nb;

@@ -111,26 +111,9 @@ public class PanierController {
 			// verifier solde
 		if (soldeService.verifierSolde(panier)) {
 			//insertion statistiques
-			System.out.println("affichage statistiques");
-			statistiqueAnnuelService.getAllStatistiqueAnnuel().forEach(ssa->{
-				System.out.println("here "+ssa.toString());
-
-			});
-			for(StatistiqueAnnuel sa :statistiqueAnnuelService.getAllStatistiqueAnnuel()) {
-				if(sa.getAnnee()==annee) {
-					System.out.println("here "+sa.toString());
-					idstatAnne=sa.getId();
-					sa.setNb(sa.getNb()+1);
-					statistiqueAnnuelService.updateStatistiqueAnnuel(idstatAnne, sa);
-					anneeExist=true;
-				}
-			}
-			if(anneeExist=false) {
-				System.out.println("nouvelle insertion");
-				StatistiqueAnnuel saa=new StatistiqueAnnuel(annee,1);
-				statistiqueAnnuelService.addStatistiqueAnnuel(saa);
-			}
-			
+			System.out.println("on commence statistiques");
+			statistiqueAnnuelService.ajouterStatAnnuel(date);
+			statistiqueMensuelService.ajouterStatMensuel(date);
 			//
 			System.out.println("panier à payer " + panier.toString());
 			commande.setDate(convertDate.cenvertirDate(date));
