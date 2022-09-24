@@ -7,8 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class StatistiqueMensuelService {
 
-  private baseUrl = 'http://localhost:9093/api/test/statistiquemensuels';
-  private baseUrlByUser = 'http://localhost:9093/api/test/statistiquemensuelsByUser';
+  private baseUrl = 'http://localhost:9093/api/test/statistiqueMensuelDetailss';
 
   constructor(private http: HttpClient) { }
 
@@ -31,9 +30,4 @@ export class StatistiqueMensuelService {
   getStatistiqueMensuelsList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
-
-  getStatistiqueMensuelsByUserList(): Observable<any> {
-    return this.http.get(`${this.baseUrlByUser}`);
-  }
-
 }

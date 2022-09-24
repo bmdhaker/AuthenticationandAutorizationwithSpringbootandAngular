@@ -1,5 +1,5 @@
 <br><br><br>
-<h1><i><u>Nombre Commandes par mois</u></i></h1>
+<h1><i><u>Nombre des Commandes par mois</u></i></h1>
 <div class="panel panel-primary">
   <div class="panel-body">
     <table class="table table-striped">
@@ -9,26 +9,36 @@
         </th>
         </tr>
         <tr>
-          <th>Année</th>
-          <th>Janvier</th>
-          <th>Février</th>
-          <th>Mars</th>
-          <th>Avril</th>
-          <th>Mai</th>
-          <th>Juin</th>
-          <th>Juillet</th>
-          <th>Aout</th>
-          <th>Septembre</th>
-          <th>Octobre</th>
-          <th>Novembre</th>
-          <th>Décembre</th>
+          <th style="color:burlywood">Année</th>
+          <th style="color:red">Janvier</th>
+          <th style="color:red">Février</th>
+          <th style="color:red">Mars</th>
+          <th style="color:red">Avril</th>
+          <th style="color:red">Mai</th>
+          <th style="color:red">Juin</th>
+          <th style="color:red">Juillet</th>
+          <th style="color:red">Aout</th>
+          <th style="color:red">Septembre</th>
+          <th style="color:red">Octobre</th>
+          <th style="color:red">Novembre</th>
+          <th style="color:red">Décembre</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let statistiqueMensuel of statistiqueMensuels | async">
-          <td>{{statistiqueAnnuel.annee}}</td>
-          <td>{{statistiqueAnnuel.nb}}</td>
-          <td>pourcentage</td>
+          <td style="color:blueviolet">{{statistiqueMensuel.annee}}</td>
+          <td>{{statistiqueMensuel.nbmois1}}</td>
+          <td>{{statistiqueMensuel.nbmois2}}</td>
+          <td>{{statistiqueMensuel.nbmois3}}</td>
+          <td>{{statistiqueMensuel.nbmois4}}</td>
+          <td>{{statistiqueMensuel.nbmois5}}</td>
+          <td>{{statistiqueMensuel.nbmois6}}</td>
+          <td>{{statistiqueMensuel.nbmois7}}</td>
+          <td>{{statistiqueMensuel.nbmois8}}</td>
+          <td>{{statistiqueMensuel.nbmois9}}</td>
+          <td>{{statistiqueMensuel.nbmois10}}</td>
+          <td>{{statistiqueMensuel.nbmois11}}</td>
+          <td>{{statistiqueMensuel.nbmois12}}</td>
         </tr>
       </tbody>
     </table>
