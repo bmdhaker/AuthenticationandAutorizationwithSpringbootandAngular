@@ -24,41 +24,16 @@ public class StatistiqueAnnuelController {
 	@Autowired
 	StatistiqueAnnuelService statistiqueAnnuelService;
 
-	//@RequestMapping("/statistiqueAnnuels")
 	@PreAuthorize("hasRole('ADMIN')")
-	//@PreAuthorize("hasRole('ROLE_MODERATOR')")
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/statistiqueAnnuels") 
 	public List<StatistiqueAnnuel> getStatistiqueAnnuel() 
 	{
+		System.out.println("Affichage statistiques annuels");
 		statistiqueAnnuelService.getAllStatistiqueAnnuel().forEach(t->{
 			System.out.println(t.toString());
 		});
 		return (List<StatistiqueAnnuel>) statistiqueAnnuelService.getAllStatistiqueAnnuel();
-	}
-
-	/*
-	 * @RequestMapping(method = RequestMethod.POST, value = "/statistiqueAnnuels") public void
-	 * addStatistiqueAnnuel(@RequestBody StatistiqueAnnuel statistiqueAnnuel) {
-	 * System.out.println("je suis dans ajout statistiqueAnnuel");
-	 * System.out.println(statistiqueAnnuel.toString()); statistiqueAnnuelService.addStatistiqueAnnuel(statistiqueAnnuel); }
-	 */
-	
-
-	@RequestMapping("/statistiqueAnnuels/{id}")
-	public Optional<StatistiqueAnnuel> getSingleStatistiqueAnnuel(@PathVariable Long id) {
-		return statistiqueAnnuelService.getSingleStatistiqueAnnuel(id);
-	}
-
-	@RequestMapping(method = RequestMethod.PUT, value = "/statistiqueAnnuels/{id}")
-	public void updateStatistiqueAnnuel(@RequestBody StatistiqueAnnuel statistiqueAnnuel, @PathVariable Long id) {
-		System.out.println(statistiqueAnnuel.toString());
-		statistiqueAnnuelService.updateStatistiqueAnnuel(id, statistiqueAnnuel);
-	}
-
-	@RequestMapping(method = RequestMethod.DELETE, value = "/statistiqueAnnuels/{id}")
-	public void deleteStatistiqueAnnuel(@PathVariable Long id) {
-		statistiqueAnnuelService.deleteStatistiqueAnnuel(id);
 	}
 
 	

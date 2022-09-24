@@ -26,6 +26,7 @@ import com.pack.service.CommandeService;
 import com.pack.service.PanierService;
 import com.pack.service.SoldeService;
 import com.pack.service.StatistiqueAnnuelService;
+import com.pack.service.StatistiqueMensuelDetailsService;
 import com.pack.service.StatistiqueMensuelService;
 import com.pack.service.TokenService;
 
@@ -48,6 +49,8 @@ public class PanierController {
 	StatistiqueAnnuelService statistiqueAnnuelService;
 	@Autowired
 	StatistiqueMensuelService statistiqueMensuelService;
+	@Autowired
+	StatistiqueMensuelDetailsService statistiqueMensuelDetailsService;
 
 	// @RequestMapping("/paniers")
 	// @PreAuthorize("hasRole('ADMIN')")
@@ -113,7 +116,9 @@ public class PanierController {
 			//insertion statistiques
 			System.out.println("on commence statistiques");
 			statistiqueAnnuelService.ajouterStatAnnuel(date);
-			statistiqueMensuelService.ajouterStatMensuel(date);
+			//statistiqueMensuelService.ajouterStatMensuel(date);
+			statistiqueMensuelDetailsService.ajouterStatMensuelDetails(date);
+			
 			//
 			System.out.println("panier à payer " + panier.toString());
 			commande.setDate(convertDate.cenvertirDate(date));

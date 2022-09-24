@@ -40,6 +40,8 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { BonusListComponent } from './bonus-list/bonus-list.component';
 import { CreateBonusComponent } from './create-bonus/create-bonus.component';
 import { UpdateBonusComponent } from './update-bonus/update-bonus.component';
+import { StatistiqueAnnuelListComponent } from './statistiqueAnnuel-list/statistiqueAnnuel-list.component';
+import { StatistiqueMensuelListComponent } from './statistiqueMensuel-list/statistiqueMensuel-list.component';
 
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
@@ -81,7 +83,9 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     BonusListComponent,
     CreateBonusComponent,
     UpdateBonusComponent,
-  ],
+    StatistiqueAnnuelListComponent,
+    StatistiqueMensuelListComponent,
+    ],
 
   imports: [
     BrowserModule,

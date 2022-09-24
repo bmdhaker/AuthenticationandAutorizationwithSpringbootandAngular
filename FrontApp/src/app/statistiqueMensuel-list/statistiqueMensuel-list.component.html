@@ -1,0 +1,38 @@
+<br><br><br>
+<h1><i><u>Nombre Commandes par mois</u></i></h1>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+        </th>
+        </tr>
+        <tr>
+          <th>Année</th>
+          <th>Janvier</th>
+          <th>Février</th>
+          <th>Mars</th>
+          <th>Avril</th>
+          <th>Mai</th>
+          <th>Juin</th>
+          <th>Juillet</th>
+          <th>Aout</th>
+          <th>Septembre</th>
+          <th>Octobre</th>
+          <th>Novembre</th>
+          <th>Décembre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let statistiqueMensuel of statistiqueMensuels | async">
+          <td>{{statistiqueAnnuel.annee}}</td>
+          <td>{{statistiqueAnnuel.nb}}</td>
+          <td>pourcentage</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+

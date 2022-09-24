@@ -1,0 +1,23 @@
+<br><br><br>
+<div class="panel panel-primary">
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Année</th>
+          <th>Nombre commande</th>
+          <th>Pourcentage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let statistiqueAnnuel of statistiqueAnnuels | async">
+          <td>{{statistiqueAnnuel.annee}}</td>
+          <td>{{statistiqueAnnuel.nb}}</td>
+          <td>pourcentage</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<br>
+
