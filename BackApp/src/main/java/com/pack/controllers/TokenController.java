@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pack.models.ERole;
 import com.pack.models.Token;
+import com.pack.service.PanierService;
 import com.pack.service.TokenService;
 
 @CrossOrigin(origins = "*")
@@ -23,7 +24,8 @@ public class TokenController {
 
 	@Autowired
 	TokenService tokenService;
-
+	@Autowired
+	PanierService panierService;
 	//@RequestMapping("/tokens")
 	@PreAuthorize("hasRole('ADMIN')")
 	//@PreAuthorize("hasRole('ROLE_MODERATOR')")
@@ -56,10 +58,6 @@ public class TokenController {
 		tokenService.updateToken(id, token);
 	}
 
-	@RequestMapping(method = RequestMethod.DELETE, value = "/tokens/{id}")
-	public void deleteToken(@PathVariable Long id) {
-		tokenService.deleteToken(id);
-	}
 
 	
 }

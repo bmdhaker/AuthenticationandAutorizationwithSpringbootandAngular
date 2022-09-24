@@ -51,6 +51,16 @@ public class TokenUsedByUserController {
 		return tokenService.getTokensByUser(username);
 	}
 	
+	@RequestMapping(method = RequestMethod.DELETE, value = "/tokensByUser/{id}")
+	public void deleteToken(@PathVariable Long id) {
+		//determiner l'id du panier a supprimer a partir de l'id du token
+		System.out.println("id token "+id);
+		panierService.deletePanier(panierService.retournerIdPanier(id));
+		tokenService.deleteToken(id);
+		
+	}
+	
+	
 	@RequestMapping(method = RequestMethod.POST, value = "/tokens")
 	public void addTokenUsername(@RequestBody Token token) {
 		System.out.println("methode addTokenUsername");

@@ -83,7 +83,12 @@ public class PanierController {
 		System.out.println(panier.toString());
 		panierService.updatePanier(id, panier);
 	}
-
+	
+	/*
+	 * @RequestMapping(method = RequestMethod.DELETE, value = "/paniers/{id}")
+	 * public void deletePanier(@PathVariable Long id) {
+	 * panierService.deletePanier(id); }
+	 */
 	@RequestMapping(method = RequestMethod.DELETE, value = "/paniers/{id}")
 	public void payerPanier(@PathVariable Long id) {
 

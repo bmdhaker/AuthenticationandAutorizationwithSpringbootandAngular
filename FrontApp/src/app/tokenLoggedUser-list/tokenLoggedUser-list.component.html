@@ -13,8 +13,8 @@
         <tr *ngFor="let tokenLoggedUser of tokenLoggedUsers | async">
           <td>{{tokenLoggedUser.compteur.libelle}}</td>
           <td>{{tokenLoggedUser.typetoken.prix}}</td>
-          <td><button (click)="deleteTokenLoggedUser(token.id)" class="btn btn-danger">Supprimer</button>
-             <button (click)="updateTokenLoggedUser(token.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+          <td><button (click)="deleteTokenLoggedUser(tokenLoggedUser.id)" class="btn btn-danger">Supprimer</button>
+             <!--<button (click)="updateTokenLoggedUser(token.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>-->
           </td>
         </tr>
       </tbody>

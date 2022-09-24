@@ -69,5 +69,15 @@ public class PanierService {
 		montant=panier.getToken().getTypetoken().getPrix();
 		return montant;
 	}
+	
+	public long retournerIdPanier(long idToken) {
+		long idPanier=0;
+		for(Panier panier:getAllPanier()) {
+			if(panier.getToken().getId()==idToken)
+				idPanier=panier.getId();
+		}
+		System.out.println("idPanier:= "+idPanier);
+		return idPanier;
+	}
 
 }
