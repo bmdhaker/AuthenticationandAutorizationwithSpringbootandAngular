@@ -115,7 +115,7 @@ public class PanierController {
 		if (soldeService.verifierSolde(panier)) {
 			//insertion statistiques
 			System.out.println("on commence statistiques");
-			statistiqueAnnuelService.ajouterStatAnnuel(date);
+			//statistiqueAnnuelService.ajouterStatAnnuel(date);
 			//statistiqueMensuelService.ajouterStatMensuel(date);
 			statistiqueMensuelDetailsService.ajouterStatMensuelDetails(date);
 			

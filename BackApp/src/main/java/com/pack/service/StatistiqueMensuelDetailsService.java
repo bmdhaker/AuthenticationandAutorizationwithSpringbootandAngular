@@ -91,7 +91,7 @@ public class StatistiqueMensuelDetailsService {
 		System.out.println("ajouterStatMensuelDetails");
 		if (statistiqueMensuelDetailsRepo.count() == 0) {
 			System.out.println("table vide, nouveau enregistrement");
-			StatistiqueMensuelDetails saa = new StatistiqueMensuelDetails(annee, mois,1);
+			StatistiqueMensuelDetails saa = new StatistiqueMensuelDetails(annee, mois,1,1);
 			statistiqueMensuelDetailsRepo.save(saa);
 		}
 		else{
@@ -103,13 +103,14 @@ public class StatistiqueMensuelDetailsService {
 				System.out.println("je suis dans update mois");
 				idstatMoisD = sa.getId();
 				sa.setId(idstatMoisD);
+				sa.setTotal(sa.getTotal()+1);
 				updateStatistiqueMensuelDetails(idstatMoisD, sa,mois);
 				moisExist = true;
 				}
 			}
 			if (moisExist == false) {
 			System.out.println("je suis une nouvelle annee ");
-			StatistiqueMensuelDetails newsa = new StatistiqueMensuelDetails(annee, mois,1);
+			StatistiqueMensuelDetails newsa = new StatistiqueMensuelDetails(annee, mois,1,1);
 			statistiqueMensuelDetailsRepo.save(newsa);
 			}
 		}

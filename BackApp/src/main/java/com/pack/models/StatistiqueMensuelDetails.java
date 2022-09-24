@@ -26,14 +26,16 @@ public class StatistiqueMensuelDetails {
 	int nbmois10;
 	int nbmois11;
 	int nbmois12;
+	int total;
 	
 
 	
 	public StatistiqueMensuelDetails() {
 	}
 
-	public StatistiqueMensuelDetails(int annee, int mois,int nb) {
+	public StatistiqueMensuelDetails(int annee, int mois,int nb,int total) {
 		this.annee=annee;
+		this.total=total;
 		switch(mois) {
 		  case 1:
 			  	nbmois1=nb;
@@ -76,7 +78,7 @@ public class StatistiqueMensuelDetails {
 	}
 
 	public StatistiqueMensuelDetails(int annee, int nbmois1, int nbmois2, int nbmois3, int nbmois4, int nbmois5,
-			int nbmois6, int nbmois7, int nbmois8, int nbmois9, int nbmois10, int nbmois11, int nbmois12) {
+			int nbmois6, int nbmois7, int nbmois8, int nbmois9, int nbmois10, int nbmois11, int nbmois12,int total) {
 		super();
 		this.annee = annee;
 		this.nbmois1 = nbmois1;
@@ -91,6 +93,7 @@ public class StatistiqueMensuelDetails {
 		this.nbmois10 = nbmois10;
 		this.nbmois11 = nbmois11;
 		this.nbmois12 = nbmois12;
+		this.total=total;
 	}
 
 	@Id
@@ -212,11 +215,20 @@ public class StatistiqueMensuelDetails {
 		this.nbmois12 = nbmois12;
 	}
 
+	
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
 	@Override
 	public String toString() {
 		return "StatistiqueMensuelDetails [id=" + id + ", annee=" + annee + ", nbmois1=" + nbmois1 + ", nbmois2="
 				+ nbmois2 + ", nbmois3=" + nbmois3 + ", nbmois4=" + nbmois4 + ", nbmois5=" + nbmois5 + ", nbmois6="
 				+ nbmois6 + ", nbmois7=" + nbmois7 + ", nbmois8=" + nbmois8 + ", nbmois9=" + nbmois9 + ", nbmois10="
-				+ nbmois10 + ", nbmois11=" + nbmois11 + ", nbmois12=" + nbmois12 + "]";
+				+ nbmois10 + ", nbmois11=" + nbmois11 + ", nbmois12=" + nbmois12 + ", total=" + total + "]";
 	}
 }

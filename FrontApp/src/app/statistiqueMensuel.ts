@@ -13,4 +13,5 @@ export class StatistiqueMensuel {
 	nbmois10: number;
 	nbmois11: number;
 	nbmois12: number;
+	total: number;
 }
