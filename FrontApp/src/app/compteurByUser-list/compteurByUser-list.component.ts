@@ -23,7 +23,7 @@ export class CompteurByUserListComponent implements OnInit {
     this.compteurByUsers = this.compteurByUserService.getCompteurByUsersList();
   }
 
-  deleteCompteurByUser(id: number) {
+  /*deleteCompteurByUser(id: number) {
     this.compteurByUserService.deleteCompteurByUser(id)
       .subscribe(
         data => {
@@ -31,11 +31,11 @@ export class CompteurByUserListComponent implements OnInit {
           this.reloadData();
         },
         error => console.log(error));
-  }
+  }*/
 
   
 
-  updateCompteurByUser(id: number){
+  /*updateCompteurByUser(id: number){
     this.router.navigate(['update-compteurByUser', id]);
-  }
+  }*/
 }

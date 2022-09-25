@@ -4,18 +4,18 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Libelle</th>
-          <th>Utilisateur</th>
-          <th>Actions</th>
+          <th style="color:coral">Libelle</th>
+          <th style="color:red">Utilisateur</th>
+          <!--<th>Actions</th>-->
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let compteurByUser of compteurByUsers | async">
           <td>{{compteurByUser.libelle}}</td>
-          <td>{{compteurByUser.user.username}}</td>
-          <td><button (click)="deleteCompteurByUser(compteur.id)" class="btn btn-danger">Supprimer</button>
+          <td style="color:blueviolet">{{compteurByUser.user.username}}</td>
+          <!--<td><button (click)="deleteCompteurByUser(compteur.id)" class="btn btn-danger">Supprimer</button>
              <button (click)="updateCompteurByUser(compteur.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
-          </td>
+          </td>-->
         </tr>
       </tbody>
     </table>

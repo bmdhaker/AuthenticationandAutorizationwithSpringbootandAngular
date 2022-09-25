@@ -6,20 +6,20 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>User</th>
-            <th>Libelle compteur</th>
-            <th>type token price</th>
-            <th>Actions</th>
+            <th style="color:crimson">User</th>
+            <th style="color:crimson">Libelle compteur</th>
+            <th style="color:crimson">type token price</th>
+            <!--<th>Actions</th>-->
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let token of tokens | async">
-            <td style="color:red">{{token.user.username}}</td>
+            <td style="color:darkblue">{{token.user.username}}</td>
             <td>{{token.compteur.libelle}}</td>
-            <td>{{token.typetoken.prix}} </td>
-            <td><button (click)="deleteToken(token.id)" class="btn btn-danger">Supprimer</button>
+            <td style="color:deeppink">{{token.typetoken.prix}} </td>
+            <!--<td><button (click)="deleteToken(token.id)" class="btn btn-danger">Supprimer</button>
               <button (click)="updateToken(token.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
-            </td>
+            </td>-->
           </tr>
         </tbody>
       </table>
