@@ -22,7 +22,7 @@ import { CreateTokenComponent } from './create-token/create-token.component';
 import { UpdateTokenComponent } from './update-token/update-token.component';
 import { CompteurListComponent } from './compteur-list/compteur-list.component';
 import { CreateCompteurComponent } from './create-compteur/create-compteur.component';
-import { UpdateCompteurComponent } from './update-compteur/update-compteur.component';
+import { UpdateCompteurLoggedUserComponent } from './update-compteurLoggedUser/update-compteurLoggedUser.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { CompteurByUserListComponent } from './compteurByUser-list/compteurByUser-list.component';
 import { CompteurLoggedUserListComponent } from './compteurLoggedUser-list/compteurLoggedUser-list.component';
@@ -65,7 +65,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     UpdateTokenComponent,
     CompteurListComponent,
     CreateCompteurComponent,
-    UpdateCompteurComponent,
+    UpdateCompteurLoggedUserComponent,
     UserListComponent,
     CompteurByUserListComponent,
     CompteurLoggedUserListComponent,

@@ -17,7 +17,7 @@ import { CreateTokenComponent } from './create-token/create-token.component';
 import { UpdateTokenComponent } from './update-token/update-token.component';
 import { CompteurListComponent } from './compteur-list/compteur-list.component';
 import { CreateCompteurComponent } from './create-compteur/create-compteur.component';
-import { UpdateCompteurComponent } from './update-compteur/update-compteur.component';
+import { UpdateCompteurLoggedUserComponent } from './update-compteurLoggedUser/update-compteurLoggedUser.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { CompteurByUserListComponent } from './compteurByUser-list/compteurByUser-list.component';
 import { CompteurLoggedUserListComponent } from './compteurLoggedUser-list/compteurLoggedUser-list.component';
@@ -57,7 +57,7 @@ const routes: Routes = [
   { path: 'update-token/:id', component: UpdateTokenComponent },
   { path: 'compteurs', component: CompteurListComponent },
   { path: 'compteur/new', component: CreateCompteurComponent },
-  { path: 'update-compteur/:id', component: UpdateCompteurComponent },
+  { path: 'update-compteurLoggedUser/:id', component: UpdateCompteurLoggedUserComponent },
   { path: 'users', component: UserListComponent },
   { path: 'compteurByUsers', component: CompteurByUserListComponent },
   { path: 'compteurLoggedUsers', component: CompteurLoggedUserListComponent },

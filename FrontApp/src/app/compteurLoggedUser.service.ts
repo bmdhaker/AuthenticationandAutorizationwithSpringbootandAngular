@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class CompteurLoggedUserService {
 
   private baseUrl = 'http://localhost:9093/api/test/compteurLoggedUsers';
+  private baseUrl2 = 'http://localhost:9093/api/test/compteurofUserx';
 
   constructor(private http: HttpClient) { }
 
@@ -15,6 +16,9 @@ export class CompteurLoggedUserService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
 
+  getCompteurLoggedUserX(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl2}/${id}`);
+  }
   createCompteurLoggedUser(compteur: Object): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, compteur);
   }

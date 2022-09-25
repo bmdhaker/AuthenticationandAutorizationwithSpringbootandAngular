@@ -82,33 +82,20 @@ public class CompteurController {
 	 * tokenService.getTokensByUser(username); }
 	 */
 
-	@RequestMapping("/compteurs/{id}")
-	public Optional<Compteur> getSingleCompteur(@PathVariable Long id) {
-		return compteurService.getSingleCompteur(id);
-	}
 
-	@RequestMapping("/compteurLoggedUsers/{username}")
-	public List<Compteur> getSingleCompteur(@PathVariable String username) {
-		System.out.println("username " + username);
-		return compteurService.getCompteursByUser(username);
-	}
+	
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/compteurs/{id}")
-	public void updateCompteur(@RequestBody Compteur compteur, @PathVariable Long id) {
-		System.out.println(compteur.toString());
-		compteurService.updateCompteur(id, compteur);
-	}
-
+	/*
+	 * @RequestMapping(method = RequestMethod.PUT, value = "/compteurs/{id}") public
+	 * void updateCompteur(@RequestBody Compteur compteur, @PathVariable Long id) {
+	 * System.out.println(compteur.toString()); compteurService.updateCompteur(id,
+	 * compteur); }
+	 */
 	@RequestMapping(method = RequestMethod.DELETE, value = "/compteurs/{id}")
 	public void deleteCompteur(@PathVariable Long id) {
 		compteurService.deleteCompteur(id);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/compteurs/{username}")
-	public List<Compteur> getCompteurByUser(@PathVariable String username) {
-//	public int getCompteurByUser(@PathVariable Long iduser) {
-		System.out.println("username:= " + username);
-		return compteurService.getCompteursByUser(username);
-	}
+	
 
 }

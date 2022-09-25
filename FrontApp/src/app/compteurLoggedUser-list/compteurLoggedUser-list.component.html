@@ -11,8 +11,8 @@
       <tbody>
         <tr *ngFor="let compteurLoggedUser of compteurLoggedUsers | async">
           <td>{{compteurLoggedUser.libelle}}</td>
-          <td><button (click)="deleteCompteurLoggedUser(compteur.id)" class="btn btn-danger">Supprimer</button>
-             <button (click)="updateCompteurLoggedUser(compteur.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+          <td><button (click)="deleteCompteurLoggedUser(compteurLoggedUser.id)" class="btn btn-danger">Supprimer</button>
+             <button (click)="updateCompteurLoggedUser(compteurLoggedUser.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
           </td>
         </tr>
       </tbody>
