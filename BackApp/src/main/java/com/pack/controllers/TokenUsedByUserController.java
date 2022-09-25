@@ -79,6 +79,14 @@ public class TokenUsedByUserController {
 		token.setActive(true);
 		System.out.println("token to add "+token.toString());
 		tokenService.addToken(token);
+		//parametres du nemero serie
+		System.out.println("token id:= "+token.getId());
+		System.out.println("compteur id:= "+token.getCompteur().getId());
+		System.out.println("user phone:= "+token.getCompteur().getUser().getTelephone());
+		System.out.println("typetoken id:= "+token.getTypetoken().getId());
+		token.setNumerotoken(tokenService.genererNumeroToken(token.getId(),token.getTypetoken().getId(),token.getCompteur().getUser().getTelephone(),token.getCompteur().getId()));
+		tokenService.updateToken(token.getId(), token);
+		System.out.println("new token:= "+token.toString());
 		//vreation du panier
 		panier.setToken(token);
 		panier.setUser(token.getUser());

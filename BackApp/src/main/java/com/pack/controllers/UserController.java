@@ -1,5 +1,6 @@
 package com.pack.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,8 +31,18 @@ public class UserController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/users") 
 	public List<User> getUser() {
-		return (List<User>) userService.getAllUser();
-
+		List<User> listeusers=new ArrayList<>();
+		for(User user:userService.getAllUser()) {
+			System.out.println("user :="+user);
+			if(!user.getUsername().equals("admin"))
+				listeusers.add(user);
+		}
+		System.out.println("listeusers");
+		listeusers.forEach(u->{
+			System.out.println(u.toString());
+		});
+		//return (List<User>) userService.getAllUser();
+		return listeusers;
 	}
 
 	@RequestMapping(method = RequestMethod.POST, value = "/users")

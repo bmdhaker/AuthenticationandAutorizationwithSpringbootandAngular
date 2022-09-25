@@ -48,6 +48,12 @@ public class TokenService {
 		});
 		return listtokens;
 	}
+	public String genererNumeroToken(Long idToken, Long idTypeToken, String telephone, Long idCompteur) {
+		String numeroToken;
+		numeroToken=idToken+telephone+idTypeToken+idCompteur;
+		System.out.println("numerotoken:= "+numeroToken);
+		return numeroToken;
+	}
 	
 	
 }

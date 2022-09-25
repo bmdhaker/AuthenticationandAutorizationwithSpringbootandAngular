@@ -6,14 +6,16 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>details commande</th>
-            <th>total</th>
-            <th>date</th>
+            <th style="color:sienna">Numéro Compteur</th>
+            <th style="color:chocolate">Num token generé</th>
+            <th style="color:green">total</th>
+            <th style="color:blue">date</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let commandeLoggedUser of commandeLoggedUsers | async">
             <td>{{commandeLoggedUser.panier.token.compteur.libelle}}</td>
+            <td style="color:red">{{commandeLoggedUser.panier.token.numerotoken}} </td>
             <td>{{commandeLoggedUser.panier.token.typetoken.prix}}</td>
             <td>{{commandeLoggedUser.date}} </td>
           </tr>

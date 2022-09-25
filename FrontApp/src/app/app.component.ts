@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   showSimpleUserBoard = false;
 
   username: string;
+  telephone: string;
   valeurSolde:string;
   soldes: Observable<Solde[]>;
   listSolde=true;
@@ -36,6 +37,7 @@ export class AppComponent implements OnInit {
       this.showSimpleUserBoard = this.roles.includes('ROLE_USER');
 
       this.username = user.username;
+      this.telephone = user.telephone;
       this.soldes = this.soldeService.getSoldesList(this.username,this.listSolde);
     }
   }

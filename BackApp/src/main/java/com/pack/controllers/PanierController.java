@@ -152,7 +152,7 @@ public class PanierController {
 	public List<Panier> getPanierByUser(@PathVariable String username) {
 //	public int getCompteurByUser(@PathVariable Long iduser) {
 		System.out.println("username:= " + username);
-		System.out.println("panier de l'utilistauer");
+		System.out.println("panier de l'utilisateur");
 		panierService.getPaniersByUser(username).forEach(p -> {
 			System.out.println(p.toString());
 		});

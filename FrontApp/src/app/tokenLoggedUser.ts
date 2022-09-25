@@ -4,6 +4,7 @@ import { Compteur } from './compteur';
 
 export class TokenLoggedUser {
   id: number;
+  numerotoken: string;
   compteur: Compteur;
   typetoken: Typetoken;
   user:User;

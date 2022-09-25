@@ -15,6 +15,7 @@ public class Token {
 	private Typetoken typetoken;
 	private User user;
 	private Boolean active;
+	private String numerotoken;
 
 	// private String typetoken;
 
@@ -45,6 +46,17 @@ public class Token {
 		this.active = active;
 	}
 
+	
+	
+	public Token(Compteur compteur, Typetoken typetoken, User user, Boolean active, String numerotoken) {
+		super();
+		this.compteur = compteur;
+		this.typetoken = typetoken;
+		this.user = user;
+		this.active = active;
+		this.numerotoken = numerotoken;
+	}
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user", nullable = false)
 	public User getUser() {
@@ -66,7 +78,6 @@ public class Token {
 	}
 
 	
-
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_typetoken", nullable = false)
 
@@ -96,10 +107,20 @@ public class Token {
 		this.active = active;
 	}
 
+	
+	
+	public String getNumerotoken() {
+		return numerotoken;
+	}
+
+	public void setNumerotoken(String numerotoken) {
+		this.numerotoken = numerotoken;
+	}
+
 	@Override
 	public String toString() {
 		return "Token [id=" + id + ", compteur=" + compteur + ", typetoken=" + typetoken + ", user=" + user
-				+ ", active=" + active + "]";
+				+ ", active=" + active + ", numerotoken=" + numerotoken + "]";
 	}
 
 
